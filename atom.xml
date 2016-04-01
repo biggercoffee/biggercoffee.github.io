@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://biggercoffee.github.io/"/>
-  <updated>2016-03-31T12:50:29.000Z</updated>
+  <updated>2016-04-01T01:57:54.000Z</updated>
   <id>http://biggercoffee.github.io/</id>
   
   <author>
@@ -14,6 +14,411 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac下的常用终端（terminal）命令总结</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/Mac%E4%B8%8B%E7%9A%84%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%EF%BC%88terminal%EF%BC%89%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%EF%BC%8820160306%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/Mac下的常用终端（terminal）命令总结（20160306更新）/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T01:57:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;无意间发现笔者的有道云笔记在曾几何时有一篇关于&lt;code&gt;terminal&lt;/code&gt;命令的总结笔记。由于笔记记录内容实在太多，所以在这里简单整理了一些&lt;code&gt;Mac&lt;/code&gt;下终端里常用且实用的命令方便日后查阅。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-dca91ffda8910c22.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;开心一乐&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;查看&quot;&gt;&lt;a href=&quot;#查看&quot; class=&quot;headerlink&quot; title=&quot;查看&quot;&gt;&lt;/a&gt;查看&lt;/h1&gt;&lt;p&gt;在终端里输入&lt;code&gt;ls&lt;/code&gt;就可以查看文件和文件夹，但隐藏的文件就无法查看，使用&lt;code&gt;ls -a&lt;/code&gt;即可。&lt;/p&gt;
+&lt;h1 id=&quot;创建目录&quot;&gt;&lt;a href=&quot;#创建目录&quot; class=&quot;headerlink&quot; title=&quot;创建目录&quot;&gt;&lt;/a&gt;创建目录&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;mkdir&lt;/code&gt;&lt;br&gt;使用说明：输入命令随后空格再输入目录名即可。&lt;br&gt;案例：创建一个&lt;code&gt;test&lt;/code&gt;目录则对应命令就是&lt;code&gt;mkdir  test&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;进入目录&quot;&gt;&lt;a href=&quot;#进入目录&quot; class=&quot;headerlink&quot; title=&quot;进入目录&quot;&gt;&lt;/a&gt;进入目录&lt;/h1&gt;&lt;p&gt;&lt;code&gt;cd&lt;/code&gt;命令进入目录比如要进入test目录则就是&lt;code&gt;cd test&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;返回上一级目录&quot;&gt;&lt;a href=&quot;#返回上一级目录&quot; class=&quot;headerlink&quot; title=&quot;返回上一级目录&quot;&gt;&lt;/a&gt;返回上一级目录&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;cd..&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;删除目录（空目录）&quot;&gt;&lt;a href=&quot;#删除目录（空目录）&quot; class=&quot;headerlink&quot; title=&quot;删除目录（空目录）&quot;&gt;&lt;/a&gt;删除目录（空目录）&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;rmdir&lt;/code&gt;&lt;br&gt;案例：&lt;code&gt;rmdir test&lt;/code&gt;（rmdir命令后面空格在加上目录名）&lt;br&gt;注意：此删除不会出现在废纸篓里&lt;/p&gt;
+&lt;h1 id=&quot;删除目录（非空或者空目录都可以删除）推荐使用&quot;&gt;&lt;a href=&quot;#删除目录（非空或者空目录都可以删除）推荐使用&quot; class=&quot;headerlink&quot; title=&quot;删除目录（非空或者空目录都可以删除）推荐使用&quot;&gt;&lt;/a&gt;删除目录（非空或者空目录都可以删除）推荐使用&lt;/h1&gt;&lt;p&gt;命令： &lt;code&gt;rm -rf&lt;/code&gt;&lt;br&gt;案例：&lt;code&gt;rm -rf test&lt;/code&gt;（rm -rf命令后面空格在加上目录名）&lt;br&gt;注意：此删除不会出现在废纸篓里&lt;/p&gt;
+&lt;h1 id=&quot;创建文件&quot;&gt;&lt;a href=&quot;#创建文件&quot; class=&quot;headerlink&quot; title=&quot;创建文件&quot;&gt;&lt;/a&gt;创建文件&lt;/h1&gt;&lt;p&gt;命令:&lt;code&gt;touch&lt;/code&gt;&lt;br&gt;笔者感觉这个命令还是挺靠谱的。Mac如果不用第三方工具（sublime等）是无法可视化创建一个&lt;code&gt;txt&lt;/code&gt;文件。而用这个命令即可创建。&lt;br&gt;示例（创建一个test为名的txt文件）：&lt;code&gt;touch test.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;删除文件&quot;&gt;&lt;a href=&quot;#删除文件&quot; class=&quot;headerlink&quot; title=&quot;删除文件&quot;&gt;&lt;/a&gt;删除文件&lt;/h1&gt;&lt;p&gt; 命令：&lt;code&gt;rm&lt;/code&gt;&lt;br&gt;案例（删除一个test.txt文件）：&lt;code&gt;rm test.txt&lt;/code&gt;&lt;br&gt;注意：此删除不会出现在废纸篓里&lt;/p&gt;
+&lt;h1 id=&quot;拷贝&quot;&gt;&lt;a href=&quot;#拷贝&quot; class=&quot;headerlink&quot; title=&quot;拷贝&quot;&gt;&lt;/a&gt;拷贝&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;cp&lt;/code&gt;&lt;br&gt;案例（拷贝一个test.txt文件并重新命名为test2.txt）：&lt;code&gt;cp test.txt test2.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;查找&quot;&gt;&lt;a href=&quot;#查找&quot; class=&quot;headerlink&quot; title=&quot;查找&quot;&gt;&lt;/a&gt;查找&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;find&lt;/code&gt;&lt;br&gt;案例（查找当前目录下所有的txt文件）：&lt;code&gt;find *.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;显示当前的目录&quot;&gt;&lt;a href=&quot;#显示当前的目录&quot; class=&quot;headerlink&quot; title=&quot;显示当前的目录&quot;&gt;&lt;/a&gt;显示当前的目录&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;pwd&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;打开成可视化的文件夹&quot;&gt;&lt;a href=&quot;#打开成可视化的文件夹&quot; class=&quot;headerlink&quot; title=&quot;打开成可视化的文件夹&quot;&gt;&lt;/a&gt;打开成可视化的文件夹&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;open&lt;/code&gt;&lt;br&gt;说明：如果是&lt;code&gt;open .&lt;/code&gt;则是打开当前命令里的目录，如果要打开指定的文件夹或者文件则格式为&lt;code&gt;open 要打开的路径&lt;/code&gt;即可。&lt;/p&gt;
+&lt;h1 id=&quot;关机&quot;&gt;&lt;a href=&quot;#关机&quot; class=&quot;headerlink&quot; title=&quot;关机&quot;&gt;&lt;/a&gt;关机&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;sudo shutdown -h now&lt;/code&gt; –立刻关机&lt;br&gt;&lt;code&gt;sudo shutdown -h +10&lt;/code&gt; – 十分钟后关机&lt;br&gt;&lt;code&gt;sudo shutdown -h 20:00&lt;/code&gt; – 晚上八点关机&lt;/p&gt;
+&lt;h1 id=&quot;重启&quot;&gt;&lt;a href=&quot;#重启&quot; class=&quot;headerlink&quot; title=&quot;重启&quot;&gt;&lt;/a&gt;重启&lt;/h1&gt;&lt;p&gt;命令：&lt;code&gt;sudo shutdown -r now&lt;/code&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;无意间发现笔者的有道云笔记在曾几何时有一篇关于&lt;code&gt;terminal&lt;/code&gt;命令的总结笔记。由于笔记记录内容实在太多，所以在这里简单整理了一些&lt;code&gt;Mac&lt;/code&gt;下终端里常用且实用的命令方便日后查阅。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="Mac" scheme="http://biggercoffee.github.io/categories/All/Mac/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="Mac" scheme="http://biggercoffee.github.io/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Xcode常用快捷键与技巧分享</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/Xcode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%8E%E6%8A%80%E5%B7%A7%E5%88%86%E4%BA%AB/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/Xcode常用快捷键与技巧分享/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T01:57:00.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;strong&gt;工欲善其事必先利其器.  虽然&lt;code&gt;Xcode&lt;/code&gt;编写&lt;code&gt;objective-c or swift&lt;/code&gt;很完美,    但了解其工具的常用快捷键与技巧在编码过程中也能省下不少事.  尤其是键盘侠, 则更需要快捷键技巧(笔者就是键盘侠之一). 以下是笔者常用的一些快捷键与技巧总结~!&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;快速跳转到某一行&quot;&gt;&lt;a href=&quot;#快速跳转到某一行&quot; class=&quot;headerlink&quot; title=&quot;快速跳转到某一行&quot;&gt;&lt;/a&gt;&lt;strong&gt;快速跳转到某一行&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键:  command + L&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;快速创建文件&quot;&gt;&lt;a href=&quot;#快速创建文件&quot; class=&quot;headerlink&quot; title=&quot;快速创建文件&quot;&gt;&lt;/a&gt;&lt;strong&gt;快速创建文件&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键:  command + N&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;快速打开某一个文件&quot;&gt;&lt;a href=&quot;#快速打开某一个文件&quot; class=&quot;headerlink&quot; title=&quot;快速打开某一个文件&quot;&gt;&lt;/a&gt;&lt;strong&gt;快速打开某一个文件&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键:  command + shift + O&lt;/strong&gt;&lt;br&gt;如图:&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-daea26b2bd362af2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;上移一行-and-下移一行&quot;&gt;&lt;a href=&quot;#上移一行-and-下移一行&quot; class=&quot;headerlink&quot; title=&quot;上移一行 and 下移一行&quot;&gt;&lt;/a&gt;&lt;strong&gt;上移一行 &lt;code&gt;and&lt;/code&gt; 下移一行&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键:  option + command + ] ,   option + command + [&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;h文件与-m文件之间的快速切换&quot;&gt;&lt;a href=&quot;#h文件与-m文件之间的快速切换&quot; class=&quot;headerlink&quot; title=&quot;.h文件与.m文件之间的快速切换&quot;&gt;&lt;/a&gt;&lt;strong&gt;.h文件与.m文件之间的快速切换&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键:  control + command + ↑ ,  control + command + ↓&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;返回至上一次光标位置&quot;&gt;&lt;a href=&quot;#返回至上一次光标位置&quot; class=&quot;headerlink&quot; title=&quot;返回至上一次光标位置&quot;&gt;&lt;/a&gt;&lt;strong&gt;返回至上一次光标位置&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键: control + command + ← ,  control + command + →&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;快速查看当前class的方法&quot;&gt;&lt;a href=&quot;#快速查看当前class的方法&quot; class=&quot;headerlink&quot; title=&quot;快速查看当前class的方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;快速查看当前&lt;code&gt;class&lt;/code&gt;的方法&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键:  control + 6&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;查看方法的调用者&quot;&gt;&lt;a href=&quot;#查看方法的调用者&quot; class=&quot;headerlink&quot; title=&quot;查看方法的调用者&quot;&gt;&lt;/a&gt;&lt;strong&gt;查看方法的调用者&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键: 暂无&lt;/strong&gt;&lt;br&gt;如图gif&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-8b400e9ad188f450?imageMogr2/auto-orient/strip&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;查看头文件包含在某些文件里&quot;&gt;&lt;a href=&quot;#查看头文件包含在某些文件里&quot; class=&quot;headerlink&quot; title=&quot;查看头文件包含在某些文件里&quot;&gt;&lt;/a&gt;&lt;strong&gt;查看头文件包含在某些文件里&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-5fd092ce398959b7?imageMogr2/auto-orient/strip&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;收起-展开方法代码块&quot;&gt;&lt;a href=&quot;#收起-展开方法代码块&quot; class=&quot;headerlink&quot; title=&quot;收起/展开方法代码块&quot;&gt;&lt;/a&gt;&lt;strong&gt;&lt;code&gt;收起/展开&lt;/code&gt;方法代码块&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;快捷键如下  &lt;/strong&gt;&lt;br&gt;&lt;strong&gt;收起:  option + command + ← &lt;/strong&gt;&lt;br&gt;&lt;strong&gt;展开:  option + command + →&lt;/strong&gt;&lt;br&gt;效果图如下:&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-3ca7d4d1e93e2146?imageMogr2/auto-orient/strip&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;快速定位到当前编辑文件的导航区域（左侧的文件目录）&quot;&gt;&lt;a href=&quot;#快速定位到当前编辑文件的导航区域（左侧的文件目录）&quot; class=&quot;headerlink&quot; title=&quot;快速定位到当前编辑文件的导航区域（左侧的文件目录）&quot;&gt;&lt;/a&gt;&lt;strong&gt;快速定位到当前编辑文件的导航区域（左侧的文件目录）&lt;/strong&gt;&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;快捷键：command + shift + J&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;光标上移一行和下移一行&quot;&gt;&lt;a href=&quot;#光标上移一行和下移一行&quot; class=&quot;headerlink&quot; title=&quot;光标上移一行和下移一行&quot;&gt;&lt;/a&gt;光标上移一行和下移一行&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;快捷键：&lt;br&gt;上移一行：control + N&lt;br&gt;下移一行：control + P&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;快速切换左边导航区域&quot;&gt;&lt;a href=&quot;#快速切换左边导航区域&quot; class=&quot;headerlink&quot; title=&quot;快速切换左边导航区域&quot;&gt;&lt;/a&gt;快速切换左边导航区域&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;快捷键：command + &lt;code&gt;(1 到 8都可以)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h1 id=&quot;给Xcode增加删除一行和复制一行的技巧&quot;&gt;&lt;a href=&quot;#给Xcode增加删除一行和复制一行的技巧&quot; class=&quot;headerlink&quot; title=&quot;给Xcode增加删除一行和复制一行的技巧&quot;&gt;&lt;/a&gt;给Xcode增加删除一行和复制一行的技巧&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/cc6e13365b7e&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考博文（我的简书地址），点此：http://www.jianshu.com/p/cc6e13365b7e。只需要简单的三条命令即可&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;工欲善其事必先利其器.  虽然&lt;code&gt;Xcode&lt;/code&gt;编写&lt;code&gt;objective-c or swift&lt;/code&gt;很完美,    但了解其工具的常用快捷键与技巧在编码过程中也能省下不少事.  尤其是键盘侠, 则更需要快捷键技巧(笔者就是
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="Xcode" scheme="http://biggercoffee.github.io/categories/All/Xcode/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/Xcode/IOS/"/>
+    
+      <category term="Tips" scheme="http://biggercoffee.github.io/categories/All/Xcode/IOS/Tips/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="Tips" scheme="http://biggercoffee.github.io/tags/Tips/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UI调试神器-for-ios：Reveal的使用与破解</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/UI%E8%B0%83%E8%AF%95%E7%A5%9E%E5%99%A8-for-ios%EF%BC%9AReveal%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%A0%B4%E8%A7%A3/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/UI调试神器-for-ios：Reveal的使用与破解/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T01:58:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-48edba87cfbecaab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;镇楼图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;移动开发这一块做的最多的无疑就是UI和交互，而UI调试也是移动开发人员经常干的一苦逼事。虽然目前iOS开发工具Xcode集成了UI调试功能（Debug View Hierarchy），但带给我们的却只有失望。接下来就如标题所见，笔者来简单介绍和使用Reveal，因为这东西使用起来并不难，所以着重讲解怎么集成到工程里。但是…这个工具是收费的，不过还好我们在天朝（你懂得，暴力破解）。&lt;/p&gt;
+&lt;h1 id=&quot;简单介绍&quot;&gt;&lt;a href=&quot;#简单介绍&quot; class=&quot;headerlink&quot; title=&quot;简单介绍&quot;&gt;&lt;/a&gt;简单介绍&lt;/h1&gt;&lt;p&gt;Reveal的使用其实真的很简单，就如第一张镇楼图的效果一样。中间是3D可视化当前APP页面的视图，左侧则是这些UI元素和层次结构，而右侧则是View的属性，你可以修改View的颜色、frame等等，并且效果还是及时渲染到模拟器上的。当你真正使用的时候一眼就能看懂。而关于Reveal的下载就去Google一下就搞定了。至于没翻墙的童鞋则随意百度就行。&lt;/p&gt;
+&lt;h1 id=&quot;集成&quot;&gt;&lt;a href=&quot;#集成&quot; class=&quot;headerlink&quot; title=&quot;集成&quot;&gt;&lt;/a&gt;集成&lt;/h1&gt;&lt;p&gt;把Reveal集成到项目里有两种方式。第一种则是添加Reveal的&lt;code&gt;framework&lt;/code&gt;到工程里（不推荐）。第二种是用LLDB命令（吐血推荐）。&lt;/p&gt;
+&lt;h2 id=&quot;framework集成（不推荐）&quot;&gt;&lt;a href=&quot;#framework集成（不推荐）&quot; class=&quot;headerlink&quot; title=&quot;framework集成（不推荐）&quot;&gt;&lt;/a&gt;framework集成（不推荐）&lt;/h2&gt;&lt;p&gt;而关于用&lt;code&gt;framework&lt;/code&gt;集成的方式可参考我很久以前在CSDN上写的一篇文章，&lt;a href=&quot;http://blog.csdn.net/biggercoffee/article/details/49947033&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点我传送过去&lt;/a&gt;。因为用这种方式集成的弊端就是在于，你还要配置project的&lt;code&gt;other linker Flags&lt;/code&gt;，还要注意不要在打包发布的时候也一起打包进去了。而且每个项目都要去加入Reveal的framework，并且配置&lt;code&gt;other linker Flags&lt;/code&gt;。那么问题来了，有没有一劳永逸的方式尼？就是配置一次环境，以后不管有多少项目都直接使用？答案是有的。那就是用第二种方式LLDB来配置，因为这需要一点LLDB的基础知识，在本章都会进行简单介绍。&lt;/p&gt;
+&lt;h2 id=&quot;LLDB集成（吐血推荐）&quot;&gt;&lt;a href=&quot;#LLDB集成（吐血推荐）&quot; class=&quot;headerlink&quot; title=&quot;LLDB集成（吐血推荐）&quot;&gt;&lt;/a&gt;LLDB集成（吐血推荐）&lt;/h2&gt;&lt;p&gt;LLDB集成的优势就是在于不用担心打包会把Reveal的framework也打包进去的问题。而且本地配置好了，只要在这台机器上任何项目都通用。最最最主要的一点就是，高bigger。&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;LLDB命令集成&lt;/code&gt;其实也很简单，大体分为如下两步。&lt;/p&gt;
+&lt;p&gt;第一步： 点击&lt;code&gt;pause program execution&lt;/code&gt;，暂停app。（如下图）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-2fbac0a612854854.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;暂停app的效果图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;第二步： 依次输入两条命令即可，分别如下：&lt;/p&gt;
+&lt;p&gt;第一条：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;expr (Class)NSClassFromString(@&amp;quot;IBARevealLoader&amp;quot;) == nil ? (void *)dlopen(&amp;quot;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&amp;quot;, 0x2) : ((void*)0)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps:&lt;code&gt;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&lt;/code&gt;这个地址为绝对路径，我的Reveal是存放于&lt;code&gt;application&lt;/code&gt;目录下的，所以路径就是&lt;code&gt;/Applications/Reveal.app/.....&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第二条&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&amp;quot;IBARevealRequestStart&amp;quot; object:nil];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;两条命令顺利的话，控制台则会打印&lt;code&gt;INFO: Reveal Server started (Protocol Version 25).&lt;/code&gt;这条信息。（如下图）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-20d2f6fdab2a6036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;成功之后的效果图&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps：如果最后未能正常输出&lt;code&gt;INFO: Reveal Server started&lt;/code&gt;，那你就要好好检查一下第一条命令里的dlopen里包含的路径是否正确了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最后，你在点击&lt;code&gt;continue&lt;/code&gt;按钮或者在控制台里继续输入&lt;code&gt;c&lt;/code&gt;字符然后回车，让程序结束暂停即可。&lt;/p&gt;
+&lt;p&gt;现在，你在打开你的&lt;code&gt;Reveal&lt;/code&gt;，在你的左上角点击&lt;code&gt;No Connection&lt;/code&gt;，瞅瞅，是否有你的app啦。接下来你就好好的享受Reveal带给你的快感吧。。。&lt;/p&gt;
+&lt;h1 id=&quot;lldbinit里设置别名&quot;&gt;&lt;a href=&quot;#lldbinit里设置别名&quot; class=&quot;headerlink&quot; title=&quot;.lldbinit里设置别名&quot;&gt;&lt;/a&gt;.lldbinit里设置别名&lt;/h1&gt;&lt;p&gt;但是，这还没有结束尼。每次需要Reveal来审查UI的时候都要输入这两条看着如此蛋疼的命令。这，不是要我老命嘛？ so… 幸运的是我们可以在&lt;code&gt;~/&lt;/code&gt;目录下的&lt;code&gt;.lldbinit&lt;/code&gt;文件里为我们的&lt;code&gt;LLDB&lt;/code&gt;命令添加别名。&lt;/p&gt;
+&lt;p&gt;首先，简单科普一下吧。&lt;code&gt;.lldbinit&lt;/code&gt;是一个隐藏文件，貌似默认是没有的。而&lt;code&gt;Xcode&lt;/code&gt;每次启动的时候，则都会去&lt;code&gt;~/.lldbinit&lt;/code&gt;这个目录寻找这个文件里的&lt;code&gt;LLDB&lt;/code&gt;命令。所以我们可以在这个文件里进行一些命令的初始化设置或者设置别名等等（本篇不做这方面介绍）。&lt;/p&gt;
+&lt;p&gt;现在，我们打开终端，在终端里输入&lt;code&gt;touch ~/.lldbinit&lt;/code&gt;命令来进行创建。然后在输入&lt;code&gt;open ~/.lldbinit&lt;/code&gt;命令。则就会以文本编辑器打开此文件。然后再把如下字符复制到文本编辑器里即可：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;command alias zxp_reveal_load_sim expr (Class)NSClassFromString(@&amp;quot;IBARevealLoader&amp;quot;) == nil ? (void *)dlopen(&amp;quot;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&amp;quot;, 0x2) : ((void*)0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;command alias zxp_reveal_start expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&amp;quot;IBARevealRequestStart&amp;quot; object:nil];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;command alias 其格式为：command alias 别名 LLDB命令，因此如上&lt;code&gt;zxp_reveal_start&lt;/code&gt;和&lt;code&gt;zxp_reveal_load_sim&lt;/code&gt;就是我设置的别名。你们也可以替换成你们自己喜欢的名字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后，现在在按照如上LLDB集成的步骤，运行项目，暂停app，这时候你在输入&lt;code&gt;zxp_reveal_load_sim&lt;/code&gt;然后在输入&lt;code&gt;zxp_reveal_start&lt;/code&gt;即可在Reveal里审查你的UI元素了。（如下图）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-fc808e144d58e940.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;自定义LLDB命令使用的效果图&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;破解&quot;&gt;&lt;a href=&quot;#破解&quot; class=&quot;headerlink&quot; title=&quot;破解&quot;&gt;&lt;/a&gt;破解&lt;/h1&gt;&lt;p&gt;由于Reveal是收费的，所以我们得要用点手段才行。正所谓上有政策下有对策嘛。其实也很简单，直接把&lt;code&gt;~/Library/Preferences/com.ittybittyapps.Reveal.plist&lt;/code&gt;这个路径下的这个文件给干掉，然后在重启一下电脑即可。但这并不是完全破解，而是一直循环30天试用。等30天试用完了，在把这个文件干掉，然后在重启电脑即可。当然&lt;code&gt;~/Library/Preferences/&lt;/code&gt;这个目录下的文件较多，现在你打开你的终端，然后输入&lt;code&gt;rm ~/Library/Preferences/com.ittybittyapps.Reveal.plist&lt;/code&gt;这条命令即可删除。然后继续重启你的电脑吧。这个破解方法简单粗暴也实用，如果童鞋们有其他更好的方法或者有完全破解不需要循环30天的方法，还望多指点我。&lt;/p&gt;
+&lt;h1 id=&quot;最后&quot;&gt;&lt;a href=&quot;#最后&quot; class=&quot;headerlink&quot; title=&quot;最后&quot;&gt;&lt;/a&gt;最后&lt;/h1&gt;&lt;p&gt;由于本篇废话有点多，可能多少有点枯燥。总之就先忍忍吧，每天进步一点点，生活会更精彩一点。&lt;/p&gt;
+&lt;p&gt;关于iOS的一些小技巧或者其他实用的工具欢迎与笔者进行交流。本文也欢迎转发，标注原文出处即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-48edba87cfbecaab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; a
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/IOS/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="UI" scheme="http://biggercoffee.github.io/tags/UI/"/>
+    
+      <category term="Debug" scheme="http://biggercoffee.github.io/tags/Debug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>autolayout框架篇（ZXPAutoLayout）</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/autolayout%E6%A1%86%E6%9E%B6%E7%AF%87%EF%BC%88ZXPAutoLayout%EF%BC%89/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/autolayout框架篇（ZXPAutoLayout）/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T01:59:57.000Z</updated>
+    
+    <content type="html">&lt;p&gt;#什么是ZXPAutoLayout ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iOS原生的自动布局(&lt;code&gt;NSLayoutConstraint&lt;/code&gt;)非常繁琐, 影响开发进度和可读性也不利于维护, 正所谓工欲善其事必先利其器 , 有一个良好的自动布局框架, 则会让我们事半功倍. 而&lt;code&gt;ZXPAutoLayout&lt;/code&gt;则是解决这一问题和诞生 . 采用新颖的链式语法, 扩展性,可读性,维护成本也较低.并致力打造最好用,最简洁,最方便,最轻巧的自动布局.&lt;a href=&quot;https://github.com/biggercoffee/ZXPAutoLayout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ZXPAutoLayout的github地址请戳我&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;&lt;code&gt;ps : autolayout简单来说就是 适配iPhone机型并且是0数学布局和兼容横竖屏,如不懂童鞋, 请自寻网上查阅&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;举个例子:&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;在使用ZXPAutoLayout之前,也就是原生的iOS布局,要添加一个约束是这样的:&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; NSLayoutConstraint *constraint = [NSLayoutConstraint &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; constraintWithItem:view //第一个view&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; attribute:NSLayoutAttribute //约束属性, 比如上下左右宽高等间距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; relatedBy:NSLayoutRelationEqual //相等,或者大于等于,小于等于&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; toItem:secondView //第二个view,也就是第一个view是要参照第二个view的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; attribute:NSLayoutAttribute //参照第二个view的属性&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; multiplier:multiplier  //比例0--1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; constant:0]; //约束值&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;就这样随便加一个约束就如此的繁琐,更何况一个view最起码有上边距,左边距和宽高,也就是所谓的&lt;code&gt;x,y,width,height&lt;/code&gt;四个基本属性.就相当于以上那复杂的代 码就要最少写四次.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;而现在用&lt;code&gt;ZXPAutoLayout&lt;/code&gt;来给一个view添加上边距,左边距,宽高.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//设置一个背景为半透明红色的view,上下左右四边都距离superview的距离为10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    UIView *bgView = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self.view addSubview:bgView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bgView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [bgView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        //上下左右四边都距离superview的距离为10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        layout.edgeInsets(UIEdgeInsetsMake(10, 10, 10, 10));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        //也可以如下这行代码来设置,但要同时设置top,left,bottom,right.推荐以上写法,比较简洁.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        //layout.topSpace(10).leftSpace(10).bottomSpace(10).rightSpace(10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;h1 id=&quot;加入ZXPAutoLayout&quot;&gt;&lt;a href=&quot;#加入ZXPAutoLayout&quot; class=&quot;headerlink&quot; title=&quot;加入ZXPAutoLayout !&quot;&gt;&lt;/a&gt;加入ZXPAutoLayout !&lt;/h1&gt;&lt;blockquote&gt;
+&lt;h3 id=&quot;第一种方式-直接去github上下载-https-github-com-biggercoffee-ZXPAutoLayout&quot;&gt;&lt;a href=&quot;#第一种方式-直接去github上下载-https-github-com-biggercoffee-ZXPAutoLayout&quot; class=&quot;headerlink&quot; title=&quot;第一种方式:直接去github上下载:https://github.com/biggercoffee/ZXPAutoLayout&quot;&gt;&lt;/a&gt;第一种方式:直接去github上下载:&lt;a href=&quot;https://github.com/biggercoffee/ZXPAutoLayout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/biggercoffee/ZXPAutoLayout&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;h3 id=&quot;第二种方式-直接在Cocoapods里搜索ZXPAutoLayout-不知道什么是cocoapods或者使用方法者请自行百度-Google-网上一大堆资料-搜索命令-pod-search-zxpautolayout-然后在安装到你的cocoapods里-注意-有些用Cocoapods搜索出来的版本不是最新或者无法搜索到的-请升级一下cocoapods即可&quot;&gt;&lt;a href=&quot;#第二种方式-直接在Cocoapods里搜索ZXPAutoLayout-不知道什么是cocoapods或者使用方法者请自行百度-Google-网上一大堆资料-搜索命令-pod-search-zxpautolayout-然后在安装到你的cocoapods里-注意-有些用Cocoapods搜索出来的版本不是最新或者无法搜索到的-请升级一下cocoapods即可&quot; class=&quot;headerlink&quot; title=&quot;第二种方式: 直接在Cocoapods里搜索ZXPAutoLayout (不知道什么是cocoapods或者使用方法者请自行百度, Google, 网上一大堆资料). 搜索命令:  pod search zxpautolayout 然后在安装到你的cocoapods里.  注意:有些用Cocoapods搜索出来的版本不是最新或者无法搜索到的, 请升级一下cocoapods即可&quot;&gt;&lt;/a&gt;第二种方式: 直接在Cocoapods里搜索ZXPAutoLayout (不知道什么是cocoapods或者使用方法者请自行百度, Google, 网上一大堆资料). 搜索命令:  &lt;code&gt;pod search zxpautolayout&lt;/code&gt; 然后在安装到你的cocoapods里.  &lt;p&gt;&lt;/p&gt;注意:有些用Cocoapods搜索出来的版本不是最新或者无法搜索到的, 请升级一下cocoapods即可&lt;/h3&gt;&lt;/blockquote&gt;
+&lt;p&gt;#如何使用它?&lt;br&gt;&lt;strong&gt;在需要的地方导入&lt;code&gt;ZXPAutoLayout.h&lt;/code&gt;头文件即可&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;strong&gt;&lt;code&gt;设置一个红色的view,与self.view保持一致, 并适配各个iPhone机型和横竖屏&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//设置一个背景为半透明红色的view&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   UIView *bgView = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [self.view addSubview:bgView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   bgView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [bgView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    layout.edgeEqualTo(self.view); //位置和宽度等于self.view&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	//也可以如下两种写法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       //上下左右四边都距离superview的距离为0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       //layout.edgeInsets(UIEdgeInsetsMake(0, 0, 0, 0));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       //也可以如下这行代码来设置,但要同时设置top,left,bottom,right.推荐以上写法,比较简洁.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       //layout.topSpace(10).leftSpace(10).bottomSpace(10).rightSpace(10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;strong&gt;&lt;code&gt;设置一个蓝色view , 设置在superview里的距离和设置自身的宽高.&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UIView *blueView = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [bgView addSubview:blueView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   blueView.backgroundColor = [UIColor blueColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [blueView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.topSpace(20); //设置在superview里的上边距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.leftSpace(20); //设置在superview里的左边距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.rightSpace(20); //设置在superview里的右边距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.heightValue(100); //设置高度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       // 注意:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       // 1.设置了左边距和右边距, 会自动拉升宽度,所以如上代码并没有设置宽度.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       // 2.如上代码可以写成一行,比如layout.topSpace(20).leftSpace(20)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       // 3.但是不推荐全部写在一行, 阅读性太差 , 而且在一行代码里写了诸多属性也不利于DEBUG&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;strong&gt;&lt;code&gt;设置一个灰色view , 设置参照于其他view的距离和等宽等距离属性&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UIView *grayView = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [bgView addSubview:grayView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   grayView.backgroundColor = [UIColor grayColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [grayView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       /*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           上边距参照blueview, 并加10的距离.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           意思就是说上边距在blueView的下边,并加上10的间距.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           如果只是想在blueview的下边没有距离的话, 第二个参数写为0即可&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.topSpaceByView(blueView,10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       /*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           左边距等同于blueView的左边距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           第二个参数是距离的值, 如果为0就代表左边距和blueview相等&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           如果不为0,则先相等于blueview的距离,然后在加上第二参数的距离&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.leftSpaceEqualTo(blueView,0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       /*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           宽度等同于bluewView&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           multiplier是倍数, 可选属性,如果不写此属性宽度就是等同于blueview&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           如果写了此属性,如下示例, 则宽度等同于blueview的 0.5 倍&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.widthEqualTo(blueView,0).multiplier(0.5);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.heightValue(40); //设置高度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;strong&gt;&lt;code&gt;UILabel的文字自适应,只需要设置autoHeight属性即可&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UILabel *label = [UILabel new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [self.view addSubview:label];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   label.backgroundColor = [UIColor purpleColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   label.textColor = [UIColor whiteColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   label.text = @&amp;quot;这是文字自适应, 这是文字自适应 ,这是文字自适应 .这是文字自适应&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [label zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       //设置上边距在grayView的下边,并且加10的距离&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.leftSpaceEqualTo(grayView,10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.bottomSpace(20); //设置在superview里的下边距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.widthValue(100);//设置宽度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       layout.autoHeight(); //自适应高度,只针对UILabel有效&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;strong&gt;&lt;code&gt;等宽并水平对齐第一种方式&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UIView *view1 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [self.view addSubview:view1];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view1.backgroundColor = [UIColor blueColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view2 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [self.view addSubview:view2];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view2.backgroundColor = [UIColor blackColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view3 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [self.view addSubview:view3];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view3.backgroundColor = [UIColor blueColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [view1 zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.topSpaceByView(grayView,10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.leftSpace(20);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.heightValue(40);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.widthEqualTo(view2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [view2 zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.topSpaceEqualTo(view1,0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.leftSpaceByView(view1,20);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.heightValue(40);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.widthEqualTo(view3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [view3 zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.topSpaceEqualTo(view1,0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.leftSpaceByView(view2,20);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.rightSpace(20);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.heightValue(40);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;strong&gt;&lt;code&gt;等宽并水平对齐第二种方式 -- ZXPStackView的使用&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ZXPStackView *stackView = [ZXPStackView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [self.view addSubview:stackView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      stackView.backgroundColor = [UIColor blackColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //只需要设置stackView的宽高和位置即可&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.topSpaceByView(grayView,20);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.leftSpace(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.rightSpace(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.heightValue(100);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view1 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView addSubview:view1];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view1.backgroundColor = [UIColor blueColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view2 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView addSubview:view2];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view2.backgroundColor = [UIColor yellowColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view3 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView addSubview:view3];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view3.backgroundColor = [UIColor redColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //stack的内边距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      stackView.padding = UIEdgeInsetsMake(10, 10, 10,10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //view直接的距离&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      stackView.space = 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //调用此方法会给subviews自动添加约束条件,进行等宽或者等高排列&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView layoutWithType:ZXPStackViewTypeHorizontal];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;strong&gt;&lt;code&gt;ZXPStackView之等高垂直对齐&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;只需要调用ZXPStackView的layoutWithType: 方法,并传入ZXPStackViewTypeVertical即可实现,如以上代码一样.只是布局所传入的类型参数不同而已, 内部会根据所传入的布局类型,自动进行约束的添加.&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ZXPStackView *stackView = [ZXPStackView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [self.view addSubview:stackView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      stackView.backgroundColor = [UIColor blackColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //只需要设置stackView的宽高和位置即可&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.topSpaceByView(grayView,20);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.leftSpace(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.rightSpace(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          layout.heightValue(100);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view1 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView addSubview:view1];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view1.backgroundColor = [UIColor blueColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view2 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView addSubview:view2];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view2.backgroundColor = [UIColor yellowColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      UIView *view3 = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView addSubview:view3];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      view3.backgroundColor = [UIColor redColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //stack的内边距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      stackView.padding = UIEdgeInsetsMake(10, 10, 10,10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //view直接的距离&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      stackView.space = 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      //调用此方法会给subviews自动添加约束条件,进行等宽或者等高排列&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      [stackView layoutWithType:ZXPStackViewTypeVertical];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;注意-ZXPStackView的subview不需要添加约束-在调用layoutWithType-方法的时候-内部会自动进行约束的添加&quot;&gt;&lt;a href=&quot;#注意-ZXPStackView的subview不需要添加约束-在调用layoutWithType-方法的时候-内部会自动进行约束的添加&quot; class=&quot;headerlink&quot; title=&quot;注意: ZXPStackView的subview不需要添加约束, 在调用layoutWithType:方法的时候,内部会自动进行约束的添加 &quot;&gt;&lt;/a&gt;&lt;strong&gt;注意: ZXPStackView的subview不需要添加约束, 在调用&lt;code&gt;layoutWithType:&lt;/code&gt;方法的时候,内部会自动进行约束的添加 &lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;#&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;本篇文章讲解了&lt;code&gt;ZXPAutoLayout&lt;/code&gt;的基本使用和常用api的方法. 比如如何设置一个view的约束, 或者等宽, 等高, 位置相对于某个view的某一边,  宽高又相对于某一个view或者等比例的常用apis. &lt;code&gt;如有问题或者写的不好地方留言即可~!&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#什么是ZXPAutoLayout ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iOS原生的自动布局(&lt;code&gt;NSLayoutConstraint&lt;/code&gt;)非常繁琐, 影响开发进度和可读性也不利于维护, 正所谓工欲善其事必先利其器 , 有一个良好的自动布局框架, 则会让我们
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/IOS/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="AutoLayout" scheme="http://biggercoffee.github.io/tags/AutoLayout/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git基础学习（工作中常用命令总结）</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/git%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%EF%BC%89/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/git基础学习（工作中常用命令总结）/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T01:59:22.000Z</updated>
+    
+    <content type="html">&lt;p&gt;#1.基础&lt;/p&gt;
+&lt;p&gt;##1.1 初始化&lt;br&gt;    1.初始化目录&lt;br&gt;        git init&lt;br&gt;    2.配置基本信息&lt;br&gt;        git config –global user.name “zhangxiaoping”&lt;br&gt;        git config –global user.email z_xiaoping@163.com&lt;br&gt;    3.查看基本信息&lt;br&gt;        git config –list&lt;br&gt;    4.远程仓库&lt;br&gt;        git remote -v&lt;br&gt;        git remote add 远程仓库名 url&lt;br&gt;        git remote show 远程仓库名&lt;/p&gt;
+&lt;p&gt;##1.2 克隆仓库&lt;br&gt;    git clone &lt;a href=&quot;https://github.com/biggercoffee/ZXPAutoLayout.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/biggercoffee/ZXPAutoLayout.git&lt;/a&gt; (可选,目录名)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;克隆后会自动创建远程仓库
+支持git,https,ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##1.3 基本操作&lt;br&gt;    1.将untrack文件或修改的文件暂存，开启跟踪&lt;br&gt;        git add 文件名/文件夹（反操作 git checkout – &lt;file&gt;…）&lt;br&gt;    2.提交代码到本地&lt;br&gt;        git commit -m “说明” （git reset HEAD &lt;file&gt;…）&lt;br&gt;        （跳过暂存直接commit加 -a）&lt;/file&gt;&lt;/file&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    git commit --amend(撤消最近一次commit，重新提交，如果文件有修改先stash)
+3.查看git当前状态
+    git status
+4.查看commit的log
+    git log
+    git log -p -2
+    (-p 选项展开显示每次提交的内容差异，用 -2 则仅显示最近的两次更新)
+5.查看改动的代码 
+    git diff            (查看git add前的差异代码)
+    git diff --cached    (查看git add后的差异代码)
+    git show 版本号        (查看git commit后的差异代码)
+6.删除相关
+    git rm 文件名/文件夹    (同时删除文件)
+    git rm --cached 文件名/文件夹    (不删除文件,该文件不做代码管理)
+7.忽略文件
+    根目录的.gitignore
+    全局.gitignore文件(git config --list中可以查看到)
+8.储藏（一般使用场情，push代码，切换分支等）
+    git stash
+    git stash list
+    git stash apply (--index)
+    git stash pop (恢复的同时删除stash记录)
+    git stash drop
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##1.4 分支&lt;br&gt;    1.查看分支&lt;br&gt;        git branch&lt;br&gt;        git branch -a (包含远程分支，红色显示)&lt;br&gt;    2.新建分支（基于当前分支创建）&lt;br&gt;        git branch 分支名 (新建不切换)&lt;br&gt;        git checkout -b 分支名 (新建并且切换)&lt;br&gt;    3.切换分支&lt;br&gt;        git checkout 分支名&lt;br&gt;    4.删除分支&lt;br&gt;        git branch -d 分支名&lt;br&gt;    5.分支合并(基于当前分支)&lt;br&gt;        git merge 分支名 （基于两个分支的当前镜像，合并成新的代码）&lt;br&gt;        git rebase 分支名 (分支commit在当前分支上重放，生成新的代码)&lt;/p&gt;
+&lt;p&gt;##1.5 标签（可以理解为只读的分支）&lt;br&gt;    1.查看标签&lt;br&gt;        git tag&lt;br&gt;    2.新建标签（当前分支）&lt;br&gt;        git tag 名称&lt;br&gt;    3.从标签创建分支&lt;br&gt;        git checkout -b newbranch v1.0&lt;/p&gt;
+&lt;p&gt;##1.6 推送和获取远程仓库代码&lt;br&gt;    获取 git pull origin [分支名/标签]&lt;br&gt;    推送 git push origin [分支名/标签]&lt;/p&gt;
+&lt;h2 id=&quot;1-7-查看文件log&quot;&gt;&lt;a href=&quot;#1-7-查看文件log&quot; class=&quot;headerlink&quot; title=&quot;1.7 查看文件log&quot;&gt;&lt;/a&gt;1.7 查看文件log&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;git log -- fileName
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;更多&lt;code&gt;git&lt;/code&gt;命令请使用&lt;code&gt;git --hlep&lt;/code&gt;命令查看。。。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ihower.tw/blog/wp-content/uploads/2011/02/Screen-shot-2009-12-24-at-11.32.03.png&quot; alt=&quot; &quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#1.基础&lt;/p&gt;
+&lt;p&gt;##1.1 初始化&lt;br&gt;    1.初始化目录&lt;br&gt;        git init&lt;br&gt;    2.配置基本信息&lt;br&gt;        git config –global user.name “zhangxiaoping”&lt;br&gt;    
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/IOS/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="Git" scheme="http://biggercoffee.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>为Xcode添加删除行、复制行快捷键</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/%E4%B8%BAXcode%E6%B7%BB%E5%8A%A0%E5%88%A0%E9%99%A4%E8%A1%8C%E3%80%81%E5%A4%8D%E5%88%B6%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/为Xcode添加删除行、复制行快捷键/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T02:00:51.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;strong&gt;在使用&lt;code&gt;eclipse&lt;/code&gt;过程中，特喜欢删除一行和复制一行的的快捷键。而恰巧&lt;code&gt;Xcode&lt;/code&gt;不支持这两个快捷键，再一次的恰巧让笔者发现了一个小窍门来增加这两个快捷键，以下是步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;h1 id=&quot;修改权限&quot;&gt;&lt;a href=&quot;#修改权限&quot; class=&quot;headerlink&quot; title=&quot;修改权限&quot;&gt;&lt;/a&gt;修改权限&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;修改&lt;code&gt;Xcode&lt;/code&gt;里快捷键的配置文件&lt;code&gt;(plist)&lt;/code&gt;权限，打开终端输入如下两条命令：&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod 666 /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/IDETextKeyBindingSet.plist&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod 777 /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;增加快捷方式&quot;&gt;&lt;a href=&quot;#增加快捷方式&quot; class=&quot;headerlink&quot; title=&quot;增加快捷方式&quot;&gt;&lt;/a&gt;增加快捷方式&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;权限修改完以后，在终端里继续输入如下命令打开&lt;code&gt;plist&lt;/code&gt;文件进行修改（默认是Xcode打开），命令如下：&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;open /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/IDETextKeyBindingSet.plist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;删除一行&quot;&gt;&lt;a href=&quot;#删除一行&quot; class=&quot;headerlink&quot; title=&quot;删除一行&quot;&gt;&lt;/a&gt;删除一行&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;然后找到&lt;code&gt;root&lt;/code&gt;下的&lt;code&gt;Deletions&lt;/code&gt;，在&lt;code&gt;Deletions&lt;/code&gt;下添加一个key：&lt;code&gt;Delete Current Line&lt;/code&gt;     值为：&lt;code&gt;deleteToBeginningOfLine:, moveToEndOfLine:, deleteToBeginningOfLine:, deleteBackward:, moveDown:, moveToBeginningOfLine:&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;h2 id=&quot;复制一行&quot;&gt;&lt;a href=&quot;#复制一行&quot; class=&quot;headerlink&quot; title=&quot;复制一行&quot;&gt;&lt;/a&gt;复制一行&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;在&lt;code&gt;Insertions and Indentations&lt;/code&gt;下添加两个key：&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;1. &lt;code&gt;Duplicate Current Line&lt;/code&gt;    值为：&lt;code&gt;selectLine:, copy:, moveToEndOfLine:, insertNewline:, paste:, deleteBackward:&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;2. &lt;code&gt;Insert Line Under&lt;/code&gt;   值为： &lt;code&gt;moveToEndOfLine:, insertNewline:&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;h1 id=&quot;设置快捷键&quot;&gt;&lt;a href=&quot;#设置快捷键&quot; class=&quot;headerlink&quot; title=&quot;设置快捷键&quot;&gt;&lt;/a&gt;设置快捷键&lt;/h1&gt;&lt;p&gt;重点来了， 重启一下&lt;code&gt;Xcode&lt;/code&gt;，然后在&lt;code&gt;preferences&lt;/code&gt;里找到&lt;code&gt;Key Bindings&lt;/code&gt;，就能找到&lt;code&gt;Delete Current Line&lt;/code&gt;和&lt;code&gt;Duplicate Current Line&lt;/code&gt;两个选项了，最后设置自己喜欢的快捷键即可&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;以下两张效果图可供参考：&lt;br&gt;修改后的plist文件如下：&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-73f92f7e7d6f25f2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;br&gt;在Xcode里设置快捷键效果图：&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-67215502eae734d8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot;&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;CSDN博客地址：&lt;a href=&quot;http://blog.csdn.net/biggercoffee/article/details/50513899&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/biggercoffee/article/details/50513899&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;在使用&lt;code&gt;eclipse&lt;/code&gt;过程中，特喜欢删除一行和复制一行的的快捷键。而恰巧&lt;code&gt;Xcode&lt;/code&gt;不支持这两个快捷键，再一次的恰巧让笔者发现了一个小窍门来增加这两个快捷键，以下是步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/IOS/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="Tips" scheme="http://biggercoffee.github.io/tags/Tips/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我在工作中的常用插件-for-Xcode</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/%E6%88%91%E5%9C%A8%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6-for-Xcode/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/我在工作中的常用插件-for-Xcode/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T02:00:21.000Z</updated>
+    
+    <content type="html">&lt;p&gt;工欲善其事，必先利其器。笔者将个人在工作中用到的插件进行分享和总结，以便笔者查阅。同时也希望能给大家带来帮助。&lt;/p&gt;
+&lt;h1 id=&quot;Alcatraz&quot;&gt;&lt;a href=&quot;#Alcatraz&quot; class=&quot;headerlink&quot; title=&quot;Alcatraz&quot;&gt;&lt;/a&gt;Alcatraz&lt;/h1&gt;&lt;p&gt;一个管理插件的插件，插件的安装与卸载可直接在Xcode里window -&amp;gt; Package Manager里可视化操作。总之谁用谁知道它的好。&lt;a href=&quot;https://github.com/alcatraz/Alcatraz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;AMMethod2Implement&quot;&gt;&lt;a href=&quot;#AMMethod2Implement&quot; class=&quot;headerlink&quot; title=&quot;AMMethod2Implement&quot;&gt;&lt;/a&gt;AMMethod2Implement&lt;/h1&gt;&lt;p&gt;可以自动的将.h或者.m .mm里边需要写入的方法自动填充进来。可以选择要导入的方法，然后按 Ctrl+A 或者 Edit &amp;gt; AMMethod2Implement &amp;gt; Implement Method.就会自动填充方法.也可以自行设置快捷键。&lt;br&gt;&lt;a href=&quot;https://github.com/MellongLau/AMMethod2Implement&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/f22645bb84f9ddbdcca5cf9850eb7dc8f66f1ea3/68747470733a2f2f7261772e6769746875622e636f6d2f4d656c6c6f6e674c61752f414d4d6574686f6432496d706c656d656e742f6d61737465722f53637265656e73686f74732f757361676553637265656e73686f742e676966&quot; alt=&quot;github上的效果图&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Auto-Importer&quot;&gt;&lt;a href=&quot;#Auto-Importer&quot; class=&quot;headerlink&quot; title=&quot;Auto-Importer&quot;&gt;&lt;/a&gt;Auto-Importer&lt;/h1&gt;&lt;p&gt;快速导入头文件，真的真的是个好东西。每次导入头文件都要把当前编辑的窗口移动到文件最上方，然后在&lt;code&gt;#import xx.h&lt;/code&gt;。而这个插件就是解决这个繁琐的操作。让你光标在任何地方，然后使用快捷键直接导入头文件即可。&lt;a href=&quot;https://github.com/citrusbyte/Auto-Importer-for-Xcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/citrusbyte/Auto-Importer-for-Xcode/raw/master/demo.gif&quot; alt=&quot;github上的效果图&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;FuzzyAutocomplete&quot;&gt;&lt;a href=&quot;#FuzzyAutocomplete&quot; class=&quot;headerlink&quot; title=&quot;FuzzyAutocomplete&quot;&gt;&lt;/a&gt;FuzzyAutocomplete&lt;/h1&gt;&lt;p&gt;有一神器，代码联想的模糊匹配插件。在写代码的时候，模糊联想出相关的API，而不用遵守从左往右的匹配规则。总之如下图，上图上真相。&lt;a href=&quot;https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin/raw/master/demo.gif&quot; alt=&quot;github上的效果图&quot;&gt; &lt;/p&gt;
+&lt;h1 id=&quot;HighlightSelectedString&quot;&gt;&lt;a href=&quot;#HighlightSelectedString&quot; class=&quot;headerlink&quot; title=&quot;HighlightSelectedString&quot;&gt;&lt;/a&gt;HighlightSelectedString&lt;/h1&gt;&lt;p&gt;高亮显示所有与选中 字符串 相同的 字符串。 默认你选中一个变量，Xcode并没有与之相关的高亮效果，而是在变量下加条很细的虚线。使用这个插件可以达到高亮效果，高亮颜色也可自定义。&lt;a href=&quot;https://github.com/keepyounger/HighlightSelectedString&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-7eb691cb33a2108b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;我自己的截图&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;VVDocumenter&quot;&gt;&lt;a href=&quot;#VVDocumenter&quot; class=&quot;headerlink&quot; title=&quot;VVDocumenter&quot;&gt;&lt;/a&gt;VVDocumenter&lt;/h1&gt;&lt;p&gt;这个应该大家都很熟悉了，就是一个写注释的插件。使用&lt;code&gt;///&lt;/code&gt;简单的三个斜杠就会把对应的参数和返回值类型等都会自动加上。&lt;a href=&quot;https://github.com/onevcat/VVDocumenter-Xcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/ca5518c9872e15b8a95b9d8c5f44bc331977d710/68747470733a2f2f7261772e6769746875622e636f6d2f6f6e65766361742f5656446f63756d656e7465722d58636f64652f6d61737465722f53637265656e53686f742e676966&quot; alt=&quot;github上的效果图&quot;&gt; &lt;/p&gt;
+&lt;h1 id=&quot;XAlign&quot;&gt;&lt;a href=&quot;#XAlign&quot; class=&quot;headerlink&quot; title=&quot;XAlign&quot;&gt;&lt;/a&gt;XAlign&lt;/h1&gt;&lt;p&gt;也是一位国人写的，格式对其的一款插件。看个人是否喜欢，反正笔者挺喜欢。&lt;a href=&quot;https://github.com/qfish/XAlign&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/7973c0e352b1f91e3efe5b3550cff5df97f4589a/687474703a2f2f7166692e73682f58416c69676e2f696d616765732f657175616c2e676966&quot; alt=&quot;github上的效果图&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;ZLGotoSandbox&quot;&gt;&lt;a href=&quot;#ZLGotoSandbox&quot; class=&quot;headerlink&quot; title=&quot;ZLGotoSandbox&quot;&gt;&lt;/a&gt;ZLGotoSandbox&lt;/h1&gt;&lt;p&gt;快速访问沙盒的一款插件。&lt;a href=&quot;https://github.com/MakeZL/ZLGotoSandboxPlugin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-a9572450408b15ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;效果图&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;KSImageNamed&quot;&gt;&lt;a href=&quot;#KSImageNamed&quot; class=&quot;headerlink&quot; title=&quot;KSImageNamed&quot;&gt;&lt;/a&gt;KSImageNamed&lt;/h1&gt;&lt;p&gt;可视化image的一款插件。&lt;a href=&quot;https://github.com/ksuther/KSImageNamed-Xcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/c354bf04524df86daeabe7a6d2b9926fac790f85/68747470733a2f2f7261772e6769746875622e636f6d2f6b7375746865722f4b53496d6167654e616d65642d58636f64652f6d61737465722f73637265656e73686f742e676966&quot; alt=&quot;github上的效果图&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工欲善其事，必先利其器。笔者将个人在工作中用到的插件进行分享和总结，以便笔者查阅。同时也希望能给大家带来帮助。&lt;/p&gt;
+&lt;h1 id=&quot;Alcatraz&quot;&gt;&lt;a href=&quot;#Alcatraz&quot; class=&quot;headerlink&quot; title=&quot;Alcatraz&quot;&gt;&lt;/a
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/IOS/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+  </entry>
   
   <entry>
     <title>冒个泡</title>
