@@ -59,6 +59,69 @@
   </entry>
   
   <entry>
+    <title>UI调试神器-for-ios：Reveal的使用与破解</title>
+    <link href="http://biggercoffee.github.io/2016/04/01/UI%E8%B0%83%E8%AF%95%E7%A5%9E%E5%99%A8-for-ios%EF%BC%9AReveal%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%A0%B4%E8%A7%A3/"/>
+    <id>http://biggercoffee.github.io/2016/04/01/UI调试神器-for-ios：Reveal的使用与破解/</id>
+    <published>2016-04-01T02:22:00.000Z</published>
+    <updated>2016-04-01T01:58:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-48edba87cfbecaab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;镇楼图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;移动开发这一块做的最多的无疑就是UI和交互，而UI调试也是移动开发人员经常干的一苦逼事。虽然目前iOS开发工具Xcode集成了UI调试功能（Debug View Hierarchy），但带给我们的却只有失望。接下来就如标题所见，笔者来简单介绍和使用Reveal，因为这东西使用起来并不难，所以着重讲解怎么集成到工程里。但是…这个工具是收费的，不过还好我们在天朝（你懂得，暴力破解）。&lt;/p&gt;
+&lt;h1 id=&quot;简单介绍&quot;&gt;&lt;a href=&quot;#简单介绍&quot; class=&quot;headerlink&quot; title=&quot;简单介绍&quot;&gt;&lt;/a&gt;简单介绍&lt;/h1&gt;&lt;p&gt;Reveal的使用其实真的很简单，就如第一张镇楼图的效果一样。中间是3D可视化当前APP页面的视图，左侧则是这些UI元素和层次结构，而右侧则是View的属性，你可以修改View的颜色、frame等等，并且效果还是及时渲染到模拟器上的。当你真正使用的时候一眼就能看懂。而关于Reveal的下载就去Google一下就搞定了。至于没翻墙的童鞋则随意百度就行。&lt;/p&gt;
+&lt;h1 id=&quot;集成&quot;&gt;&lt;a href=&quot;#集成&quot; class=&quot;headerlink&quot; title=&quot;集成&quot;&gt;&lt;/a&gt;集成&lt;/h1&gt;&lt;p&gt;把Reveal集成到项目里有两种方式。第一种则是添加Reveal的&lt;code&gt;framework&lt;/code&gt;到工程里（不推荐）。第二种是用LLDB命令（吐血推荐）。&lt;/p&gt;
+&lt;h2 id=&quot;framework集成（不推荐）&quot;&gt;&lt;a href=&quot;#framework集成（不推荐）&quot; class=&quot;headerlink&quot; title=&quot;framework集成（不推荐）&quot;&gt;&lt;/a&gt;framework集成（不推荐）&lt;/h2&gt;&lt;p&gt;而关于用&lt;code&gt;framework&lt;/code&gt;集成的方式可参考我很久以前在CSDN上写的一篇文章，&lt;a href=&quot;http://blog.csdn.net/biggercoffee/article/details/49947033&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点我传送过去&lt;/a&gt;。因为用这种方式集成的弊端就是在于，你还要配置project的&lt;code&gt;other linker Flags&lt;/code&gt;，还要注意不要在打包发布的时候也一起打包进去了。而且每个项目都要去加入Reveal的framework，并且配置&lt;code&gt;other linker Flags&lt;/code&gt;。那么问题来了，有没有一劳永逸的方式尼？就是配置一次环境，以后不管有多少项目都直接使用？答案是有的。那就是用第二种方式LLDB来配置，因为这需要一点LLDB的基础知识，在本章都会进行简单介绍。&lt;/p&gt;
+&lt;h2 id=&quot;LLDB集成（吐血推荐）&quot;&gt;&lt;a href=&quot;#LLDB集成（吐血推荐）&quot; class=&quot;headerlink&quot; title=&quot;LLDB集成（吐血推荐）&quot;&gt;&lt;/a&gt;LLDB集成（吐血推荐）&lt;/h2&gt;&lt;p&gt;LLDB集成的优势就是在于不用担心打包会把Reveal的framework也打包进去的问题。而且本地配置好了，只要在这台机器上任何项目都通用。最最最主要的一点就是，高bigger。&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;LLDB命令集成&lt;/code&gt;其实也很简单，大体分为如下两步。&lt;/p&gt;
+&lt;p&gt;第一步： 点击&lt;code&gt;pause program execution&lt;/code&gt;，暂停app。（如下图）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-2fbac0a612854854.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;暂停app的效果图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;第二步： 依次输入两条命令即可，分别如下：&lt;/p&gt;
+&lt;p&gt;第一条：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;expr (Class)NSClassFromString(@&amp;quot;IBARevealLoader&amp;quot;) == nil ? (void *)dlopen(&amp;quot;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&amp;quot;, 0x2) : ((void*)0)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps:&lt;code&gt;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&lt;/code&gt;这个地址为绝对路径，我的Reveal是存放于&lt;code&gt;application&lt;/code&gt;目录下的，所以路径就是&lt;code&gt;/Applications/Reveal.app/.....&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第二条&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&amp;quot;IBARevealRequestStart&amp;quot; object:nil];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;两条命令顺利的话，控制台则会打印&lt;code&gt;INFO: Reveal Server started (Protocol Version 25).&lt;/code&gt;这条信息。（如下图）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-20d2f6fdab2a6036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;成功之后的效果图&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps：如果最后未能正常输出&lt;code&gt;INFO: Reveal Server started&lt;/code&gt;，那你就要好好检查一下第一条命令里的dlopen里包含的路径是否正确了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最后，你在点击&lt;code&gt;continue&lt;/code&gt;按钮或者在控制台里继续输入&lt;code&gt;c&lt;/code&gt;字符然后回车，让程序结束暂停即可。&lt;/p&gt;
+&lt;p&gt;现在，你在打开你的&lt;code&gt;Reveal&lt;/code&gt;，在你的左上角点击&lt;code&gt;No Connection&lt;/code&gt;，瞅瞅，是否有你的app啦。接下来你就好好的享受Reveal带给你的快感吧。。。&lt;/p&gt;
+&lt;h1 id=&quot;lldbinit里设置别名&quot;&gt;&lt;a href=&quot;#lldbinit里设置别名&quot; class=&quot;headerlink&quot; title=&quot;.lldbinit里设置别名&quot;&gt;&lt;/a&gt;.lldbinit里设置别名&lt;/h1&gt;&lt;p&gt;但是，这还没有结束尼。每次需要Reveal来审查UI的时候都要输入这两条看着如此蛋疼的命令。这，不是要我老命嘛？ so… 幸运的是我们可以在&lt;code&gt;~/&lt;/code&gt;目录下的&lt;code&gt;.lldbinit&lt;/code&gt;文件里为我们的&lt;code&gt;LLDB&lt;/code&gt;命令添加别名。&lt;/p&gt;
+&lt;p&gt;首先，简单科普一下吧。&lt;code&gt;.lldbinit&lt;/code&gt;是一个隐藏文件，貌似默认是没有的。而&lt;code&gt;Xcode&lt;/code&gt;每次启动的时候，则都会去&lt;code&gt;~/.lldbinit&lt;/code&gt;这个目录寻找这个文件里的&lt;code&gt;LLDB&lt;/code&gt;命令。所以我们可以在这个文件里进行一些命令的初始化设置或者设置别名等等（本篇不做这方面介绍）。&lt;/p&gt;
+&lt;p&gt;现在，我们打开终端，在终端里输入&lt;code&gt;touch ~/.lldbinit&lt;/code&gt;命令来进行创建。然后在输入&lt;code&gt;open ~/.lldbinit&lt;/code&gt;命令。则就会以文本编辑器打开此文件。然后再把如下字符复制到文本编辑器里即可：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;command alias zxp_reveal_load_sim expr (Class)NSClassFromString(@&amp;quot;IBARevealLoader&amp;quot;) == nil ? (void *)dlopen(&amp;quot;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&amp;quot;, 0x2) : ((void*)0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;command alias zxp_reveal_start expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&amp;quot;IBARevealRequestStart&amp;quot; object:nil];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;command alias 其格式为：command alias 别名 LLDB命令，因此如上&lt;code&gt;zxp_reveal_start&lt;/code&gt;和&lt;code&gt;zxp_reveal_load_sim&lt;/code&gt;就是我设置的别名。你们也可以替换成你们自己喜欢的名字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后，现在在按照如上LLDB集成的步骤，运行项目，暂停app，这时候你在输入&lt;code&gt;zxp_reveal_load_sim&lt;/code&gt;然后在输入&lt;code&gt;zxp_reveal_start&lt;/code&gt;即可在Reveal里审查你的UI元素了。（如下图）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-fc808e144d58e940.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;自定义LLDB命令使用的效果图&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;破解&quot;&gt;&lt;a href=&quot;#破解&quot; class=&quot;headerlink&quot; title=&quot;破解&quot;&gt;&lt;/a&gt;破解&lt;/h1&gt;&lt;p&gt;由于Reveal是收费的，所以我们得要用点手段才行。正所谓上有政策下有对策嘛。其实也很简单，直接把&lt;code&gt;~/Library/Preferences/com.ittybittyapps.Reveal.plist&lt;/code&gt;这个路径下的这个文件给干掉，然后在重启一下电脑即可。但这并不是完全破解，而是一直循环30天试用。等30天试用完了，在把这个文件干掉，然后在重启电脑即可。当然&lt;code&gt;~/Library/Preferences/&lt;/code&gt;这个目录下的文件较多，现在你打开你的终端，然后输入&lt;code&gt;rm ~/Library/Preferences/com.ittybittyapps.Reveal.plist&lt;/code&gt;这条命令即可删除。然后继续重启你的电脑吧。这个破解方法简单粗暴也实用，如果童鞋们有其他更好的方法或者有完全破解不需要循环30天的方法，还望多指点我。&lt;/p&gt;
+&lt;h1 id=&quot;最后&quot;&gt;&lt;a href=&quot;#最后&quot; class=&quot;headerlink&quot; title=&quot;最后&quot;&gt;&lt;/a&gt;最后&lt;/h1&gt;&lt;p&gt;由于本篇废话有点多，可能多少有点枯燥。总之就先忍忍吧，每天进步一点点，生活会更精彩一点。&lt;/p&gt;
+&lt;p&gt;关于iOS的一些小技巧或者其他实用的工具欢迎与笔者进行交流。本文也欢迎转发，标注原文出处即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-48edba87cfbecaab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; a
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/IOS/"/>
+    
+    
+      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+    
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="UI" scheme="http://biggercoffee.github.io/tags/UI/"/>
+    
+      <category term="Debug" scheme="http://biggercoffee.github.io/tags/Debug/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Xcode常用快捷键与技巧分享</title>
     <link href="http://biggercoffee.github.io/2016/04/01/Xcode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%8E%E6%8A%80%E5%B7%A7%E5%88%86%E4%BA%AB/"/>
     <id>http://biggercoffee.github.io/2016/04/01/Xcode常用快捷键与技巧分享/</id>
@@ -139,74 +202,11 @@
     
       <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
     
+      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
       <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
     
-      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
-    
       <category term="Tips" scheme="http://biggercoffee.github.io/tags/Tips/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UI调试神器-for-ios：Reveal的使用与破解</title>
-    <link href="http://biggercoffee.github.io/2016/04/01/UI%E8%B0%83%E8%AF%95%E7%A5%9E%E5%99%A8-for-ios%EF%BC%9AReveal%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%A0%B4%E8%A7%A3/"/>
-    <id>http://biggercoffee.github.io/2016/04/01/UI调试神器-for-ios：Reveal的使用与破解/</id>
-    <published>2016-04-01T02:22:00.000Z</published>
-    <updated>2016-04-01T01:58:37.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-48edba87cfbecaab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;镇楼图&quot;&gt;&lt;/p&gt;
-&lt;p&gt;移动开发这一块做的最多的无疑就是UI和交互，而UI调试也是移动开发人员经常干的一苦逼事。虽然目前iOS开发工具Xcode集成了UI调试功能（Debug View Hierarchy），但带给我们的却只有失望。接下来就如标题所见，笔者来简单介绍和使用Reveal，因为这东西使用起来并不难，所以着重讲解怎么集成到工程里。但是…这个工具是收费的，不过还好我们在天朝（你懂得，暴力破解）。&lt;/p&gt;
-&lt;h1 id=&quot;简单介绍&quot;&gt;&lt;a href=&quot;#简单介绍&quot; class=&quot;headerlink&quot; title=&quot;简单介绍&quot;&gt;&lt;/a&gt;简单介绍&lt;/h1&gt;&lt;p&gt;Reveal的使用其实真的很简单，就如第一张镇楼图的效果一样。中间是3D可视化当前APP页面的视图，左侧则是这些UI元素和层次结构，而右侧则是View的属性，你可以修改View的颜色、frame等等，并且效果还是及时渲染到模拟器上的。当你真正使用的时候一眼就能看懂。而关于Reveal的下载就去Google一下就搞定了。至于没翻墙的童鞋则随意百度就行。&lt;/p&gt;
-&lt;h1 id=&quot;集成&quot;&gt;&lt;a href=&quot;#集成&quot; class=&quot;headerlink&quot; title=&quot;集成&quot;&gt;&lt;/a&gt;集成&lt;/h1&gt;&lt;p&gt;把Reveal集成到项目里有两种方式。第一种则是添加Reveal的&lt;code&gt;framework&lt;/code&gt;到工程里（不推荐）。第二种是用LLDB命令（吐血推荐）。&lt;/p&gt;
-&lt;h2 id=&quot;framework集成（不推荐）&quot;&gt;&lt;a href=&quot;#framework集成（不推荐）&quot; class=&quot;headerlink&quot; title=&quot;framework集成（不推荐）&quot;&gt;&lt;/a&gt;framework集成（不推荐）&lt;/h2&gt;&lt;p&gt;而关于用&lt;code&gt;framework&lt;/code&gt;集成的方式可参考我很久以前在CSDN上写的一篇文章，&lt;a href=&quot;http://blog.csdn.net/biggercoffee/article/details/49947033&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点我传送过去&lt;/a&gt;。因为用这种方式集成的弊端就是在于，你还要配置project的&lt;code&gt;other linker Flags&lt;/code&gt;，还要注意不要在打包发布的时候也一起打包进去了。而且每个项目都要去加入Reveal的framework，并且配置&lt;code&gt;other linker Flags&lt;/code&gt;。那么问题来了，有没有一劳永逸的方式尼？就是配置一次环境，以后不管有多少项目都直接使用？答案是有的。那就是用第二种方式LLDB来配置，因为这需要一点LLDB的基础知识，在本章都会进行简单介绍。&lt;/p&gt;
-&lt;h2 id=&quot;LLDB集成（吐血推荐）&quot;&gt;&lt;a href=&quot;#LLDB集成（吐血推荐）&quot; class=&quot;headerlink&quot; title=&quot;LLDB集成（吐血推荐）&quot;&gt;&lt;/a&gt;LLDB集成（吐血推荐）&lt;/h2&gt;&lt;p&gt;LLDB集成的优势就是在于不用担心打包会把Reveal的framework也打包进去的问题。而且本地配置好了，只要在这台机器上任何项目都通用。最最最主要的一点就是，高bigger。&lt;/p&gt;
-&lt;p&gt;使用&lt;code&gt;LLDB命令集成&lt;/code&gt;其实也很简单，大体分为如下两步。&lt;/p&gt;
-&lt;p&gt;第一步： 点击&lt;code&gt;pause program execution&lt;/code&gt;，暂停app。（如下图）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-2fbac0a612854854.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;暂停app的效果图&quot;&gt;&lt;/p&gt;
-&lt;p&gt;第二步： 依次输入两条命令即可，分别如下：&lt;/p&gt;
-&lt;p&gt;第一条：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;expr (Class)NSClassFromString(@&amp;quot;IBARevealLoader&amp;quot;) == nil ? (void *)dlopen(&amp;quot;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&amp;quot;, 0x2) : ((void*)0)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ps:&lt;code&gt;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&lt;/code&gt;这个地址为绝对路径，我的Reveal是存放于&lt;code&gt;application&lt;/code&gt;目录下的，所以路径就是&lt;code&gt;/Applications/Reveal.app/.....&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;第二条&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&amp;quot;IBARevealRequestStart&amp;quot; object:nil];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;两条命令顺利的话，控制台则会打印&lt;code&gt;INFO: Reveal Server started (Protocol Version 25).&lt;/code&gt;这条信息。（如下图）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-20d2f6fdab2a6036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;成功之后的效果图&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ps：如果最后未能正常输出&lt;code&gt;INFO: Reveal Server started&lt;/code&gt;，那你就要好好检查一下第一条命令里的dlopen里包含的路径是否正确了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;最后，你在点击&lt;code&gt;continue&lt;/code&gt;按钮或者在控制台里继续输入&lt;code&gt;c&lt;/code&gt;字符然后回车，让程序结束暂停即可。&lt;/p&gt;
-&lt;p&gt;现在，你在打开你的&lt;code&gt;Reveal&lt;/code&gt;，在你的左上角点击&lt;code&gt;No Connection&lt;/code&gt;，瞅瞅，是否有你的app啦。接下来你就好好的享受Reveal带给你的快感吧。。。&lt;/p&gt;
-&lt;h1 id=&quot;lldbinit里设置别名&quot;&gt;&lt;a href=&quot;#lldbinit里设置别名&quot; class=&quot;headerlink&quot; title=&quot;.lldbinit里设置别名&quot;&gt;&lt;/a&gt;.lldbinit里设置别名&lt;/h1&gt;&lt;p&gt;但是，这还没有结束尼。每次需要Reveal来审查UI的时候都要输入这两条看着如此蛋疼的命令。这，不是要我老命嘛？ so… 幸运的是我们可以在&lt;code&gt;~/&lt;/code&gt;目录下的&lt;code&gt;.lldbinit&lt;/code&gt;文件里为我们的&lt;code&gt;LLDB&lt;/code&gt;命令添加别名。&lt;/p&gt;
-&lt;p&gt;首先，简单科普一下吧。&lt;code&gt;.lldbinit&lt;/code&gt;是一个隐藏文件，貌似默认是没有的。而&lt;code&gt;Xcode&lt;/code&gt;每次启动的时候，则都会去&lt;code&gt;~/.lldbinit&lt;/code&gt;这个目录寻找这个文件里的&lt;code&gt;LLDB&lt;/code&gt;命令。所以我们可以在这个文件里进行一些命令的初始化设置或者设置别名等等（本篇不做这方面介绍）。&lt;/p&gt;
-&lt;p&gt;现在，我们打开终端，在终端里输入&lt;code&gt;touch ~/.lldbinit&lt;/code&gt;命令来进行创建。然后在输入&lt;code&gt;open ~/.lldbinit&lt;/code&gt;命令。则就会以文本编辑器打开此文件。然后再把如下字符复制到文本编辑器里即可：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;command alias zxp_reveal_load_sim expr (Class)NSClassFromString(@&amp;quot;IBARevealLoader&amp;quot;) == nil ? (void *)dlopen(&amp;quot;/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib&amp;quot;, 0x2) : ((void*)0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;command alias zxp_reveal_start expr (void)[(NSNotificationCenter*)[NSNotificationCenter defaultCenter] postNotificationName:@&amp;quot;IBARevealRequestStart&amp;quot; object:nil];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;command alias 其格式为：command alias 别名 LLDB命令，因此如上&lt;code&gt;zxp_reveal_start&lt;/code&gt;和&lt;code&gt;zxp_reveal_load_sim&lt;/code&gt;就是我设置的别名。你们也可以替换成你们自己喜欢的名字&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;然后，现在在按照如上LLDB集成的步骤，运行项目，暂停app，这时候你在输入&lt;code&gt;zxp_reveal_load_sim&lt;/code&gt;然后在输入&lt;code&gt;zxp_reveal_start&lt;/code&gt;即可在Reveal里审查你的UI元素了。（如下图）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-fc808e144d58e940.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;自定义LLDB命令使用的效果图&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;破解&quot;&gt;&lt;a href=&quot;#破解&quot; class=&quot;headerlink&quot; title=&quot;破解&quot;&gt;&lt;/a&gt;破解&lt;/h1&gt;&lt;p&gt;由于Reveal是收费的，所以我们得要用点手段才行。正所谓上有政策下有对策嘛。其实也很简单，直接把&lt;code&gt;~/Library/Preferences/com.ittybittyapps.Reveal.plist&lt;/code&gt;这个路径下的这个文件给干掉，然后在重启一下电脑即可。但这并不是完全破解，而是一直循环30天试用。等30天试用完了，在把这个文件干掉，然后在重启电脑即可。当然&lt;code&gt;~/Library/Preferences/&lt;/code&gt;这个目录下的文件较多，现在你打开你的终端，然后输入&lt;code&gt;rm ~/Library/Preferences/com.ittybittyapps.Reveal.plist&lt;/code&gt;这条命令即可删除。然后继续重启你的电脑吧。这个破解方法简单粗暴也实用，如果童鞋们有其他更好的方法或者有完全破解不需要循环30天的方法，还望多指点我。&lt;/p&gt;
-&lt;h1 id=&quot;最后&quot;&gt;&lt;a href=&quot;#最后&quot; class=&quot;headerlink&quot; title=&quot;最后&quot;&gt;&lt;/a&gt;最后&lt;/h1&gt;&lt;p&gt;由于本篇废话有点多，可能多少有点枯燥。总之就先忍忍吧，每天进步一点点，生活会更精彩一点。&lt;/p&gt;
-&lt;p&gt;关于iOS的一些小技巧或者其他实用的工具欢迎与笔者进行交流。本文也欢迎转发，标注原文出处即可。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-48edba87cfbecaab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; a
-    
-    </summary>
-    
-      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
-    
-      <category term="IOS" scheme="http://biggercoffee.github.io/categories/All/IOS/"/>
-    
-    
-      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
-    
-      <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
-    
-      <category term="UI" scheme="http://biggercoffee.github.io/tags/UI/"/>
-    
-      <category term="Debug" scheme="http://biggercoffee.github.io/tags/Debug/"/>
     
   </entry>
   
@@ -215,7 +215,7 @@
     <link href="http://biggercoffee.github.io/2016/04/01/autolayout%E6%A1%86%E6%9E%B6%E7%AF%87%EF%BC%88ZXPAutoLayout%EF%BC%89/"/>
     <id>http://biggercoffee.github.io/2016/04/01/autolayout框架篇（ZXPAutoLayout）/</id>
     <published>2016-04-01T02:22:00.000Z</published>
-    <updated>2016-04-01T01:59:57.000Z</updated>
+    <updated>2016-04-01T02:33:15.000Z</updated>
     
     <content type="html">&lt;p&gt;#什么是ZXPAutoLayout ?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;iOS原生的自动布局(&lt;code&gt;NSLayoutConstraint&lt;/code&gt;)非常繁琐, 影响开发进度和可读性也不利于维护, 正所谓工欲善其事必先利其器 , 有一个良好的自动布局框架, 则会让我们事半功倍. 而&lt;code&gt;ZXPAutoLayout&lt;/code&gt;则是解决这一问题和诞生 . 采用新颖的链式语法, 扩展性,可读性,维护成本也较低.并致力打造最好用,最简洁,最方便,最轻巧的自动布局.&lt;a href=&quot;https://github.com/biggercoffee/ZXPAutoLayout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ZXPAutoLayout的github地址请戳我&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;&lt;code&gt;ps : autolayout简单来说就是 适配iPhone机型并且是0数学布局和兼容横竖屏,如不懂童鞋, 请自寻网上查阅&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -224,7 +224,7 @@
 &lt;p&gt;&lt;strong&gt;就这样随便加一个约束就如此的繁琐,更何况一个view最起码有上边距,左边距和宽高,也就是所谓的&lt;code&gt;x,y,width,height&lt;/code&gt;四个基本属性.就相当于以上那复杂的代 码就要最少写四次.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;而现在用&lt;code&gt;ZXPAutoLayout&lt;/code&gt;来给一个view添加上边距,左边距,宽高.&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//设置一个背景为半透明红色的view,上下左右四边都距离superview的距离为10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    UIView *bgView = [UIView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self.view addSubview:bgView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bgView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [bgView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        //上下左右四边都距离superview的距离为10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        layout.edgeInsets(UIEdgeInsetsMake(10, 10, 10, 10));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        //也可以如下这行代码来设置,但要同时设置top,left,bottom,right.推荐以上写法,比较简洁.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        //layout.topSpace(10).leftSpace(10).bottomSpace(10).rightSpace(10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//设置一个背景为半透明红色的view,上下左右四边都距离superview的距离为10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;UIView&lt;/span&gt; *bgView = [&lt;span class=&quot;built_in&quot;&gt;UIView&lt;/span&gt; new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view addSubview:bgView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bgView.backgroundColor = [[&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; redColor] colorWithAlphaComponent:&lt;span class=&quot;number&quot;&gt;.5&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [bgView zxp_addConstraints:^(ZXPAutoLayoutMaker *layout) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//上下左右四边都距离superview的距离为10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        layout.edgeInsets(&lt;span class=&quot;built_in&quot;&gt;UIEdgeInsetsMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//也可以如下这行代码来设置,但要同时设置top,left,bottom,right.推荐以上写法,比较简洁.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//layout.topSpace(10).leftSpace(10).bottomSpace(10).rightSpace(10);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
 &lt;h1 id=&quot;加入ZXPAutoLayout&quot;&gt;&lt;a href=&quot;#加入ZXPAutoLayout&quot; class=&quot;headerlink&quot; title=&quot;加入ZXPAutoLayout !&quot;&gt;&lt;/a&gt;加入ZXPAutoLayout !&lt;/h1&gt;&lt;blockquote&gt;
 &lt;h3 id=&quot;第一种方式-直接去github上下载-https-github-com-biggercoffee-ZXPAutoLayout&quot;&gt;&lt;a href=&quot;#第一种方式-直接去github上下载-https-github-com-biggercoffee-ZXPAutoLayout&quot; class=&quot;headerlink&quot; title=&quot;第一种方式:直接去github上下载:https://github.com/biggercoffee/ZXPAutoLayout&quot;&gt;&lt;/a&gt;第一种方式:直接去github上下载:&lt;a href=&quot;https://github.com/biggercoffee/ZXPAutoLayout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/biggercoffee/ZXPAutoLayout&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
@@ -365,9 +365,9 @@
     
       <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
     
-      <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
-    
       <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
     
       <category term="Tips" scheme="http://biggercoffee.github.io/tags/Tips/"/>
     
@@ -414,9 +414,9 @@
     
       <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
     
-      <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
-    
       <category term="IOS" scheme="http://biggercoffee.github.io/tags/IOS/"/>
+    
+      <category term="Xcode" scheme="http://biggercoffee.github.io/tags/Xcode/"/>
     
   </entry>
   
