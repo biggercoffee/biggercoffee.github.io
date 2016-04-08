@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://biggercoffee.github.io/"/>
-  <updated>2016-04-01T15:55:29.000Z</updated>
+  <updated>2016-04-08T10:03:55.000Z</updated>
   <id>http://biggercoffee.github.io/</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的博客是如何搭建的（github pages + HEXO + 域名绑定）</title>
+    <link href="http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/"/>
+    <id>http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/</id>
+    <published>2016-04-08T03:02:18.000Z</published>
+    <updated>2016-04-08T10:03:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps:本博客是在&lt;code&gt;MAC&lt;/code&gt;环境下进行搭建的，并且对github pages和一些&lt;code&gt;shell&lt;/code&gt;脚本知识有所了解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;首先简单描述一下搭建的大体流程吧（其实挺简单的，只是体力活费时而已）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拥有一个&lt;code&gt;github pages&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在本地电脑里配置&lt;code&gt;hexo&lt;/code&gt;的环境。（ &lt;code&gt;hexo&lt;/code&gt;与&lt;code&gt;github pages&lt;/code&gt;绑定，写博文修改博文等，生成静态博客并&lt;code&gt;push to github&lt;/code&gt;。)&lt;/li&gt;
+&lt;li&gt;绑定自己的域名（也可以不用绑定，&lt;code&gt;github pages&lt;/code&gt;有二级域名，只不过绑定了一个属于自己的域名更有逼格点儿。）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;Github-Pages-（第一步）&quot;&gt;&lt;a href=&quot;#Github-Pages-（第一步）&quot; class=&quot;headerlink&quot; title=&quot;Github Pages （第一步）&quot;&gt;&lt;/a&gt;Github Pages （第一步）&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Github Pages&lt;/code&gt;免费的静态站点，其特点：免费托管、自带主题、支持自制页面等。&lt;/p&gt;
+&lt;p&gt;创建&lt;code&gt;Github Pages&lt;/code&gt;比较简单，只要你有一个github账号在创建一个仓库就行了，但是这个仓库是有规则的，其格式必须为：&lt;code&gt;yourusername.github.io&lt;/code&gt;。然后根据提示一直下一步即可，非常简单。&lt;br&gt;&lt;img src=&quot;/images/1460086313046.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作为一个开发者，要是连一个github账号都没有，那你可以洗洗睡了。&lt;/p&gt;
+&lt;p&gt;而仓库命名格式中的&lt;code&gt;yourusername&lt;/code&gt;是你的github用户名。笔者的github用户名是&lt;code&gt;biggercoffee&lt;/code&gt;。所以仓库命名格式则是&lt;code&gt;biggercoffee.github.io&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;由于笔者有&lt;code&gt;biggercoffee.github.io&lt;/code&gt;这个仓库，所以我上述效果图提示已存在。纯属作为演示。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Hexo-（第二步）&quot;&gt;&lt;a href=&quot;#Hexo-（第二步）&quot; class=&quot;headerlink&quot; title=&quot;Hexo （第二步）&quot;&gt;&lt;/a&gt;Hexo （第二步）&lt;/h1&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Hexo&lt;/code&gt;的安装网上有很多教程，但很多都很蛋疼且过期技术，所以最好的还是参考&lt;code&gt;Hexo&lt;/code&gt;官方的安装教程来一步一步走。在此笔者也不写详细教程了，因为可能不出2个月就坑了小伙伴们。&lt;a href=&quot;https://hexo.io/zh-cn/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中文版Hexo文档点此进行传送。。。&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本地环境说白了就是要有&lt;code&gt;Git&lt;/code&gt;和&lt;code&gt;Node.js&lt;/code&gt;环境即可。详情参见官网文档为准，也最好参考官网，避免入坑。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;建站&quot;&gt;&lt;a href=&quot;#建站&quot; class=&quot;headerlink&quot; title=&quot;建站&quot;&gt;&lt;/a&gt;建站&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Hexo&lt;/code&gt;安装好了之后，就开始进行建站。打开终端&lt;code&gt;cd&lt;/code&gt;到桌面并使用如下命令即可建好&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;hexo init &lt;code&gt;yourname&lt;/code&gt;&lt;br&gt;cd &lt;code&gt;yourname&lt;/code&gt;&lt;br&gt;npm install&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其中&lt;code&gt;yourname&lt;/code&gt;是你的文件夹名字可随意取（本文章假设&lt;code&gt;yourname&lt;/code&gt;的文件夹名称是&lt;code&gt;Hexo&lt;/code&gt;）。&lt;br&gt;建站好了之后需要了解更多的信息和其他步骤请参考官网的这篇文档。&lt;a href=&quot;https://hexo.io/zh-cn/docs/setup.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://hexo.io/zh-cn/docs/setup.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这里需要特别提一下，官方的文档里并没讲解如何配置与&lt;code&gt;Github pages&lt;/code&gt;进行关联，在此特意说一下配置信息。进入到你的站点（使用hexo init yourname命令时，这里的yourname文件夹目录，刚假设yourname是Hexo，所以我们进入Hexo目录），然后以文本编辑器打开&lt;code&gt;_config.yml&lt;/code&gt;文件，并滚动到最下面添加如下配置信息：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; deploy:&lt;br&gt;   type: git&lt;br&gt;   repo: &lt;a href=&quot;https://github.com/biggercoffee/biggercoffee.github.io.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/biggercoffee/biggercoffee.github.io.git&lt;/a&gt;&lt;br&gt;  branch: master&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;把其中&lt;code&gt;repo&lt;/code&gt;字段的值替换成你的&lt;code&gt;github pages&lt;/code&gt;提交代码的git地址。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;别告诉我你不知道你的github pages的git提交地址。。。&lt;br&gt;好吧，我还是附上一张截图吧，进入到你的github刚创建好的那个&lt;code&gt;github pages&lt;/code&gt;仓库就能看到了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/images/1460096862397.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;好吧，到此你使用终端，然后进入到你的站点文件夹使用&lt;code&gt;hexo d&lt;/code&gt;命令，如果成功会打印类似&lt;code&gt;Hexo is running at http://localhost:4000/. Press Ctrl+C to stop&lt;/code&gt;的一句话，再打开你的浏览器输入&lt;code&gt;localhost:4000&lt;/code&gt;地址见证神奇的一刻吧。&lt;/p&gt;
+&lt;h2 id=&quot;发布&quot;&gt;&lt;a href=&quot;#发布&quot; class=&quot;headerlink&quot; title=&quot;发布&quot;&gt;&lt;/a&gt;发布&lt;/h2&gt;&lt;p&gt;当然这只是本地跑起来了，而你的github pages服务器上并没有，所以你就需要在你的站点里使用终端命令进行发布：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;hexo clean&lt;br&gt;hexo g&lt;br&gt;hexo d&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;命令详解，第一条是清楚缓存，第二条命令是生成本地发布文件夹，第三条命令才是最后的发布到&lt;code&gt;github pages&lt;/code&gt;上。更多的&lt;code&gt;hexo&lt;/code&gt;命令操作请参考官方文档即可。不过一般用来用去无非就是创建页面、发布这么几条命令而已。&lt;a href=&quot;https://hexo.io/zh-cn/docs/commands.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo官方命令参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其实学习一个新东西有事没事多去官方看文档，比在网上查资料要来的更靠谱的多。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;HEXO主题&quot;&gt;&lt;a href=&quot;#HEXO主题&quot; class=&quot;headerlink&quot; title=&quot;HEXO主题&quot;&gt;&lt;/a&gt;HEXO主题&lt;/h2&gt;&lt;p&gt;如果你到了这里没有任何问题，那么恭喜你已经成功了，不过这才刚刚开始。&lt;br&gt;当你成功的看到自己博客搭建好的那一刻又是激动又是失望，激动的是博客总算折腾出来了，失望的是，为何如此的丑。。。说实话Hexo默认的主题自我感觉还过得去，如果你想换风格,&lt;code&gt;Hexo&lt;/code&gt;的主题网上随便一搜也有很多。在此笔者使用的博客主题是&lt;code&gt;Next&lt;/code&gt;（国人写的）。&lt;a href=&quot;https://github.com/iissnan/hexo-theme-next&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/iissnan/hexo-theme-next&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Next文档已经写得很详细了（上述链接里有文档地址），笔者在此也没啥要写的。只不过弱弱的吐槽一下，配置这东西需要注册的账号挺多的。。。但扩展性很强，需要什么功能自己去配置一下即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;域名绑定（第三步，可选）&quot;&gt;&lt;a href=&quot;#域名绑定（第三步，可选）&quot; class=&quot;headerlink&quot; title=&quot;域名绑定（第三步，可选）&quot;&gt;&lt;/a&gt;域名绑定（第三步，可选）&lt;/h1&gt;&lt;p&gt;笔者是在万网买的域名（&lt;a href=&quot;http://xiaopingblog.cn/）。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xiaopingblog.cn/）。&lt;/a&gt; 域名买好之后提交实名认证等，这些操作就不在赘述。域名购买地址&lt;a href=&quot;https://wanwang.aliyun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://wanwang.aliyun.com/&lt;/a&gt;。 &lt;/p&gt;
+&lt;p&gt;这里需要特别提一下的就是万网如何与&lt;code&gt;github pages&lt;/code&gt;进行绑定，首先假设你有一个域名并且是可用状态。修改你域名的&lt;code&gt;DNS&lt;/code&gt;地址为 &lt;code&gt;f1g1ns1.dnspod.net&lt;/code&gt;和&lt;code&gt;f1g1ns2.dnspod.net&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/1460101238056.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;然后在你的本地站点目录里的&lt;code&gt;source&lt;/code&gt;目录下添加一个&lt;code&gt;CNAME&lt;/code&gt;文件，不带后缀，效果如下&lt;br&gt;&lt;img src=&quot;/images/1460101362486.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;以文本编辑器打开&lt;code&gt;CNAME&lt;/code&gt;，里面添加你的域名信息（不加http://） 如下图&lt;br&gt;&lt;img src=&quot;/images/1460101466955.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下一步注册&lt;a href=&quot;https://www.dnspod.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DNSpod&lt;/a&gt;，然后添加域名，添加记录即可。&lt;/p&gt;
+&lt;p&gt;添加域名填写你的域名即可，老规矩不用添加&lt;code&gt;http://&lt;/code&gt;，然后在点击你的域名点进去在添加记录即可（其中记录中CHAME的值是你的github pages的地址）。&lt;br&gt;&lt;img src=&quot;/images/1460101633500.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;那么现在把你本地的&lt;code&gt;Hexo&lt;/code&gt;生成一下在提交到&lt;code&gt;Github pages&lt;/code&gt;上吧（生成和提交简写命令&lt;code&gt;hexo d -g&lt;/code&gt;），然后打开你的浏览器输入你购买的域名尝试吧。笔者的博客域名：&lt;a href=&quot;http://xiaopingblog.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xiaopingblog.cn/&lt;/a&gt; 大家尽情的去蹂躏吧。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps:万网DNS地址更换貌似需要一段时间才能生效，如果不能访问请晚点或者隔天再访问域名，如果还是不行可能就是出问题了。反正笔者当时运气好，修改了万网DNS之后即时生效。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;笔者分享&quot;&gt;&lt;a href=&quot;#笔者分享&quot; class=&quot;headerlink&quot; title=&quot;笔者分享&quot;&gt;&lt;/a&gt;笔者分享&lt;/h1&gt;&lt;p&gt;分享一些笔者用&lt;code&gt;Hexo&lt;/code&gt;写文章的&lt;code&gt;tips&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;文章管理&quot;&gt;&lt;a href=&quot;#文章管理&quot; class=&quot;headerlink&quot; title=&quot;文章管理&quot;&gt;&lt;/a&gt;文章管理&lt;/h2&gt;&lt;p&gt;一般笔者写文章、修改文章是在本地可视化写文章，然后在使用命令提交上去。笔者使用的是一个&lt;code&gt;hexo&lt;/code&gt;可视化文章管理的插件（hey），地址：&lt;a href=&quot;https://github.com/nihgwu/hexo-hey&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/nihgwu/hexo-hey&lt;/a&gt; 。&lt;/p&gt;
+&lt;p&gt;当然也有一个&lt;code&gt;Hexo&lt;/code&gt;的&lt;code&gt;admin&lt;/code&gt;插件，但是那个插件不支持图片拖拽进来，所以笔者推荐使用&lt;code&gt;hey&lt;/code&gt;。安装和使用详情，参见笔者给出的github地址。&lt;/p&gt;
+&lt;h2 id=&quot;shell脚本自动化（可忽略，只是一个想法）&quot;&gt;&lt;a href=&quot;#shell脚本自动化（可忽略，只是一个想法）&quot; class=&quot;headerlink&quot; title=&quot;shell脚本自动化（可忽略，只是一个想法）&quot;&gt;&lt;/a&gt;shell脚本自动化（可忽略，只是一个想法）&lt;/h2&gt;&lt;p&gt;开启&lt;code&gt;Hexo&lt;/code&gt;的本地服务或者提交到github pages这些都是一些终端里的&lt;code&gt;Hexo&lt;/code&gt;命令，所以笔者写了一些&lt;code&gt;shell&lt;/code&gt;脚本，来简化这些操作。所以基本就是用&lt;code&gt;hey&lt;/code&gt;可视化写文章，写好了之后，然后点击&lt;code&gt;一键部署&lt;/code&gt;的&lt;code&gt;shell&lt;/code&gt;脚本，然后就自动发布了（当然这也纯属鸡助，看个人。）。由于&lt;code&gt;shell&lt;/code&gt;脚本比较简单，随意网上搜索资料一大堆。再加上笔者自己写的脚本代码也没上传，在此插入一个一键部署的shell脚本代码&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd Desktop/Hexo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hexo clean&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hexo g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hexo d&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cd到自己的站点目录，然后直接使用hexo命令即可。shell脚本自动化操作就是封装了这些命令而已，在此也只是提供这么一个想法，既然我们都是&lt;code&gt;coder&lt;/code&gt;，何不善用自己已有的知识尼。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;写到最后&quot;&gt;&lt;a href=&quot;#写到最后&quot; class=&quot;headerlink&quot; title=&quot;写到最后&quot;&gt;&lt;/a&gt;写到最后&lt;/h1&gt;&lt;p&gt;&lt;code&gt;github pages&lt;/code&gt;虽然免费，但毕竟是国外的服务器，国内访问可以稍微缓慢，如果是土豪，可去买一个支持&lt;code&gt;Node.js&lt;/code&gt;的国内云空间即可。总之&lt;code&gt;github pages + hexo&lt;/code&gt;搭建博客还是挺能折腾人的。但毕竟免费，而且身为技术人员不就是该具备折腾的精神吗？&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps:本博客是在&lt;code&gt;MAC&lt;/code&gt;环境下进行搭建的，并且对github pages和一些&lt;code&gt;shell&lt;/code&gt;
+    
+    </summary>
+    
+      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+    
+      <category term="Github" scheme="http://biggercoffee.github.io/categories/All/Github/"/>
+    
+    
+      <category term="github" scheme="http://biggercoffee.github.io/tags/github/"/>
+    
+      <category term="blog" scheme="http://biggercoffee.github.io/tags/blog/"/>
+    
+  </entry>
   
   <entry>
     <title>冒个泡</title>
