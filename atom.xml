@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://biggercoffee.github.io/"/>
-  <updated>2016-04-08T10:03:55.000Z</updated>
+  <updated>2016-04-10T09:08:04.000Z</updated>
   <id>http://biggercoffee.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/"/>
     <id>http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/</id>
     <published>2016-04-08T03:02:18.000Z</published>
-    <updated>2016-04-08T10:03:55.000Z</updated>
+    <updated>2016-04-10T09:08:04.000Z</updated>
     
     <content type="html">&lt;p&gt;博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -58,7 +58,7 @@
 &lt;p&gt;别告诉我你不知道你的github pages的git提交地址。。。&lt;br&gt;好吧，我还是附上一张截图吧，进入到你的github刚创建好的那个&lt;code&gt;github pages&lt;/code&gt;仓库就能看到了。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&quot;/images/1460096862397.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;p&gt;好吧，到此你使用终端，然后进入到你的站点文件夹使用&lt;code&gt;hexo d&lt;/code&gt;命令，如果成功会打印类似&lt;code&gt;Hexo is running at http://localhost:4000/. Press Ctrl+C to stop&lt;/code&gt;的一句话，再打开你的浏览器输入&lt;code&gt;localhost:4000&lt;/code&gt;地址见证神奇的一刻吧。&lt;/p&gt;
+&lt;p&gt;好吧，到此你使用终端，然后进入到你的站点文件夹使用&lt;code&gt;hexo s&lt;/code&gt;命令，如果成功会打印类似&lt;code&gt;Hexo is running at http://localhost:4000/. Press Ctrl+C to stop&lt;/code&gt;的一句话，再打开你的浏览器输入&lt;code&gt;localhost:4000&lt;/code&gt;地址见证神奇的一刻吧。&lt;/p&gt;
 &lt;h2 id=&quot;发布&quot;&gt;&lt;a href=&quot;#发布&quot; class=&quot;headerlink&quot; title=&quot;发布&quot;&gt;&lt;/a&gt;发布&lt;/h2&gt;&lt;p&gt;当然这只是本地跑起来了，而你的github pages服务器上并没有，所以你就需要在你的站点里使用终端命令进行发布：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;hexo clean&lt;br&gt;hexo g&lt;br&gt;hexo d&lt;/p&gt;
