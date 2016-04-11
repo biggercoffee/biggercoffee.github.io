@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://biggercoffee.github.io/"/>
-  <updated>2016-04-10T09:08:04.000Z</updated>
+  <updated>2016-04-11T14:46:44.000Z</updated>
   <id>http://biggercoffee.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/"/>
     <id>http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/</id>
     <published>2016-04-08T03:02:18.000Z</published>
-    <updated>2016-04-10T09:08:04.000Z</updated>
+    <updated>2016-04-11T14:46:44.000Z</updated>
     
     <content type="html">&lt;p&gt;博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -49,7 +49,7 @@
 &lt;p&gt;hexo init &lt;code&gt;yourname&lt;/code&gt;&lt;br&gt;cd &lt;code&gt;yourname&lt;/code&gt;&lt;br&gt;npm install&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;其中&lt;code&gt;yourname&lt;/code&gt;是你的文件夹名字可随意取（本文章假设&lt;code&gt;yourname&lt;/code&gt;的文件夹名称是&lt;code&gt;Hexo&lt;/code&gt;）。&lt;br&gt;建站好了之后需要了解更多的信息和其他步骤请参考官网的这篇文档。&lt;a href=&quot;https://hexo.io/zh-cn/docs/setup.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://hexo.io/zh-cn/docs/setup.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这里需要特别提一下，官方的文档里并没讲解如何配置与&lt;code&gt;Github pages&lt;/code&gt;进行关联，在此特意说一下配置信息。进入到你的站点（使用hexo init yourname命令时，这里的yourname文件夹目录，刚假设yourname是Hexo，所以我们进入Hexo目录），然后以文本编辑器打开&lt;code&gt;_config.yml&lt;/code&gt;文件，并滚动到最下面添加如下配置信息：&lt;/p&gt;
+&lt;p&gt;这里需要特别提一下，官方的文档里并没讲解如何配置与&lt;code&gt;Github pages&lt;/code&gt;进行关联，在此特意说一下配置信息。进入到你的站点（使用hexo init yourname命令时，这里的yourname文件夹目录，刚假设yourname是Hexo，所以我们进入Hexo目录），然后以文本编辑器打开&lt;code&gt;_config.yml&lt;/code&gt;文件，并滚动到最下面添加如下配置信息（注意最下边有&lt;code&gt;deploy&lt;/code&gt;和&lt;code&gt;type&lt;/code&gt;字段，覆盖这两个字段或者删除这两个字段然后复制下面的四个字段也行。）：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt; deploy:&lt;br&gt;   type: git&lt;br&gt;   repo: &lt;a href=&quot;https://github.com/biggercoffee/biggercoffee.github.io.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/biggercoffee/biggercoffee.github.io.git&lt;/a&gt;&lt;br&gt;  branch: master&lt;/p&gt;
 &lt;/blockquote&gt;

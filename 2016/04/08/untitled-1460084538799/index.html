@@ -85,7 +85,7 @@ ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些sh
 <meta property="og:image" content="http://biggercoffee.github.io/images/1460101362486.png">
 <meta property="og:image" content="http://biggercoffee.github.io/images/1460101466955.png">
 <meta property="og:image" content="http://biggercoffee.github.io/images/1460101633500.png">
-<meta property="og:updated_time" content="2016-04-10T09:08:04.000Z">
+<meta property="og:updated_time" content="2016-04-11T14:46:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的博客是如何搭建的（github pages + HEXO + 域名绑定）">
 <meta name="twitter:description" content="博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。
@@ -368,7 +368,7 @@ ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些sh
 <p>hexo init <code>yourname</code><br>cd <code>yourname</code><br>npm install</p>
 </blockquote>
 <p>其中<code>yourname</code>是你的文件夹名字可随意取（本文章假设<code>yourname</code>的文件夹名称是<code>Hexo</code>）。<br>建站好了之后需要了解更多的信息和其他步骤请参考官网的这篇文档。<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/setup.html</a></p>
-<p>这里需要特别提一下，官方的文档里并没讲解如何配置与<code>Github pages</code>进行关联，在此特意说一下配置信息。进入到你的站点（使用hexo init yourname命令时，这里的yourname文件夹目录，刚假设yourname是Hexo，所以我们进入Hexo目录），然后以文本编辑器打开<code>_config.yml</code>文件，并滚动到最下面添加如下配置信息：</p>
+<p>这里需要特别提一下，官方的文档里并没讲解如何配置与<code>Github pages</code>进行关联，在此特意说一下配置信息。进入到你的站点（使用hexo init yourname命令时，这里的yourname文件夹目录，刚假设yourname是Hexo，所以我们进入Hexo目录），然后以文本编辑器打开<code>_config.yml</code>文件，并滚动到最下面添加如下配置信息（注意最下边有<code>deploy</code>和<code>type</code>字段，覆盖这两个字段或者删除这两个字段然后复制下面的四个字段也行。）：</p>
 <blockquote>
 <p> deploy:<br>   type: git<br>   repo: <a href="https://github.com/biggercoffee/biggercoffee.github.io.git" target="_blank" rel="external">https://github.com/biggercoffee/biggercoffee.github.io.git</a><br>  branch: master</p>
 </blockquote>
@@ -607,6 +607,14 @@ ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些sh
                 <a href="http://weibo.com/3044569567/profile?topnav=1&wvr=6" target="_blank">
                   
                     <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/dccdd51e1837/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 简书
                   
                 </a>
               </span>
