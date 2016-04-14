@@ -85,7 +85,7 @@ ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些sh
 <meta property="og:image" content="http://biggercoffee.github.io/images/1460101362486.png">
 <meta property="og:image" content="http://biggercoffee.github.io/images/1460101466955.png">
 <meta property="og:image" content="http://biggercoffee.github.io/images/1460101633500.png">
-<meta property="og:updated_time" content="2016-04-14T06:09:52.000Z">
+<meta property="og:updated_time" content="2016-04-14T06:43:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的博客是如何搭建的（github pages + HEXO + 域名绑定）">
 <meta name="twitter:description" content="博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。
@@ -394,6 +394,9 @@ ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些sh
 <p>这里需要特别提一下的就是万网如何与<code>github pages</code>进行绑定，首先假设你有一个域名并且是可用状态。修改你域名的<code>DNS</code>地址为 <code>f1g1ns1.dnspod.net</code>和<code>f1g1ns2.dnspod.net</code><br><img src="/images/1460101238056.png" alt="image"></p>
 <p>然后在你的本地站点目录里的<code>source</code>目录下添加一个<code>CNAME</code>文件，不带后缀，效果如下<br><img src="/images/1460101362486.png" alt="image"></p>
 <p>以文本编辑器打开<code>CNAME</code>，里面添加你的域名信息（不加http://） 如下图<br><img src="/images/1460101466955.png" alt="image"></p>
+<blockquote>
+<p>填写完了之后再重新部署到github pages上（部署简写命令hexo d -g)</p>
+</blockquote>
 <p>下一步注册<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSpod</a>，然后添加域名，添加记录即可。</p>
 <p>添加域名填写你的域名即可，老规矩不用添加<code>http://</code>，然后在点击你的域名点进去在添加记录即可（其中记录中CHAME的值是你的github pages的地址）。<br><img src="/images/1460101633500.png" alt="image"></p>
 <p>那么现在把你本地的<code>Hexo</code>生成一下在提交到<code>Github pages</code>上吧（生成和提交简写命令<code>hexo d -g</code>），然后打开你的浏览器输入你购买的域名尝试吧。笔者的博客域名：<a href="http://xiaopingblog.cn/" target="_blank" rel="external">http://xiaopingblog.cn/</a> 大家尽情的去蹂躏吧。</p>
