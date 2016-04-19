@@ -4,9 +4,9 @@
   <subtitle>欲罢不能，想想都有点小激动。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://biggercoffee.github.io/"/>
-  <updated>2016-04-14T06:43:40.000Z</updated>
-  <id>http://biggercoffee.github.io/</id>
+  <link href="http://xiaopingblog.cn/"/>
+  <updated>2016-04-19T09:17:34.000Z</updated>
+  <id>http://xiaopingblog.cn/</id>
   
   <author>
     <name>孝平</name>
@@ -16,9 +16,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>程序员跳槽的9大理由【漫画】</title>
+    <link href="http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/"/>
+    <id>http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/</id>
+    <published>2016-04-19T09:11:03.000Z</published>
+    <updated>2016-04-19T09:17:34.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;此篇为转载漫画，挺有意思的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-4d90a1c3506c37e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-63a92b6b8bf0fb46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-023f101d9829918f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-c366407fd975fc6c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-c19a7eaa3bb73085.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-0017a1c48aea4316.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-cfe658b0dc449a27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-16cd2a315a910e2a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-f9d3837421a94ca3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/c3d858efd0ee#&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文地址点此&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;此篇为转载漫画，挺有意思的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/297062-4d90a1c3506c37e8.jpg?imag
+    
+    </summary>
+    
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
+    
+    
+      <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我的博客是如何搭建的（github pages + HEXO + 域名绑定）</title>
-    <link href="http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/"/>
-    <id>http://biggercoffee.github.io/2016/04/08/untitled-1460084538799/</id>
+    <link href="http://xiaopingblog.cn/2016/04/08/untitled-1460084538799/"/>
+    <id>http://xiaopingblog.cn/2016/04/08/untitled-1460084538799/</id>
     <published>2016-04-08T03:02:18.000Z</published>
     <updated>2016-04-14T06:43:40.000Z</updated>
     
@@ -71,7 +111,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;Next文档已经写得很详细了（上述链接里有文档地址），笔者在此也没啥要写的。只不过弱弱的吐槽一下，配置这东西需要注册的账号挺多的。。。但扩展性很强，需要什么功能自己去配置一下即可。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;域名绑定（第三步，可选）&quot;&gt;&lt;a href=&quot;#域名绑定（第三步，可选）&quot; class=&quot;headerlink&quot; title=&quot;域名绑定（第三步，可选）&quot;&gt;&lt;/a&gt;域名绑定（第三步，可选）&lt;/h1&gt;&lt;p&gt;笔者是在万网买的域名（&lt;a href=&quot;http://xiaopingblog.cn/）。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xiaopingblog.cn/）。&lt;/a&gt; 域名买好之后提交实名认证等，这些操作就不在赘述。域名购买地址&lt;a href=&quot;https://wanwang.aliyun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://wanwang.aliyun.com/&lt;/a&gt;。 &lt;/p&gt;
+&lt;h1 id=&quot;域名绑定（第三步，可选）&quot;&gt;&lt;a href=&quot;#域名绑定（第三步，可选）&quot; class=&quot;headerlink&quot; title=&quot;域名绑定（第三步，可选）&quot;&gt;&lt;/a&gt;域名绑定（第三步，可选）&lt;/h1&gt;&lt;p&gt;笔者是在万网买的域名（&lt;a href=&quot;http://xiaopingblog.cn/）。&quot;&gt;http://xiaopingblog.cn/）。&lt;/a&gt; 域名买好之后提交实名认证等，这些操作就不在赘述。域名购买地址&lt;a href=&quot;https://wanwang.aliyun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://wanwang.aliyun.com/&lt;/a&gt;。 &lt;/p&gt;
 &lt;p&gt;这里需要特别提一下的就是万网如何与&lt;code&gt;github pages&lt;/code&gt;进行绑定，首先假设你有一个域名并且是可用状态。修改你域名的&lt;code&gt;DNS&lt;/code&gt;地址为 &lt;code&gt;f1g1ns1.dnspod.net&lt;/code&gt;和&lt;code&gt;f1g1ns2.dnspod.net&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/1460101238056.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;p&gt;然后在你的本地站点目录里的&lt;code&gt;source&lt;/code&gt;目录下添加一个&lt;code&gt;CNAME&lt;/code&gt;文件，不带后缀，效果如下&lt;br&gt;&lt;img src=&quot;/images/1460101362486.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;p&gt;以文本编辑器打开&lt;code&gt;CNAME&lt;/code&gt;，里面添加你的域名信息（不加http://） 如下图&lt;br&gt;&lt;img src=&quot;/images/1460101466955.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
@@ -80,7 +120,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;下一步注册&lt;a href=&quot;https://www.dnspod.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DNSpod&lt;/a&gt;，然后添加域名，添加记录即可。&lt;/p&gt;
 &lt;p&gt;添加域名填写你的域名即可，老规矩不用添加&lt;code&gt;http://&lt;/code&gt;，然后在点击你的域名点进去在添加记录即可（其中记录中CHAME的值是你的github pages的地址）。&lt;br&gt;&lt;img src=&quot;/images/1460101633500.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;p&gt;那么现在把你本地的&lt;code&gt;Hexo&lt;/code&gt;生成一下在提交到&lt;code&gt;Github pages&lt;/code&gt;上吧（生成和提交简写命令&lt;code&gt;hexo d -g&lt;/code&gt;），然后打开你的浏览器输入你购买的域名尝试吧。笔者的博客域名：&lt;a href=&quot;http://xiaopingblog.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xiaopingblog.cn/&lt;/a&gt; 大家尽情的去蹂躏吧。&lt;/p&gt;
+&lt;p&gt;那么现在把你本地的&lt;code&gt;Hexo&lt;/code&gt;生成一下在提交到&lt;code&gt;Github pages&lt;/code&gt;上吧（生成和提交简写命令&lt;code&gt;hexo d -g&lt;/code&gt;），然后打开你的浏览器输入你购买的域名尝试吧。笔者的博客域名：&lt;a href=&quot;http://xiaopingblog.cn/&quot;&gt;http://xiaopingblog.cn/&lt;/a&gt; 大家尽情的去蹂躏吧。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;ps:万网DNS地址更换貌似需要一段时间才能生效，如果不能访问请晚点或者隔天再访问域名，如果还是不行可能就是出问题了。反正笔者当时运气好，修改了万网DNS之后即时生效。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -103,21 +143,21 @@
     
     </summary>
     
-      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
     
-      <category term="Github" scheme="http://biggercoffee.github.io/categories/All/Github/"/>
+      <category term="Github" scheme="http://xiaopingblog.cn/categories/All/Github/"/>
     
     
-      <category term="github" scheme="http://biggercoffee.github.io/tags/github/"/>
+      <category term="github" scheme="http://xiaopingblog.cn/tags/github/"/>
     
-      <category term="blog" scheme="http://biggercoffee.github.io/tags/blog/"/>
+      <category term="blog" scheme="http://xiaopingblog.cn/tags/blog/"/>
     
   </entry>
   
   <entry>
     <title>冒个泡</title>
-    <link href="http://biggercoffee.github.io/2016/03/31/%E5%86%92%E4%B8%AA%E6%B3%A1/"/>
-    <id>http://biggercoffee.github.io/2016/03/31/冒个泡/</id>
+    <link href="http://xiaopingblog.cn/2016/03/31/%E5%86%92%E4%B8%AA%E6%B3%A1/"/>
+    <id>http://xiaopingblog.cn/2016/03/31/冒个泡/</id>
     <published>2016-03-31T02:22:00.000Z</published>
     <updated>2016-04-01T15:55:29.000Z</updated>
     
@@ -153,10 +193,10 @@
     
     </summary>
     
-      <category term="All" scheme="http://biggercoffee.github.io/categories/All/"/>
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
     
     
-      <category term="All" scheme="http://biggercoffee.github.io/tags/All/"/>
+      <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
     
   </entry>
   
