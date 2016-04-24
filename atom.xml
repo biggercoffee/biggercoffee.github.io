@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaopingblog.cn/"/>
-  <updated>2016-04-19T09:17:34.000Z</updated>
+  <updated>2016-04-24T02:21:02.000Z</updated>
   <id>http://xiaopingblog.cn/</id>
   
   <author>
@@ -16,11 +16,63 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>鸡助又没卵用的APIS for ios</title>
+    <link href="http://xiaopingblog.cn/2016/04/24/untitled-1461463524398/"/>
+    <id>http://xiaopingblog.cn/2016/04/24/untitled-1461463524398/</id>
+    <published>2016-04-24T02:05:24.000Z</published>
+    <updated>2016-04-24T02:21:02.000Z</updated>
+    
+    <content type="html">&lt;p&gt;好玩的一些APIS：那些简单又容易被忽略的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;纯属记个笔记方便笔者查阅，因为笔者感觉这几个api有点意思而又不常用也容易被忽略。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;禁止进入休眠&quot;&gt;&lt;a href=&quot;#禁止进入休眠&quot; class=&quot;headerlink&quot; title=&quot;禁止进入休眠&quot;&gt;&lt;/a&gt;禁止进入休眠&lt;/h1&gt;&lt;p&gt;iPhone为了节省电力所以有一个自动休眠机制，如果想让我们的APP不自动进入休眠只需要设置&lt;code&gt;UIApplication的idleTimerDisabled&lt;/code&gt;属性为&lt;code&gt;YES&lt;/code&gt;即可。（切勿滥用）&lt;br&gt;示例：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[UIApplication sharedApplication].idleTimerDisabled = YES;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;接近传感器&quot;&gt;&lt;a href=&quot;#接近传感器&quot; class=&quot;headerlink&quot; title=&quot;接近传感器&quot;&gt;&lt;/a&gt;接近传感器&lt;/h1&gt;&lt;p&gt;iPhone内置了接近传感器功能，比如当您手机通话使用中将手机靠近耳边时，iPhone画面是自动关闭，拿出耳边时，画面自动显示。&lt;/p&gt;
+&lt;p&gt;如果我们想在APP中实现这个需求只需要一行代码即可。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[UIDevice currentDevice].proximityMonitoringEnabled = YES;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果想要对接近传感器进行监听可添加一个通知。通知名为&lt;code&gt;UIDeviceProximityStateDidChangeNotification&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后在通知的监听方法里根据接近传感器改变的状态进行相关处理，如下代码可获取状态。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[UIDevice currentDevice].proximityState&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;YES：画面关闭&lt;br&gt;NO：画面显示&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;获取电池相关信息&quot;&gt;&lt;a href=&quot;#获取电池相关信息&quot; class=&quot;headerlink&quot; title=&quot;获取电池相关信息&quot;&gt;&lt;/a&gt;获取电池相关信息&lt;/h1&gt;&lt;p&gt;想要获取电池相关信息首先先调用&lt;code&gt;UIDevice&lt;/code&gt;类的&lt;code&gt;batteryMonitoringEnabled&lt;/code&gt;为YES监听电池。&lt;/p&gt;
+&lt;p&gt;电量获取调用&lt;code&gt;UIDevice&lt;/code&gt;类的&lt;code&gt;batteryLevel&lt;/code&gt;。&lt;br&gt;电池充电状态获取调用&lt;code&gt;UIDevice&lt;/code&gt;类的&lt;code&gt;batteryState&lt;/code&gt;。（返回的是一个枚举，枚举顾名思义自己去看）&lt;br&gt;示例代码&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//电池相关信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//开始监听&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;built_in&quot;&gt;UIDevice&lt;/span&gt; currentDevice].batteryMonitoringEnabled = &lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//状态获取&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;%zi&quot;&lt;/span&gt;,[&lt;span class=&quot;built_in&quot;&gt;UIDevice&lt;/span&gt; currentDevice].batteryState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//电池电量&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;%f&quot;&lt;/span&gt;,[&lt;span class=&quot;built_in&quot;&gt;UIDevice&lt;/span&gt; currentDevice].batteryLevel);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;也可以在通知中注册&lt;code&gt;UIDeviceBatteryStateDidChangeNotification&lt;/code&gt;和&lt;code&gt;UIDeviceBatteryLevelDidChangeNotification&lt;/code&gt;监听电池的状态与电量的改变，并进行相关处理。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS:其他UIDevice类的什么name呀model呀identifierForVendor那些谁都知道的属性就不赘述了。只是感觉上面几个API有点意思又容易被遗忘做个笔记而已。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;剪贴板&quot;&gt;&lt;a href=&quot;#剪贴板&quot; class=&quot;headerlink&quot; title=&quot;剪贴板&quot;&gt;&lt;/a&gt;剪贴板&lt;/h1&gt;&lt;p&gt;剪贴板，一个不常用的class&lt;br&gt;iOS里有一个copy与paste的功能（就是长按出现的那个复制粘贴），而UIPasteboard可以获取或者设置paste里的值（看类名都知道了）。如下代码&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//设置粘贴内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;built_in&quot;&gt;UIPasteboard&lt;/span&gt; generalPasteboard].string = &lt;span class=&quot;string&quot;&gt;@&quot;string&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//获取粘贴内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *string = [&lt;span class=&quot;built_in&quot;&gt;UIPasteboard&lt;/span&gt; generalPasteboard].string;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;欲知更多UIPasteboard相关API请自行阅读文档，谢谢合作。（不过笔者感觉先能用上以上两个API再说吧。233..）&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;好玩的一些APIS：那些简单又容易被忽略的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;纯属记个笔记方便笔者查阅，因为笔者感觉这几个api有点意思而又不常用也容易被忽略。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;禁止进入休眠&quot;&gt;&lt;a href=&quot;#禁止进入休眠&quot; 
+    
+    </summary>
+    
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/categories/All/iOS/"/>
+    
+    
+      <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>程序员跳槽的9大理由【漫画】</title>
     <link href="http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/"/>
     <id>http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/</id>
     <published>2016-04-19T09:11:03.000Z</published>
-    <updated>2016-04-19T09:17:34.000Z</updated>
+    <updated>2016-04-24T02:20:03.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;此篇为转载漫画，挺有意思的。&lt;/p&gt;
@@ -50,8 +102,12 @@
     
       <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
     
+      <category term="Programe Life" scheme="http://xiaopingblog.cn/categories/All/Programe-Life/"/>
+    
     
       <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
+    
+      <category term="Programe Life" scheme="http://xiaopingblog.cn/tags/Programe-Life/"/>
     
   </entry>
   
