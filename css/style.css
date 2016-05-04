@@ -1729,6 +1729,9 @@ li:hover {
   color: #808080;
   cursor: pointer;
 }
+.article img {
+  display: block;
+}
 @-moz-keyframes cd-bounce-1 {
   0% {
     opacity: 0;
