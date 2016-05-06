@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaopingblog.cn/"/>
-  <updated>2016-05-04T01:30:18.000Z</updated>
+  <updated>2016-05-06T07:03:26.000Z</updated>
   <id>http://xiaopingblog.cn/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>runtime从入门到放弃</title>
+    <link href="http://xiaopingblog.cn/2016/05/06/runtime%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"/>
+    <id>http://xiaopingblog.cn/2016/05/06/runtime从入门到放弃/</id>
+    <published>2016-05-06T07:00:00.000Z</published>
+    <updated>2016-05-06T07:03:26.000Z</updated>
+    
+    <content type="html">&lt;p&gt;冒个泡&lt;/p&gt;
+&lt;p&gt;本篇福利，用美女来抛砖引玉。&lt;br&gt;&lt;img src=&quot;http://i4.piimg.com/7dae777f250c4799.jpg&quot; alt=&quot;来点福利&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;GG-背景&quot;&gt;&lt;a href=&quot;#GG-背景&quot; class=&quot;headerlink&quot; title=&quot;GG 背景&quot;&gt;&lt;/a&gt;GG 背景&lt;/h1&gt;&lt;p&gt;本篇不适应&lt;code&gt;runtime&lt;/code&gt;学习，也不涉及&lt;code&gt;runtime&lt;/code&gt;长篇大论的理论知识。本篇只是想让你适当的学会放手。而所谓的入门到放弃中的&lt;code&gt;入门&lt;/code&gt;则是一些&lt;code&gt;runtime&lt;/code&gt;常用&lt;code&gt;apis&lt;/code&gt;的认识和使用场景（笔者工作总结）。而所谓的放弃就是不要太过于执着&lt;code&gt;runtime&lt;/code&gt;，其实它并没有你想象中的那么好。&lt;/p&gt;
+&lt;h1 id=&quot;来嗨起来&quot;&gt;&lt;a href=&quot;#来嗨起来&quot; class=&quot;headerlink&quot; title=&quot;来嗨起来&quot;&gt;&lt;/a&gt;来嗨起来&lt;/h1&gt;&lt;p&gt;现在就让我们开始来旅游&lt;code&gt;runtime&lt;/code&gt;的世界吧~！&lt;/p&gt;
+&lt;h2 id=&quot;关联&quot;&gt;&lt;a href=&quot;#关联&quot; class=&quot;headerlink&quot; title=&quot;关联&quot;&gt;&lt;/a&gt;关联&lt;/h2&gt;&lt;p&gt;&lt;code&gt;objc_setAssociatedObject&lt;/code&gt; 关联，懂点&lt;code&gt;runtime&lt;/code&gt;或者不懂&lt;code&gt;runtime&lt;/code&gt;的应该都知道这个家伙吧。再或者在分类里也应该见过不少了吧。不讲它用法，只分享笔者经历。&lt;/p&gt;
+&lt;p&gt;关联的用处一般是用来在分类里定义属性，分别在属性的&lt;code&gt;set&lt;/code&gt;和&lt;code&gt;get&lt;/code&gt;方法里存放或者获取属性的值。当然还有一个用处也比较实用，则是强引用自己，并且不要释放。&lt;/p&gt;
+&lt;p&gt;强引用自己？嗯哼？怎么有一点晕晕的。好吧，举个列子。&lt;/p&gt;
+&lt;p&gt;需求（可忽略）：&lt;/p&gt;
+&lt;p&gt;比如你有一个&lt;code&gt;ZXPAAA&lt;/code&gt;的&lt;code&gt;class&lt;/code&gt;，然后&lt;code&gt;ZXPAAA&lt;/code&gt;里有&lt;code&gt;show&lt;/code&gt;和&lt;code&gt;dismiss&lt;/code&gt;方法，并且还有一个&lt;code&gt;delegate&lt;/code&gt;回调。然后你还有一个&lt;code&gt;ZXPBBB&lt;/code&gt;的&lt;code&gt;class&lt;/code&gt;并且有一个函数叫&lt;code&gt;test&lt;/code&gt;。现在&lt;code&gt;test&lt;/code&gt;函数里有一个局部自动变量&lt;code&gt;ZXPAAA&lt;/code&gt;的实例，并且调用&lt;code&gt;ZXPAAA的show&lt;/code&gt;方法来弹出一个视图。&lt;/p&gt;
+&lt;p&gt;那么问题来了，这时候你在&lt;code&gt;ZXPBBB的test方法&lt;/code&gt;里设置&lt;code&gt;ZXPAAA&lt;/code&gt;的delegate为&lt;code&gt;self&lt;/code&gt;（self=ZXPBBB）的时候，因为&lt;code&gt;ZXPAAA&lt;/code&gt;是局部自动变量，所以在&lt;code&gt;test&lt;/code&gt;函数执行完之前，函数内部的&lt;code&gt;ZXPAAA&lt;/code&gt;实例变量的引用计数会减一，由于你只是实例化了一下，引用计数为一，然后在减一，故此，此变量会释放，然后在这时候你遵守的&lt;code&gt;ZXPAAA&lt;/code&gt;的delegate方法永远不会回调。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决：&lt;/strong&gt; 那么这时候你就可以在&lt;code&gt;ZXPAAA&lt;/code&gt;里的&lt;code&gt;show&lt;/code&gt;方法用objc_setAssociatedObject来关联自己并设置&lt;code&gt;retain&lt;/code&gt;引用+1。让self不会释放，代码如下：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ZXPAAA的show 方法里，关联自己，会引用计数+1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;objc_setAssociatedObject(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, key, &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, OBJC_ASSO&lt;span class=&quot;built_in&quot;&gt;CIATION_RETAIN_NONATOMIC&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;目前为止确实是解决了对象自动释放的问题，可问题是对象一直存在呀。内存泄露了尼。不用怕，我们在ZXPAAA的dismiss 方法里释放关联就行了。代码如下：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ZXPAAA的dismiss 方法里，从关联里移除，设置为nil,会引用计数-1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;objc_setAssociatedObject(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, key, &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, OBJC_ASSO&lt;span class=&quot;built_in&quot;&gt;CIATION_ASSIGN&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/biggercoffee/ZXPPickerView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;之前简单封装了一个pickerView工具类里面有用到类似场景，点此进行传输进行查看。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i4.piimg.com/dcf0eb7370dfa216.jpg&quot; alt=&quot;乐一乐&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;获取class的所有方法（包含私有）&quot;&gt;&lt;a href=&quot;#获取class的所有方法（包含私有）&quot; class=&quot;headerlink&quot; title=&quot;获取class的所有方法（包含私有）&quot;&gt;&lt;/a&gt;获取class的所有方法（包含私有）&lt;/h2&gt;&lt;p&gt;核心方法是&lt;code&gt;class_copyMethodList&lt;/code&gt;，直接贴代码：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;uint count;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//返回值是一个Method指针&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Method *methodList = class_copyMethodList([&lt;span class=&quot;built_in&quot;&gt;NSObject&lt;/span&gt; class], &amp;amp;count);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ( &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ; i &amp;lt; count; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;%@&quot;&lt;/span&gt;,&lt;span class=&quot;built_in&quot;&gt;NSStringFromSelector&lt;/span&gt;(method_getName(methodList[i])));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//释放&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    free(methodList);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;以上这串代码，看似很牛逼。。其实用一句话来形容就是&lt;code&gt;just so so&lt;/code&gt;而已。其实最主要的是并没有任何一点实际用处。就算知道了很多私有方法，你想去完美的运用它也需要很多时间成本，而且&lt;code&gt;app store&lt;/code&gt;还不会给你上线(企业发布除外)。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS：更多用法直接去查看.h文件即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;获取class的所有变量（包含私有）&quot;&gt;&lt;a href=&quot;#获取class的所有变量（包含私有）&quot; class=&quot;headerlink&quot; title=&quot;获取class的所有变量（包含私有）&quot;&gt;&lt;/a&gt;获取class的所有变量（包含私有）&lt;/h2&gt;&lt;p&gt;核心方法是&lt;code&gt;class_copyIvarList&lt;/code&gt;，直接贴代码：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;uint count;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//返回值是一个Ivar指针&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Ivar *ivarList = class_copyIvarList([&lt;span class=&quot;built_in&quot;&gt;UIViewController&lt;/span&gt; class], &amp;amp;count);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ( &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ; i &amp;lt; count; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;%s&quot;&lt;/span&gt;,ivar_getName(ivarList[i]));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//释放&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    free(ivarList);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;获取变量和获取方法同理，然并卵，但作为兴趣研究研究的话，还是可以玩玩的。在工程里的实际用处也并不大。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS：更多用法直接去查看.h文件即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;方法替换&quot;&gt;&lt;a href=&quot;#方法替换&quot; class=&quot;headerlink&quot; title=&quot;方法替换&quot;&gt;&lt;/a&gt;方法替换&lt;/h2&gt;&lt;p&gt;API为&lt;code&gt;method_exchangeImplementations&lt;/code&gt;，交换两个方法的实现，一般用来进行黑魔法调试。虽然也可以用来实现AOP切面编程，but…工程里千万慎用，千万慎用，千万慎用。重要的事情说三遍，至于为什么，原因很简单，不好维护，出了错都不知道飞哪儿去了。而要实现方法切面可使用开源的&lt;code&gt;Aspects&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS: 所谓的黑魔法调试，比如替换init方法，并打印一句话，方便我们知道哪些class被初始化，而AOP切面编程的概念网上也有很多，随意百度一下即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;其他&quot;&gt;&lt;a href=&quot;#其他&quot; class=&quot;headerlink&quot; title=&quot;其他&quot;&gt;&lt;/a&gt;其他&lt;/h2&gt;&lt;p&gt;其他还有很多，比如&lt;code&gt;objc_copyClassList&lt;/code&gt;获取所有class，&lt;code&gt;method_setImplementation&lt;/code&gt;给方法重置一个IMP等等。关于runtime的API有点太多了，就不一一列举了。当然关于runtime知识点远不止这些api这么简单，比如消息转发，重定向等等。&lt;/p&gt;
+&lt;h1 id=&quot;写在最后&quot;&gt;&lt;a href=&quot;#写在最后&quot; class=&quot;headerlink&quot; title=&quot;写在最后&quot;&gt;&lt;/a&gt;写在最后&lt;/h1&gt;&lt;p&gt;but…. runtime有这么多的api，到底有什么用？答案是并没什么卵用，对，虽然没卵用，但还是很重要，不要问我为什么，就因为它是OC底层，核心。作为一位iOSer，了解这些基础是必须的，起码装逼也有了资本。再退一万步来讲，对于面试，这些也会派上用场。不过对于工作中，确实没啥太大的用处，但是如果写框架的话，用处还是特别大，而且作为程序员也不能一直停留在应用层层面。&lt;/p&gt;
+&lt;p&gt;当然，在工作中用的并不怎么多，但是，还是必须要学的。而标题所谓的放弃的寓意是，让你不要太过于纠结runtime到底有什么用。因为也有很多新人问过笔者runtime到底能做什么….况且现在关于这方面的资料也不多。资料查来查去无非就是消息转发，重定向还有那几个获取变量、方法等几个常用的API而已。当然，对于runtime笔者也连门都没有入。。在此笔者建议新人们一直捉摸不透runtime到底能做什么，倒不如花花时间去研究一下GCD，core foundation等。&lt;/p&gt;
+&lt;p&gt;以上纯属笔者个人给新人的一些建议以及一些runtime肤浅的用法。&lt;br&gt;欢迎吐槽，请勿喷贴。。。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;转载请注明原文出处&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://i4.piimg.com/a48affaa13187bf8.jpg&quot; alt=&quot;最近很流行的&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;冒个泡&lt;/p&gt;
+&lt;p&gt;本篇福利，用美女来抛砖引玉。&lt;br&gt;&lt;img src=&quot;http://i4.piimg.com/7dae777f250c4799.jpg&quot; alt=&quot;来点福利&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/categories/All/iOS/"/>
+    
+    
+      <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>一个妹子要到了程序员前辈的社交账号</title>
