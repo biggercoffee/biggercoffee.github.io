@@ -3,28 +3,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>程序员跳槽的9大理由【漫画】 | XiaoPing’s blog</title>
+  <title>（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController | XiaoPing’s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;gt; 此篇为转载漫画，挺有意思的。">
+  <meta name="description" content="背景
+Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个ViewController。
+
+本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序员跳槽的9大理由【漫画】">
-<meta property="og:url" content="http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/index.html">
+<meta property="og:title" content="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">
+<meta property="og:url" content="http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/index.html">
 <meta property="og:site_name" content="XiaoPing’s blog">
-<meta property="og:description" content="&amp;gt; 此篇为转载漫画，挺有意思的。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-4d90a1c3506c37e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-63a92b6b8bf0fb46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-023f101d9829918f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-c366407fd975fc6c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-c19a7eaa3bb73085.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-0017a1c48aea4316.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-cfe658b0dc449a27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-16cd2a315a910e2a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/297062-f9d3837421a94ca3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-05-03T07:21:37.000Z">
+<meta property="og:description" content="背景
+Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个ViewController。
+
+本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。">
+<meta property="og:image" content="http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg">
+<meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/91157485.jpg">
+<meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/57214399.jpg">
+<meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/81082574.jpg">
+<meta property="og:updated_time" content="2016-06-06T06:19:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序员跳槽的9大理由【漫画】">
-<meta name="twitter:description" content="&amp;gt; 此篇为转载漫画，挺有意思的。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/297062-4d90a1c3506c37e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">
+<meta name="twitter:description" content="背景
+Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个ViewController。
+
+本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。">
+<meta name="twitter:image" content="http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg">
   
     <link rel="alternative" href="/atom.xml" title="XiaoPing’s blog" type="application/atom+xml">
   
@@ -261,11 +265,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-untitled-1461057063065" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-untitled-1463582900511" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/19/untitled-1461057063065/" class="article-date">
-      <time datetime="2016-04-19T09:11:03.000Z" itemprop="datePublished">2016-04-19</time>
+      <a href="/2016/06/06/untitled-1463582900511/" class="article-date">
+      <time datetime="2016-06-06T06:16:52.000Z" itemprop="datePublished">2016-06-06</time>
 </a>
     </div>
   
@@ -278,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      程序员跳槽的9大理由【漫画】
+      （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController
     </h1>
   
 
@@ -287,13 +291,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/All/">All</a><a class="article-category-link" href="/categories/All/Programe-Life/">Programe Life</a>
+    <a class="article-category-link" href="/categories/All/">All</a><a class="article-category-link" href="/categories/All/iOS/">iOS</a><a class="article-category-link" href="/categories/All/iOS/Debug/">Debug</a><a class="article-category-link" href="/categories/All/iOS/Debug/Xcode/">Xcode</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/All/">All</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programe-Life/">Programe Life</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/All/">All</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -303,19 +307,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>　&gt; 此篇为转载漫画，挺有意思的。<br><a id="more"></a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-4d90a1c3506c37e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-63a92b6b8bf0fb46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-023f101d9829918f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-c366407fd975fc6c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-c19a7eaa3bb73085.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-0017a1c48aea4316.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-cfe658b0dc449a27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-16cd2a315a910e2a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/297062-f9d3837421a94ca3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p><img src="http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg" alt="小清新"></p>
+<p>Xcode中的<code>符号断点(Symbolic breakpoint)</code>可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个<code>ViewController</code>。</p>
 <blockquote>
-<p><a href="http://www.jianshu.com/p/c3d858efd0ee#" target="_blank" rel="external">原文地址点此</a></p>
+<p>本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。</p>
 </blockquote>
+<a id="more"></a>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>既然我们知道<code>符号断点(Symbolic breakpoint)</code>可以让某一个函数暂停，而我们的<code>ViewController</code>几乎都有实现<code>viewDidLoad</code>方法（没实现的我还没真没碰到过。。。），然而每进入一个页面都会调用<code>viewDidLoad</code>函数，因此我们就打一个符号断点让它暂停在<code>UIViewController</code>的<code>viewDidLoad</code>方法，然后每次进入到APP的页面就可以在我们的<code>Xcode</code>的左侧堆栈一栏看到调用顺序。</p>
+<p><strong>断点设置GIF图如下：</strong><br><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/91157485.jpg" alt="断点设置GIF图"></p>
+<p><strong>左侧堆栈示例图如下：</strong><br><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/57214399.jpg" alt="左侧堆栈示例图"></p>
+<blockquote>
+<p>最下面那个黑色的类名就是我们APP页面显示所对应的ViewController</p>
+</blockquote>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>虽然以上步骤是实现了我们的需求，but…每次要找一个页面是属于哪一个<code>ViewController</code>的时候，都会在<code>xcode</code>里暂停，而且还要在左侧栏的堆栈，而且重点还是每次我显示一个页面他都要执行这个符号断点并且暂停在<code>Xcode</code>里（虽然可以禁止断点，当需要使用的时候在打开，但笔者觉得还是略麻烦）。</p>
+<p>so… 笔者觉得把断点加在<code>BaseViewController</code>里，然后我们让断点的<code>automatically continue after evaluating actions</code>选项勾上，这样它就会安安静静的执行不会暂停了。然后我们在断点里添加一个<code>debug</code>命令，命令为<code>po self</code>把当前的<code>ViewController</code>打印在控制台即可（如下示例图）。</p>
+<p><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/81082574.jpg" alt="示例图"></p>
+<blockquote>
+<p>大多数项目里的<code>ViewController</code>都是继承自<code>BaseViewController</code>，而<code>BaseViewController</code>又是继承与<code>UIViewController</code>的。而上面的示例图里的<code>NMBaseViewController</code>就是我们项目的<code>BaseViewController</code>。所以把符号断点设置到<code>NMBaseViewController</code>即可，至于为什么不设置到<code>UIViewController</code>，那是因为在控制台里使用<code>po</code>命令找不到<code>self</code>这个标志。</p>
+</blockquote>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>只是根据个人经验总结出来的一个小技巧，个人觉得用处还是蛮大的。因为当你在维护项目的时候，有时候要修改某一个页面的东西往往要先找到这个页面所对应的<code>Controller</code>，如果纯属的去看代码追踪流程来得知某一页面是属于哪一个<code>Controller</code>，工作量必然很大。而且一个项目稍微偏大点，有时候自己写过的东西都忘了那个页面所对应的<code>Controller</code>叫什么名字了。。所以用这个小技巧能快速定位到页面所对应的<code>Controller</code>。</p>
+<p>当然如果有更好的技巧也欢迎告知，以上纯属笔者个人经验分享。如需转载请注明原文地址。</p>
 
       
     </div>
@@ -324,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/04/19/untitled-1461057063065/">程序员跳槽的9大理由【漫画】</a></p>
+        <p><span>本文标题:</span><a href="/2016/06/06/untitled-1463582900511/">（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">孝平</a></p>
-        <p><span>发布时间:</span>2016-04-19, 17:11:03</p>
-        <p><span>最后更新:</span>2016-05-03, 15:21:37</p>
+        <p><span>发布时间:</span>2016-06-06, 14:16:52</p>
+        <p><span>最后更新:</span>2016-06-06, 14:19:10</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/04/19/untitled-1461057063065/" title="程序员跳槽的9大理由【漫画】">http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/06/untitled-1463582900511/" title="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -342,16 +353,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/04/24/untitled-1461463524398/">
-                    鸡助又没卵用的APIS for ios
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/04/08/untitled-1460084538799/">
-                    我的博客是如何搭建的（github pages + HEXO + 域名绑定）
+                <a href="/2016/05/06/runtime从入门到放弃/">
+                    runtime从入门到放弃
                 </a>
             </div>
         
@@ -362,7 +367,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优化"><span class="toc-number">3.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -419,7 +424,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"程序员跳槽的9大理由【漫画】　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -435,7 +440,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/04/19/untitled-1461057063065/" data-title="程序员跳槽的9大理由【漫画】" data-url="http://xiaopingblog.cn/2016/04/19/untitled-1461057063065/"></div>
+    <div class="ds-thread" data-thread-key="2016/06/06/untitled-1463582900511/" data-title="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController" data-url="http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -459,15 +464,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/04/24/untitled-1461463524398/" title="上一篇: 鸡助又没卵用的APIS for ios">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/08/untitled-1460084538799/" title="下一篇: 我的博客是如何搭建的（github pages + HEXO + 域名绑定）">
+            <a href="/2016/05/06/runtime从入门到放弃/" title="下一篇: runtime从入门到放弃">
                 <i class="fa fa-angle-right"></i>
             </a>
         

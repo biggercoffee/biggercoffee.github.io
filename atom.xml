@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaopingblog.cn/"/>
-  <updated>2016-05-06T07:12:39.000Z</updated>
+  <updated>2016-06-06T06:19:10.000Z</updated>
   <id>http://xiaopingblog.cn/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController</title>
+    <link href="http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/"/>
+    <id>http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/</id>
+    <published>2016-06-06T06:16:52.000Z</published>
+    <updated>2016-06-06T06:19:10.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg&quot; alt=&quot;小清新&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Xcode中的&lt;code&gt;符号断点(Symbolic breakpoint)&lt;/code&gt;可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个&lt;code&gt;ViewController&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;开始&quot;&gt;&lt;a href=&quot;#开始&quot; class=&quot;headerlink&quot; title=&quot;开始&quot;&gt;&lt;/a&gt;开始&lt;/h1&gt;&lt;p&gt;既然我们知道&lt;code&gt;符号断点(Symbolic breakpoint)&lt;/code&gt;可以让某一个函数暂停，而我们的&lt;code&gt;ViewController&lt;/code&gt;几乎都有实现&lt;code&gt;viewDidLoad&lt;/code&gt;方法（没实现的我还没真没碰到过。。。），然而每进入一个页面都会调用&lt;code&gt;viewDidLoad&lt;/code&gt;函数，因此我们就打一个符号断点让它暂停在&lt;code&gt;UIViewController&lt;/code&gt;的&lt;code&gt;viewDidLoad&lt;/code&gt;方法，然后每次进入到APP的页面就可以在我们的&lt;code&gt;Xcode&lt;/code&gt;的左侧堆栈一栏看到调用顺序。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;断点设置GIF图如下：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/91157485.jpg&quot; alt=&quot;断点设置GIF图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;左侧堆栈示例图如下：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/57214399.jpg&quot; alt=&quot;左侧堆栈示例图&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最下面那个黑色的类名就是我们APP页面显示所对应的ViewController&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;优化&quot;&gt;&lt;a href=&quot;#优化&quot; class=&quot;headerlink&quot; title=&quot;优化&quot;&gt;&lt;/a&gt;优化&lt;/h1&gt;&lt;p&gt;虽然以上步骤是实现了我们的需求，but…每次要找一个页面是属于哪一个&lt;code&gt;ViewController&lt;/code&gt;的时候，都会在&lt;code&gt;xcode&lt;/code&gt;里暂停，而且还要在左侧栏的堆栈，而且重点还是每次我显示一个页面他都要执行这个符号断点并且暂停在&lt;code&gt;Xcode&lt;/code&gt;里（虽然可以禁止断点，当需要使用的时候在打开，但笔者觉得还是略麻烦）。&lt;/p&gt;
+&lt;p&gt;so… 笔者觉得把断点加在&lt;code&gt;BaseViewController&lt;/code&gt;里，然后我们让断点的&lt;code&gt;automatically continue after evaluating actions&lt;/code&gt;选项勾上，这样它就会安安静静的执行不会暂停了。然后我们在断点里添加一个&lt;code&gt;debug&lt;/code&gt;命令，命令为&lt;code&gt;po self&lt;/code&gt;把当前的&lt;code&gt;ViewController&lt;/code&gt;打印在控制台即可（如下示例图）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/81082574.jpg&quot; alt=&quot;示例图&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大多数项目里的&lt;code&gt;ViewController&lt;/code&gt;都是继承自&lt;code&gt;BaseViewController&lt;/code&gt;，而&lt;code&gt;BaseViewController&lt;/code&gt;又是继承与&lt;code&gt;UIViewController&lt;/code&gt;的。而上面的示例图里的&lt;code&gt;NMBaseViewController&lt;/code&gt;就是我们项目的&lt;code&gt;BaseViewController&lt;/code&gt;。所以把符号断点设置到&lt;code&gt;NMBaseViewController&lt;/code&gt;即可，至于为什么不设置到&lt;code&gt;UIViewController&lt;/code&gt;，那是因为在控制台里使用&lt;code&gt;po&lt;/code&gt;命令找不到&lt;code&gt;self&lt;/code&gt;这个标志。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;最后&quot;&gt;&lt;a href=&quot;#最后&quot; class=&quot;headerlink&quot; title=&quot;最后&quot;&gt;&lt;/a&gt;最后&lt;/h1&gt;&lt;p&gt;只是根据个人经验总结出来的一个小技巧，个人觉得用处还是蛮大的。因为当你在维护项目的时候，有时候要修改某一个页面的东西往往要先找到这个页面所对应的&lt;code&gt;Controller&lt;/code&gt;，如果纯属的去看代码追踪流程来得知某一页面是属于哪一个&lt;code&gt;Controller&lt;/code&gt;，工作量必然很大。而且一个项目稍微偏大点，有时候自己写过的东西都忘了那个页面所对应的&lt;code&gt;Controller&lt;/code&gt;叫什么名字了。。所以用这个小技巧能快速定位到页面所对应的&lt;code&gt;Controller&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;当然如果有更好的技巧也欢迎告知，以上纯属笔者个人经验分享。如需转载请注明原文地址。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg&quot; alt=&quot;小清新&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Xcode中的&lt;code&gt;符号断点(Symbolic breakpoint)&lt;/code&gt;可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个&lt;code&gt;ViewController&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/categories/All/iOS/"/>
+    
+      <category term="Debug" scheme="http://xiaopingblog.cn/categories/All/iOS/Debug/"/>
+    
+      <category term="Xcode" scheme="http://xiaopingblog.cn/categories/All/iOS/Debug/Xcode/"/>
+    
+    
+      <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/tags/iOS/"/>
+    
+      <category term="Debug" scheme="http://xiaopingblog.cn/tags/Debug/"/>
+    
+      <category term="Xcode" scheme="http://xiaopingblog.cn/tags/Xcode/"/>
+    
+  </entry>
   
   <entry>
     <title>runtime从入门到放弃</title>
@@ -332,6 +390,39 @@
     <summary type="html">
     
       &lt;p&gt;冒个泡&lt;br&gt;
+    
+    </summary>
+    
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
+    
+    
+      <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://xiaopingblog.cn/2015/04/29/hello-world/"/>
+    <id>http://xiaopingblog.cn/2015/04/29/hello-world/</id>
+    <published>2015-04-29T04:39:04.000Z</published>
+    <updated>2016-06-06T06:32:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
