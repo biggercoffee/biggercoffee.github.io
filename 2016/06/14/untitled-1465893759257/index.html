@@ -3,32 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController | XiaoPing’s blog</title>
+  <title>我的第一次：Xcode插件开发 | XiaoPing’s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景
-Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个ViewController。
-
-本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。">
+  <meta name="description" content="关于关于Xcode的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。
+由于Xcode的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为Unicode编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个Category来解决这个问题（github地址点此）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。
+不过，至少笔者觉得还是挺麻烦的。所以凭着">
 <meta property="og:type" content="article">
-<meta property="og:title" content="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">
-<meta property="og:url" content="http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/index.html">
+<meta property="og:title" content="我的第一次：Xcode插件开发">
+<meta property="og:url" content="http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/index.html">
 <meta property="og:site_name" content="XiaoPing’s blog">
-<meta property="og:description" content="背景
-Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个ViewController。
-
-本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。">
-<meta property="og:image" content="http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg">
-<meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/91157485.jpg">
-<meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/57214399.jpg">
-<meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/81082574.jpg">
-<meta property="og:updated_time" content="2016-06-06T06:19:10.000Z">
+<meta property="og:description" content="关于关于Xcode的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。
+由于Xcode的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为Unicode编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个Category来解决这个问题（github地址点此）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。
+不过，至少笔者觉得还是挺麻烦的。所以凭着">
+<meta property="og:image" content="http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg">
+<meta property="og:updated_time" content="2016-06-14T08:45:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">
-<meta name="twitter:description" content="背景
-Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个ViewController。
-
-本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。">
-<meta name="twitter:image" content="http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg">
+<meta name="twitter:title" content="我的第一次：Xcode插件开发">
+<meta name="twitter:description" content="关于关于Xcode的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。
+由于Xcode的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为Unicode编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个Category来解决这个问题（github地址点此）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。
+不过，至少笔者觉得还是挺麻烦的。所以凭着">
+<meta name="twitter:image" content="http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="XiaoPing’s blog" type="application/atom+xml">
   
@@ -265,11 +259,11 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-untitled-1463582900511" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-untitled-1465893759257" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/06/untitled-1463582900511/" class="article-date">
-      <time datetime="2016-06-06T06:16:52.000Z" itemprop="datePublished">2016-06-06</time>
+      <a href="/2016/06/14/untitled-1465893759257/" class="article-date">
+      <time datetime="2016-06-14T08:42:39.000Z" itemprop="datePublished">2016-06-14</time>
 </a>
     </div>
   
@@ -282,7 +276,7 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
         
   
     <h1 class="article-title" itemprop="name">
-      （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController
+      我的第一次：Xcode插件开发
     </h1>
   
 
@@ -291,13 +285,13 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/All/">All</a><a class="article-category-link" href="/categories/All/iOS/">iOS</a><a class="article-category-link" href="/categories/All/iOS/Debug/">Debug</a><a class="article-category-link" href="/categories/All/iOS/Debug/Xcode/">Xcode</a>
+    <a class="article-category-link" href="/categories/Xcode/">Xcode</a><a class="article-category-link" href="/categories/Xcode/插件/">插件</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/All/">All</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件/">插件</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -307,26 +301,15 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p><img src="http://www.bz55.com/uploads/allimg/130521/1-130521100358.jpg" alt="小清新"></p>
-<p>Xcode中的<code>符号断点(Symbolic breakpoint)</code>可以针对某一个方法设置断点并暂停执行（如不懂符号断点的小伙伴们网上随便一搜都能入门了）。因此我们可以利用这特性，维护项目的时候可以不用看源代码直接运行APP就能快速的了解到当前所运行的页面是属于哪一个<code>ViewController</code>。</p>
-<blockquote>
-<p>本技巧需了解符号断点，本篇只是利用此特性来总结的一个开发技巧分享。所以不涉及到断点这一块的知识。</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>既然我们知道<code>符号断点(Symbolic breakpoint)</code>可以让某一个函数暂停，而我们的<code>ViewController</code>几乎都有实现<code>viewDidLoad</code>方法（没实现的我还没真没碰到过。。。），然而每进入一个页面都会调用<code>viewDidLoad</code>函数，因此我们就打一个符号断点让它暂停在<code>UIViewController</code>的<code>viewDidLoad</code>方法，然后每次进入到APP的页面就可以在我们的<code>Xcode</code>的左侧堆栈一栏看到调用顺序。</p>
-<p><strong>断点设置GIF图如下：</strong><br><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/91157485.jpg" alt="断点设置GIF图"></p>
-<p><strong>左侧堆栈示例图如下：</strong><br><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/57214399.jpg" alt="左侧堆栈示例图"></p>
-<blockquote>
-<p>最下面那个黑色的类名就是我们APP页面显示所对应的ViewController</p>
-</blockquote>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>虽然以上步骤是实现了我们的需求，but…每次要找一个页面是属于哪一个<code>ViewController</code>的时候，都会在<code>xcode</code>里暂停，而且还要在左侧栏的堆栈，而且重点还是每次我显示一个页面他都要执行这个符号断点并且暂停在<code>Xcode</code>里（虽然可以禁止断点，当需要使用的时候在打开，但笔者觉得还是略麻烦）。</p>
-<p>so… 笔者觉得把断点加在<code>BaseViewController</code>里，然后我们让断点的<code>automatically continue after evaluating actions</code>选项勾上，这样它就会安安静静的执行不会暂停了。然后我们在断点里添加一个<code>debug</code>命令，命令为<code>po self</code>把当前的<code>ViewController</code>打印在控制台即可（如下示例图）。</p>
-<p><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-6/81082574.jpg" alt="示例图"></p>
-<blockquote>
-<p>大多数项目里的<code>ViewController</code>都是继承自<code>BaseViewController</code>，而<code>BaseViewController</code>又是继承与<code>UIViewController</code>的。而上面的示例图里的<code>NMBaseViewController</code>就是我们项目的<code>BaseViewController</code>。所以把符号断点设置到<code>NMBaseViewController</code>即可，至于为什么不设置到<code>UIViewController</code>，那是因为在控制台里使用<code>po</code>命令找不到<code>self</code>这个标志。</p>
-</blockquote>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>只是根据个人经验总结出来的一个小技巧，个人觉得用处还是蛮大的。因为当你在维护项目的时候，有时候要修改某一个页面的东西往往要先找到这个页面所对应的<code>Controller</code>，如果纯属的去看代码追踪流程来得知某一页面是属于哪一个<code>Controller</code>，工作量必然很大。而且一个项目稍微偏大点，有时候自己写过的东西都忘了那个页面所对应的<code>Controller</code>叫什么名字了。。所以用这个小技巧能快速定位到页面所对应的<code>Controller</code>。</p>
-<p>当然如果有更好的技巧也欢迎告知，以上纯属笔者个人经验分享。如需转载请注明原文地址。</p>
+        <h1 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h1><p><img src="http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg" alt=""><br>关于<code>Xcode</code>的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。</p>
+<p>由于<code>Xcode</code>的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为<code>Unicode</code>编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个<code>Category</code>来解决这个问题（<a href="https://github.com/biggercoffee/ZXPUnicode" target="_blank" rel="external">github地址点此</a>）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。</p>
+<p>不过，至少笔者觉得还是挺麻烦的。所以凭着兴趣研究了一下插件开发，并打算把这个小需求整成一个插件。然后装在<code>Xcode</code>里一劳永逸。<br><a id="more"></a></p>
+<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><p>关于插件开发入门教程网上也有很多。总之大体就是先安装<code>Xcode-Plugin-Template</code>然后再新建一个<code>project</code>的时候选择<code>xcode plugin</code>这样就把插件开发的基本框架给搭好了。（<a href="https://github.com/kattrali/Xcode-Plugin-Template" target="_blank" rel="external">Xcode-Plugin-Template传输门</a>）</p>
+<p>但是，插件开发是不开放的，而苹果官方文档也没有。而网上给出大部分建议都是获取所有的通知名，然后根据名字去猜这些通知是做什么的。这样在开发过程中也是很大的阻碍，而我的需求是让控制台把<code>Unicode</code>编码转成中文，所以我直接去看了别人写的开源，找我需要相关的代码。而核心代码则是参考的<code>MCLog</code>插件（过滤控制台区域的插件）。</p>
+<p>其中核心代码是叫一个<code>IDEConsoleItem</code>的类，这个类是每次控制台输出信息的时候调用的，实例化的方法是<code>initWithAdaptorType:content:kind:</code>。一开始我是写了<code>method_exchangeImplementations</code>交换实现，然后在切入一套逻辑，根据<code>KVC</code>取出<code>content</code>里的内容（控制台的内容），然后在进行<code>Unicode转码</code>，转码过后的字符串在利用KVC重新赋值<code>content</code>即可。</p>
+<p>但是…不尽人意，崩溃了。还不知道为什么，然后我尝试了一下<code>method_getImplementation</code>先把<code>IDEConsoleItem</code>的<code>initWithAdaptorType:content:kind:</code>的IMP实现给保存起来，然后在<code>method_setImplementation</code>重新设置它的IMP，在新的IMP里调用原有IMP，然后在<code>Unicode</code>转码，既然就没报错了。。。核心参考代码如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//保存原有的IMP</span></span><br><span class="line">I<span class="built_in">MP_IDEConsoleItem_initWithAdaptorType</span> = method_getImplementation(class_getInstanceMethod(<span class="built_in">NSClassFromString</span>(<span class="string">@"IDEConsoleItem"</span>), <span class="keyword">@selector</span>(initWithAdaptorType:content:kind:)));</span><br><span class="line">    </span><br><span class="line"><span class="comment">//设置新的IMP    method_setImplementation(class_getInstanceMethod(NSClassFromString(@"IDEConsoleItem"), @selector(initWithAdaptorType:content:kind:)), class_getMethodImplementation([P_ZXP_IDEConsoleItem class], @selector(initWithAdaptorType:content:kind:)));</span></span><br></pre></td></tr></table></figure></p>
+<p>IMP代码<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>)initWithAdaptorType:(<span class="keyword">id</span>)arg1 content:(<span class="keyword">id</span>)arg2 kind:(<span class="keyword">int</span>)arg3</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">id</span> (*execIMP)(<span class="keyword">id</span>,SEL,<span class="keyword">id</span>,<span class="keyword">id</span>,<span class="keyword">int</span>) = (<span class="keyword">void</span> *)I<span class="built_in">MP_IDEConsoleItem_initWithAdaptorType</span>;</span><br><span class="line">    <span class="keyword">id</span> item = execIMP(<span class="keyword">self</span>, _cmd, arg1, arg2, arg3);</span><br><span class="line">    <span class="keyword">if</span> (kZXPIsDecodeInConsole) &#123;</span><br><span class="line">        <span class="built_in">NSString</span> *logText = [item valueForKey:<span class="string">@"content"</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSString</span> *resultText = [ZXPUnicodeDecodePlugsForXcode convertUnicode:logText];</span><br><span class="line">        [item setValue:resultText forKey:<span class="string">@"content"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>总之目前关于插件开发也没任何知识可分享的，就目前而言，笔者感觉需要实现那些需求，然后找拥有类似需求的插件直接去看源码，比去看通知名字猜想来的更实际一些。如果有关于插件开发这一块的大神指点，我也很乐意受教。最后附上插件（让Xcode支持中文的输出）地址以供学习，代码很简单，就一百行左右的代码<a href="https://github.com/biggercoffee/ZXPUnicodeDecodePlugsForXcode" target="_blank" rel="external">https://github.com/biggercoffee/ZXPUnicodeDecodePlugsForXcode</a></p>
 
       
     </div>
@@ -335,13 +318,13 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/06/untitled-1463582900511/">（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController</a></p>
+        <p><span>本文标题:</span><a href="/2016/06/14/untitled-1465893759257/">我的第一次：Xcode插件开发</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">孝平</a></p>
-        <p><span>发布时间:</span>2016-06-06, 14:16:52</p>
-        <p><span>最后更新:</span>2016-06-06, 14:19:10</p>
+        <p><span>发布时间:</span>2016-06-14, 16:42:39</p>
+        <p><span>最后更新:</span>2016-06-14, 16:45:32</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/06/untitled-1463582900511/" title="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/14/untitled-1465893759257/" title="我的第一次：Xcode插件开发">http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -353,16 +336,10 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/14/untitled-1465893759257/">
-                    我的第一次：Xcode插件开发
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/05/06/runtime从入门到放弃/">
-                    runtime从入门到放弃
+                <a href="/2016/06/06/untitled-1463582900511/">
+                    （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController
                 </a>
             </div>
         
@@ -373,7 +350,7 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优化"><span class="toc-number">3.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于"><span class="toc-number">1.</span> <span class="toc-text">关于</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开发"><span class="toc-number">2.</span> <span class="toc-text">开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -430,7 +407,7 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"我的第一次：Xcode插件开发　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -446,7 +423,7 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/06/06/untitled-1463582900511/" data-title="（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController" data-url="http://xiaopingblog.cn/2016/06/06/untitled-1463582900511/"></div>
+    <div class="ds-thread" data-thread-key="2016/06/14/untitled-1465893759257/" data-title="我的第一次：Xcode插件开发" data-url="http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -470,15 +447,13 @@ Xcode中的符号断点(Symbolic breakpoint)可以针对某一个方法设置断
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/14/untitled-1465893759257/" title="上一篇: 我的第一次：Xcode插件开发">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/05/06/runtime从入门到放弃/" title="下一篇: runtime从入门到放弃">
+            <a href="/2016/06/06/untitled-1463582900511/" title="下一篇: （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaopingblog.cn/"/>
-  <updated>2016-06-06T06:19:10.000Z</updated>
+  <updated>2016-06-14T08:45:32.000Z</updated>
   <id>http://xiaopingblog.cn/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的第一次：Xcode插件开发</title>
+    <link href="http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/"/>
+    <id>http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/</id>
+    <published>2016-06-14T08:42:39.000Z</published>
+    <updated>2016-06-14T08:45:32.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;关于&lt;code&gt;Xcode&lt;/code&gt;的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。&lt;/p&gt;
+&lt;p&gt;由于&lt;code&gt;Xcode&lt;/code&gt;的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为&lt;code&gt;Unicode&lt;/code&gt;编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个&lt;code&gt;Category&lt;/code&gt;来解决这个问题（&lt;a href=&quot;https://github.com/biggercoffee/ZXPUnicode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址点此&lt;/a&gt;）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。&lt;/p&gt;
+&lt;p&gt;不过，至少笔者觉得还是挺麻烦的。所以凭着兴趣研究了一下插件开发，并打算把这个小需求整成一个插件。然后装在&lt;code&gt;Xcode&lt;/code&gt;里一劳永逸。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;开发&quot;&gt;&lt;a href=&quot;#开发&quot; class=&quot;headerlink&quot; title=&quot;开发&quot;&gt;&lt;/a&gt;开发&lt;/h1&gt;&lt;p&gt;关于插件开发入门教程网上也有很多。总之大体就是先安装&lt;code&gt;Xcode-Plugin-Template&lt;/code&gt;然后再新建一个&lt;code&gt;project&lt;/code&gt;的时候选择&lt;code&gt;xcode plugin&lt;/code&gt;这样就把插件开发的基本框架给搭好了。（&lt;a href=&quot;https://github.com/kattrali/Xcode-Plugin-Template&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Xcode-Plugin-Template传输门&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;但是，插件开发是不开放的，而苹果官方文档也没有。而网上给出大部分建议都是获取所有的通知名，然后根据名字去猜这些通知是做什么的。这样在开发过程中也是很大的阻碍，而我的需求是让控制台把&lt;code&gt;Unicode&lt;/code&gt;编码转成中文，所以我直接去看了别人写的开源，找我需要相关的代码。而核心代码则是参考的&lt;code&gt;MCLog&lt;/code&gt;插件（过滤控制台区域的插件）。&lt;/p&gt;
+&lt;p&gt;其中核心代码是叫一个&lt;code&gt;IDEConsoleItem&lt;/code&gt;的类，这个类是每次控制台输出信息的时候调用的，实例化的方法是&lt;code&gt;initWithAdaptorType:content:kind:&lt;/code&gt;。一开始我是写了&lt;code&gt;method_exchangeImplementations&lt;/code&gt;交换实现，然后在切入一套逻辑，根据&lt;code&gt;KVC&lt;/code&gt;取出&lt;code&gt;content&lt;/code&gt;里的内容（控制台的内容），然后在进行&lt;code&gt;Unicode转码&lt;/code&gt;，转码过后的字符串在利用KVC重新赋值&lt;code&gt;content&lt;/code&gt;即可。&lt;/p&gt;
+&lt;p&gt;但是…不尽人意，崩溃了。还不知道为什么，然后我尝试了一下&lt;code&gt;method_getImplementation&lt;/code&gt;先把&lt;code&gt;IDEConsoleItem&lt;/code&gt;的&lt;code&gt;initWithAdaptorType:content:kind:&lt;/code&gt;的IMP实现给保存起来，然后在&lt;code&gt;method_setImplementation&lt;/code&gt;重新设置它的IMP，在新的IMP里调用原有IMP，然后在&lt;code&gt;Unicode&lt;/code&gt;转码，既然就没报错了。。。核心参考代码如下：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//保存原有的IMP&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;I&lt;span class=&quot;built_in&quot;&gt;MP_IDEConsoleItem_initWithAdaptorType&lt;/span&gt; = method_getImplementation(class_getInstanceMethod(&lt;span class=&quot;built_in&quot;&gt;NSClassFromString&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;IDEConsoleItem&quot;&lt;/span&gt;), &lt;span class=&quot;keyword&quot;&gt;@selector&lt;/span&gt;(initWithAdaptorType:content:kind:)));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//设置新的IMP    method_setImplementation(class_getInstanceMethod(NSClassFromString(@&quot;IDEConsoleItem&quot;), @selector(initWithAdaptorType:content:kind:)), class_getMethodImplementation([P_ZXP_IDEConsoleItem class], @selector(initWithAdaptorType:content:kind:)));&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;IMP代码&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;)initWithAdaptorType:(&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;)arg1 content:(&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;)arg2 kind:(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;)arg3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; (*execIMP)(&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;,SEL,&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;) = (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *)I&lt;span class=&quot;built_in&quot;&gt;MP_IDEConsoleItem_initWithAdaptorType&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; item = execIMP(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, _cmd, arg1, arg2, arg3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (kZXPIsDecodeInConsole) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *logText = [item valueForKey:&lt;span class=&quot;string&quot;&gt;@&quot;content&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *resultText = [ZXPUnicodeDecodePlugsForXcode convertUnicode:logText];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [item setValue:resultText forKey:&lt;span class=&quot;string&quot;&gt;@&quot;content&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;最后&quot;&gt;&lt;a href=&quot;#最后&quot; class=&quot;headerlink&quot; title=&quot;最后&quot;&gt;&lt;/a&gt;最后&lt;/h1&gt;&lt;p&gt;总之目前关于插件开发也没任何知识可分享的，就目前而言，笔者感觉需要实现那些需求，然后找拥有类似需求的插件直接去看源码，比去看通知名字猜想来的更实际一些。如果有关于插件开发这一块的大神指点，我也很乐意受教。最后附上插件（让Xcode支持中文的输出）地址以供学习，代码很简单，就一百行左右的代码&lt;a href=&quot;https://github.com/biggercoffee/ZXPUnicodeDecodePlugsForXcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/biggercoffee/ZXPUnicodeDecodePlugsForXcode&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;关于&lt;code&gt;Xcode&lt;/code&gt;的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。&lt;/p&gt;
+&lt;p&gt;由于&lt;code&gt;Xcode&lt;/code&gt;的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为&lt;code&gt;Unicode&lt;/code&gt;编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个&lt;code&gt;Category&lt;/code&gt;来解决这个问题（&lt;a href=&quot;https://github.com/biggercoffee/ZXPUnicode&quot;&gt;github地址点此&lt;/a&gt;）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。&lt;/p&gt;
+&lt;p&gt;不过，至少笔者觉得还是挺麻烦的。所以凭着兴趣研究了一下插件开发，并打算把这个小需求整成一个插件。然后装在&lt;code&gt;Xcode&lt;/code&gt;里一劳永逸。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Xcode" scheme="http://xiaopingblog.cn/categories/Xcode/"/>
+    
+      <category term="插件" scheme="http://xiaopingblog.cn/categories/Xcode/%E6%8F%92%E4%BB%B6/"/>
+    
+    
+      <category term="Xcode" scheme="http://xiaopingblog.cn/tags/Xcode/"/>
+    
+      <category term="插件" scheme="http://xiaopingblog.cn/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>（技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController</title>
@@ -67,9 +104,9 @@
     
       <category term="iOS" scheme="http://xiaopingblog.cn/tags/iOS/"/>
     
-      <category term="Debug" scheme="http://xiaopingblog.cn/tags/Debug/"/>
-    
       <category term="Xcode" scheme="http://xiaopingblog.cn/tags/Xcode/"/>
+    
+      <category term="Debug" scheme="http://xiaopingblog.cn/tags/Debug/"/>
     
   </entry>
   
