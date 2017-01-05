@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaopingblog.cn/"/>
-  <updated>2016-06-14T08:45:32.000Z</updated>
+  <updated>2017-01-05T14:23:24.000Z</updated>
   <id>http://xiaopingblog.cn/</id>
   
   <author>
@@ -16,13 +16,62 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>让终端也支持socks5代理协议和git加速</title>
+    <link href="http://xiaopingblog.cn/2017/01/05/%E8%AE%A9%E7%BB%88%E7%AB%AF%E4%B9%9F%E6%94%AF%E6%8C%81socks5%E4%BB%A3%E7%90%86%E5%8D%8F%E8%AE%AE%E5%92%8Cgit%E5%8A%A0%E9%80%9F/"/>
+    <id>http://xiaopingblog.cn/2017/01/05/让终端也支持socks5代理协议和git加速/</id>
+    <published>2017-01-05T14:17:02.000Z</published>
+    <updated>2017-01-05T14:23:24.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-0dadb15fb89c004b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;vpn&quot;&gt;&lt;br&gt;首发简书地址：&lt;a href=&quot;http://www.jianshu.com/p/3ed14ca653a1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/3ed14ca653a1&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;身为程序员，在天朝科学的上网，科学的查资料很正常。如果是使用的socks5代理协议来进行科学上网的话，可作为一名iOSer想必知道cocoapods更新和git代码拉取都异常的慢。而这些操作都是在终端里操作，socks5代理协议默认无法让终端也科学的上网。所以笔者来分享一下我在终端里使用socks5科学上网的一些小知识。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;终端支持socks5&quot;&gt;&lt;a href=&quot;#终端支持socks5&quot; class=&quot;headerlink&quot; title=&quot;终端支持socks5&quot;&gt;&lt;/a&gt;终端支持socks5&lt;/h1&gt;&lt;p&gt;笔者分别试过以下两种方式，当然让终端支持socks5协议的方式随意百度一下都很多。当然笔者也去找过，方法太多了也太杂了。以下方法皆是笔者亲测&lt;strong&gt;（mac os环境）&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;终端科学上网后，不管git还是使用cocoapods等都要快很多。还有一个好处，那就是使用socks5科学上网，下载国外的资源的时候，并未得到多大的提升（几乎没提升）。而让终端支持了socks5代理协议之后，可以在终端里使用&lt;code&gt;curl -o 文件名 下载地址&lt;/code&gt;来进行国外资源下载，可以得到很大的下载速度的提升（笔者环境是shadowsocks的账号和mac os里亲测的）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-proxychains4&quot;&gt;&lt;a href=&quot;#1-proxychains4&quot; class=&quot;headerlink&quot; title=&quot;1.proxychains4&quot;&gt;&lt;/a&gt;1.proxychains4&lt;/h2&gt;&lt;p&gt;proxychains4的教程网上一大堆，这里不做赘述，不过。。。笔者虽然试了这种方案，但是总感觉没成功。并没得到任何加速&lt;strong&gt;（mac os环境）&lt;/strong&gt;。所以最后并没有用这种方案。&lt;/p&gt;
+&lt;h2 id=&quot;2-键入命令。（笔者目前使用方式）&quot;&gt;&lt;a href=&quot;#2-键入命令。（笔者目前使用方式）&quot; class=&quot;headerlink&quot; title=&quot;2.键入命令。（笔者目前使用方式）&quot;&gt;&lt;/a&gt;2.键入命令。（笔者目前使用方式）&lt;/h2&gt;&lt;p&gt;每次打开终端分别输入以下两条命令：&lt;br&gt;export http_proxy=socks5://127.0.0.1:1080&lt;br&gt;export https_proxy=socks5://127.0.0.1:1080&lt;br&gt;然后在终端里使用&lt;code&gt;curl -i http://ip.cn&lt;/code&gt;来查看你当前的&lt;code&gt;ip&lt;/code&gt;地址。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：&lt;code&gt;127.0.0.1:1080&lt;/code&gt;这个地址是写死的。直接复制即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不过这有一个弊端，那就是只针对当前终端窗口有效。也就代表，你新开一个终端窗口或者终端关闭了重新打开，是不能正常科学上网的。必须要重新键入以上两条命令才行。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; tips:虽然就两条命令，但是每次需要科学上网都要键入两行那么长的字符串还是挺麻烦的。笔者目前是把这两条命令写在了一个&lt;code&gt;txt&lt;/code&gt;文本文件里，每次想要科学上网的时候，就在终端里使用&lt;code&gt;source txt文件&lt;/code&gt;来快速的进行科学上网。&lt;br&gt;比如你把以上两条命令写在了&lt;code&gt;a.txt&lt;/code&gt;文件里，则每次你要科学上网你就打开终端并进入到&lt;code&gt;a.txt&lt;/code&gt;文件的目录里使用&lt;code&gt;source a.txt&lt;/code&gt;即可（或者&lt;code&gt;source a.txt文件的绝对路径&lt;/code&gt;）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;git加速&quot;&gt;&lt;a href=&quot;#git加速&quot; class=&quot;headerlink&quot; title=&quot;git加速&quot;&gt;&lt;/a&gt;git加速&lt;/h1&gt;&lt;p&gt;虽然让终端支持socks5协议，而且使用git clone命令也得到了下载速度的提升。但是并不是很理想，有一种方式可以让&lt;code&gt;git clone&lt;/code&gt;更快的下载国外的代码。&lt;/p&gt;
+&lt;p&gt;那就是配置&lt;code&gt;git&lt;/code&gt;的&lt;code&gt;http or https&lt;/code&gt;的代理。打开终端并使用以下两条命令进行配置：&lt;br&gt;git config –global http.proxy ‘socks5://127.0.0.1:1080’&lt;br&gt;git config –global https.proxy ‘socks5://127.0.0.1:1080’&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：&lt;code&gt;127.0.0.1:1080&lt;/code&gt;这个地址是写死的。直接复制即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最后的结果测试（分别在终端里使用git克隆了一个仓库，笔者以clone reactivecocoa为例子）：&lt;br&gt;1.终端未科学上网的情况下是每秒四五十kb左右。&lt;br&gt;2.终端科学上网的情况下是每秒两百kb左右。&lt;br&gt;3.配置了git的代理&lt;strong&gt;（git 加速）&lt;/strong&gt;情况下是每秒四五百kb左右。&lt;/p&gt;
+&lt;h1 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h1&gt;&lt;p&gt;笔者是在&lt;code&gt;mac os&lt;/code&gt;下使用并测试的，window系统的不清楚。&lt;br&gt;可以试一下，反正也挺简单的。&lt;br&gt;不管是让终端支持socks5代理协议还是配置了git的代理 ，都一个必要的前提，那就是必须保证你的socks5代理账号是正常并可用状态。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-0dadb15fb89c004b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;vpn&quot;&gt;&lt;br&gt;首发简书地址：&lt;a href=&quot;http://www.jianshu.com/p/3ed14ca653a1&quot;&gt;http://www.jianshu.com/p/3ed14ca653a1&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;身为程序员，在天朝科学的上网，科学的查资料很正常。如果是使用的socks5代理协议来进行科学上网的话，可作为一名iOSer想必知道cocoapods更新和git代码拉取都异常的慢。而这些操作都是在终端里操作，socks5代理协议默认无法让终端也科学的上网。所以笔者来分享一下我在终端里使用socks5科学上网的一些小知识。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="All" scheme="http://xiaopingblog.cn/categories/All/"/>
+    
+      <category term="VPN" scheme="http://xiaopingblog.cn/categories/All/VPN/"/>
+    
+    
+      <category term="All" scheme="http://xiaopingblog.cn/tags/All/"/>
+    
+      <category term="VPN" scheme="http://xiaopingblog.cn/tags/VPN/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我的第一次：Xcode插件开发</title>
     <link href="http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/"/>
     <id>http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/</id>
     <published>2016-06-14T08:42:39.000Z</published>
-    <updated>2016-06-14T08:45:32.000Z</updated>
+    <updated>2016-06-22T08:53:19.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;关于&lt;code&gt;Xcode&lt;/code&gt;的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;关于&lt;code&gt;Xcode&lt;/code&gt;的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。&lt;/p&gt;
 &lt;p&gt;由于&lt;code&gt;Xcode&lt;/code&gt;的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为&lt;code&gt;Unicode&lt;/code&gt;编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个&lt;code&gt;Category&lt;/code&gt;来解决这个问题（&lt;a href=&quot;https://github.com/biggercoffee/ZXPUnicode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github地址点此&lt;/a&gt;）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。&lt;/p&gt;
 &lt;p&gt;不过，至少笔者觉得还是挺麻烦的。所以凭着兴趣研究了一下插件开发，并打算把这个小需求整成一个插件。然后装在&lt;code&gt;Xcode&lt;/code&gt;里一劳永逸。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;开发&quot;&gt;&lt;a href=&quot;#开发&quot; class=&quot;headerlink&quot; title=&quot;开发&quot;&gt;&lt;/a&gt;开发&lt;/h1&gt;&lt;p&gt;关于插件开发入门教程网上也有很多。总之大体就是先安装&lt;code&gt;Xcode-Plugin-Template&lt;/code&gt;然后再新建一个&lt;code&gt;project&lt;/code&gt;的时候选择&lt;code&gt;xcode plugin&lt;/code&gt;这样就把插件开发的基本框架给搭好了。（&lt;a href=&quot;https://github.com/kattrali/Xcode-Plugin-Template&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Xcode-Plugin-Template传输门&lt;/a&gt;）&lt;/p&gt;
@@ -35,7 +84,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg&quot; alt=&quot;&quot;&gt;&lt;br&gt;关于&lt;code&gt;Xcode&lt;/code&gt;的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。&lt;/p&gt;
+      &lt;h1 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;关于&lt;code&gt;Xcode&lt;/code&gt;的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。&lt;/p&gt;
 &lt;p&gt;由于&lt;code&gt;Xcode&lt;/code&gt;的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为&lt;code&gt;Unicode&lt;/code&gt;编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个&lt;code&gt;Category&lt;/code&gt;来解决这个问题（&lt;a href=&quot;https://github.com/biggercoffee/ZXPUnicode&quot;&gt;github地址点此&lt;/a&gt;）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。&lt;/p&gt;
 &lt;p&gt;不过，至少笔者觉得还是挺麻烦的。所以凭着兴趣研究了一下插件开发，并打算把这个小需求整成一个插件。然后装在&lt;code&gt;Xcode&lt;/code&gt;里一劳永逸。&lt;br&gt;
     
@@ -104,9 +153,9 @@
     
       <category term="iOS" scheme="http://xiaopingblog.cn/tags/iOS/"/>
     
-      <category term="Xcode" scheme="http://xiaopingblog.cn/tags/Xcode/"/>
-    
       <category term="Debug" scheme="http://xiaopingblog.cn/tags/Debug/"/>
+    
+      <category term="Xcode" scheme="http://xiaopingblog.cn/tags/Xcode/"/>
     
   </entry>
   

@@ -3,26 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的第一次：Xcode插件开发 | XiaoPing’s blog</title>
+  <title>让终端也支持socks5代理协议和git加速 | XiaoPing’s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于关于Xcode的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。
-由于Xcode的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为Unicode编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个Category来解决这个问题（github地址点此）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。
-不过，至少笔者觉得还是挺麻烦的。所以凭着">
+  <meta name="description" content="首发简书地址：http://www.jianshu.com/p/3ed14ca653a1
+前言身为程序员，在天朝科学的上网，科学的查资料很正常。如果是使用的socks5代理协议来进行科学上网的话，可作为一名iOSer想必知道cocoapods更新和git代码拉取都异常的慢。而这些操作都是在终端里操作，socks5代理协议默认无法让终端也科学的上网。所以笔者来分享一下我在终端里使用socks5科学上">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一次：Xcode插件开发">
-<meta property="og:url" content="http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/index.html">
+<meta property="og:title" content="让终端也支持socks5代理协议和git加速">
+<meta property="og:url" content="http://xiaopingblog.cn/2017/01/05/让终端也支持socks5代理协议和git加速/index.html">
 <meta property="og:site_name" content="XiaoPing’s blog">
-<meta property="og:description" content="关于关于Xcode的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。
-由于Xcode的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为Unicode编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个Category来解决这个问题（github地址点此）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。
-不过，至少笔者觉得还是挺麻烦的。所以凭着">
-<meta property="og:image" content="http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg">
-<meta property="og:updated_time" content="2016-06-22T08:53:19.000Z">
+<meta property="og:description" content="首发简书地址：http://www.jianshu.com/p/3ed14ca653a1
+前言身为程序员，在天朝科学的上网，科学的查资料很正常。如果是使用的socks5代理协议来进行科学上网的话，可作为一名iOSer想必知道cocoapods更新和git代码拉取都异常的慢。而这些操作都是在终端里操作，socks5代理协议默认无法让终端也科学的上网。所以笔者来分享一下我在终端里使用socks5科学上">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/660127-0dadb15fb89c004b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-01-05T14:23:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一次：Xcode插件开发">
-<meta name="twitter:description" content="关于关于Xcode的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。
-由于Xcode的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为Unicode编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个Category来解决这个问题（github地址点此）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。
-不过，至少笔者觉得还是挺麻烦的。所以凭着">
-<meta name="twitter:image" content="http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg">
+<meta name="twitter:title" content="让终端也支持socks5代理协议和git加速">
+<meta name="twitter:description" content="首发简书地址：http://www.jianshu.com/p/3ed14ca653a1
+前言身为程序员，在天朝科学的上网，科学的查资料很正常。如果是使用的socks5代理协议来进行科学上网的话，可作为一名iOSer想必知道cocoapods更新和git代码拉取都异常的慢。而这些操作都是在终端里操作，socks5代理协议默认无法让终端也科学的上网。所以笔者来分享一下我在终端里使用socks5科学上">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/660127-0dadb15fb89c004b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="XiaoPing’s blog" type="application/atom+xml">
   
@@ -259,11 +256,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-untitled-1465893759257" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-让终端也支持socks5代理协议和git加速" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/14/untitled-1465893759257/" class="article-date">
-      <time datetime="2016-06-14T08:42:39.000Z" itemprop="datePublished">2016-06-14</time>
+      <a href="/2017/01/05/让终端也支持socks5代理协议和git加速/" class="article-date">
+      <time datetime="2017-01-05T14:17:02.000Z" itemprop="datePublished">2017-01-05</time>
 </a>
     </div>
   
@@ -276,7 +273,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一次：Xcode插件开发
+      让终端也支持socks5代理协议和git加速
     </h1>
   
 
@@ -285,13 +282,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Xcode/">Xcode</a><a class="article-category-link" href="/categories/Xcode/插件/">插件</a>
+    <a class="article-category-link" href="/categories/All/">All</a><a class="article-category-link" href="/categories/All/VPN/">VPN</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件/">插件</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/All/">All</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPN/">VPN</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -301,15 +298,28 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h1><p><img src="http://img3.duitang.com/uploads/item/201509/19/20150919211323_Xdcv8.thumb.700_0.jpeg" alt="image"><br>关于<code>Xcode</code>的插件已经层出不穷了。但笔者凭着兴趣也小有研究了一下。</p>
-<p>由于<code>Xcode</code>的控制台不支持数组和字典里的中文的值输出（更准确的说是输出为<code>Unicode</code>编码），这让开发者（至少是我）在打印数据进行调试的时候很不方便也很不爽。故此写了一个<code>Category</code>来解决这个问题（<a href="https://github.com/biggercoffee/ZXPUnicode" target="_blank" rel="external">github地址点此</a>）。只要把分类拖入到项目里就能让数组和字典里的中文打印正常。</p>
-<p>不过，至少笔者觉得还是挺麻烦的。所以凭着兴趣研究了一下插件开发，并打算把这个小需求整成一个插件。然后装在<code>Xcode</code>里一劳永逸。<br><a id="more"></a></p>
-<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><p>关于插件开发入门教程网上也有很多。总之大体就是先安装<code>Xcode-Plugin-Template</code>然后再新建一个<code>project</code>的时候选择<code>xcode plugin</code>这样就把插件开发的基本框架给搭好了。（<a href="https://github.com/kattrali/Xcode-Plugin-Template" target="_blank" rel="external">Xcode-Plugin-Template传输门</a>）</p>
-<p>但是，插件开发是不开放的，而苹果官方文档也没有。而网上给出大部分建议都是获取所有的通知名，然后根据名字去猜这些通知是做什么的。这样在开发过程中也是很大的阻碍，而我的需求是让控制台把<code>Unicode</code>编码转成中文，所以我直接去看了别人写的开源，找我需要相关的代码。而核心代码则是参考的<code>MCLog</code>插件（过滤控制台区域的插件）。</p>
-<p>其中核心代码是叫一个<code>IDEConsoleItem</code>的类，这个类是每次控制台输出信息的时候调用的，实例化的方法是<code>initWithAdaptorType:content:kind:</code>。一开始我是写了<code>method_exchangeImplementations</code>交换实现，然后在切入一套逻辑，根据<code>KVC</code>取出<code>content</code>里的内容（控制台的内容），然后在进行<code>Unicode转码</code>，转码过后的字符串在利用KVC重新赋值<code>content</code>即可。</p>
-<p>但是…不尽人意，崩溃了。还不知道为什么，然后我尝试了一下<code>method_getImplementation</code>先把<code>IDEConsoleItem</code>的<code>initWithAdaptorType:content:kind:</code>的IMP实现给保存起来，然后在<code>method_setImplementation</code>重新设置它的IMP，在新的IMP里调用原有IMP，然后在<code>Unicode</code>转码，既然就没报错了。。。核心参考代码如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//保存原有的IMP</span></span><br><span class="line">I<span class="built_in">MP_IDEConsoleItem_initWithAdaptorType</span> = method_getImplementation(class_getInstanceMethod(<span class="built_in">NSClassFromString</span>(<span class="string">@"IDEConsoleItem"</span>), <span class="keyword">@selector</span>(initWithAdaptorType:content:kind:)));</span><br><span class="line">    </span><br><span class="line"><span class="comment">//设置新的IMP    method_setImplementation(class_getInstanceMethod(NSClassFromString(@"IDEConsoleItem"), @selector(initWithAdaptorType:content:kind:)), class_getMethodImplementation([P_ZXP_IDEConsoleItem class], @selector(initWithAdaptorType:content:kind:)));</span></span><br></pre></td></tr></table></figure></p>
-<p>IMP代码<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>)initWithAdaptorType:(<span class="keyword">id</span>)arg1 content:(<span class="keyword">id</span>)arg2 kind:(<span class="keyword">int</span>)arg3</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">id</span> (*execIMP)(<span class="keyword">id</span>,SEL,<span class="keyword">id</span>,<span class="keyword">id</span>,<span class="keyword">int</span>) = (<span class="keyword">void</span> *)I<span class="built_in">MP_IDEConsoleItem_initWithAdaptorType</span>;</span><br><span class="line">    <span class="keyword">id</span> item = execIMP(<span class="keyword">self</span>, _cmd, arg1, arg2, arg3);</span><br><span class="line">    <span class="keyword">if</span> (kZXPIsDecodeInConsole) &#123;</span><br><span class="line">        <span class="built_in">NSString</span> *logText = [item valueForKey:<span class="string">@"content"</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSString</span> *resultText = [ZXPUnicodeDecodePlugsForXcode convertUnicode:logText];</span><br><span class="line">        [item setValue:resultText forKey:<span class="string">@"content"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>总之目前关于插件开发也没任何知识可分享的，就目前而言，笔者感觉需要实现那些需求，然后找拥有类似需求的插件直接去看源码，比去看通知名字猜想来的更实际一些。如果有关于插件开发这一块的大神指点，我也很乐意受教。最后附上插件（让Xcode支持中文的输出）地址以供学习，代码很简单，就一百行左右的代码<a href="https://github.com/biggercoffee/ZXPUnicodeDecodePlugsForXcode" target="_blank" rel="external">https://github.com/biggercoffee/ZXPUnicodeDecodePlugsForXcode</a></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/660127-0dadb15fb89c004b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="vpn"><br>首发简书地址：<a href="http://www.jianshu.com/p/3ed14ca653a1" target="_blank" rel="external">http://www.jianshu.com/p/3ed14ca653a1</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>身为程序员，在天朝科学的上网，科学的查资料很正常。如果是使用的socks5代理协议来进行科学上网的话，可作为一名iOSer想必知道cocoapods更新和git代码拉取都异常的慢。而这些操作都是在终端里操作，socks5代理协议默认无法让终端也科学的上网。所以笔者来分享一下我在终端里使用socks5科学上网的一些小知识。<br><a id="more"></a></p>
+<h1 id="终端支持socks5"><a href="#终端支持socks5" class="headerlink" title="终端支持socks5"></a>终端支持socks5</h1><p>笔者分别试过以下两种方式，当然让终端支持socks5协议的方式随意百度一下都很多。当然笔者也去找过，方法太多了也太杂了。以下方法皆是笔者亲测<strong>（mac os环境）</strong>。</p>
+<blockquote>
+<p>终端科学上网后，不管git还是使用cocoapods等都要快很多。还有一个好处，那就是使用socks5科学上网，下载国外的资源的时候，并未得到多大的提升（几乎没提升）。而让终端支持了socks5代理协议之后，可以在终端里使用<code>curl -o 文件名 下载地址</code>来进行国外资源下载，可以得到很大的下载速度的提升（笔者环境是shadowsocks的账号和mac os里亲测的）。</p>
+</blockquote>
+<h2 id="1-proxychains4"><a href="#1-proxychains4" class="headerlink" title="1.proxychains4"></a>1.proxychains4</h2><p>proxychains4的教程网上一大堆，这里不做赘述，不过。。。笔者虽然试了这种方案，但是总感觉没成功。并没得到任何加速<strong>（mac os环境）</strong>。所以最后并没有用这种方案。</p>
+<h2 id="2-键入命令。（笔者目前使用方式）"><a href="#2-键入命令。（笔者目前使用方式）" class="headerlink" title="2.键入命令。（笔者目前使用方式）"></a>2.键入命令。（笔者目前使用方式）</h2><p>每次打开终端分别输入以下两条命令：<br>export http_proxy=socks5://127.0.0.1:1080<br>export https_proxy=socks5://127.0.0.1:1080<br>然后在终端里使用<code>curl -i http://ip.cn</code>来查看你当前的<code>ip</code>地址。</p>
+<blockquote>
+<p>注：<code>127.0.0.1:1080</code>这个地址是写死的。直接复制即可。</p>
+</blockquote>
+<p>不过这有一个弊端，那就是只针对当前终端窗口有效。也就代表，你新开一个终端窗口或者终端关闭了重新打开，是不能正常科学上网的。必须要重新键入以上两条命令才行。</p>
+<blockquote>
+<p> tips:虽然就两条命令，但是每次需要科学上网都要键入两行那么长的字符串还是挺麻烦的。笔者目前是把这两条命令写在了一个<code>txt</code>文本文件里，每次想要科学上网的时候，就在终端里使用<code>source txt文件</code>来快速的进行科学上网。<br>比如你把以上两条命令写在了<code>a.txt</code>文件里，则每次你要科学上网你就打开终端并进入到<code>a.txt</code>文件的目录里使用<code>source a.txt</code>即可（或者<code>source a.txt文件的绝对路径</code>）。</p>
+</blockquote>
+<h1 id="git加速"><a href="#git加速" class="headerlink" title="git加速"></a>git加速</h1><p>虽然让终端支持socks5协议，而且使用git clone命令也得到了下载速度的提升。但是并不是很理想，有一种方式可以让<code>git clone</code>更快的下载国外的代码。</p>
+<p>那就是配置<code>git</code>的<code>http or https</code>的代理。打开终端并使用以下两条命令进行配置：<br>git config –global http.proxy ‘socks5://127.0.0.1:1080’<br>git config –global https.proxy ‘socks5://127.0.0.1:1080’</p>
+<blockquote>
+<p>注：<code>127.0.0.1:1080</code>这个地址是写死的。直接复制即可。</p>
+</blockquote>
+<p>最后的结果测试（分别在终端里使用git克隆了一个仓库，笔者以clone reactivecocoa为例子）：<br>1.终端未科学上网的情况下是每秒四五十kb左右。<br>2.终端科学上网的情况下是每秒两百kb左右。<br>3.配置了git的代理<strong>（git 加速）</strong>情况下是每秒四五百kb左右。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>笔者是在<code>mac os</code>下使用并测试的，window系统的不清楚。<br>可以试一下，反正也挺简单的。<br>不管是让终端支持socks5代理协议还是配置了git的代理 ，都一个必要的前提，那就是必须保证你的socks5代理账号是正常并可用状态。</p>
 
       
     </div>
@@ -318,13 +328,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/14/untitled-1465893759257/">我的第一次：Xcode插件开发</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/05/让终端也支持socks5代理协议和git加速/">让终端也支持socks5代理协议和git加速</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">孝平</a></p>
-        <p><span>发布时间:</span>2016-06-14, 16:42:39</p>
-        <p><span>最后更新:</span>2016-06-22, 16:53:19</p>
+        <p><span>发布时间:</span>2017-01-05, 22:17:02</p>
+        <p><span>最后更新:</span>2017-01-05, 22:23:24</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/14/untitled-1465893759257/" title="我的第一次：Xcode插件开发">http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/05/让终端也支持socks5代理协议和git加速/" title="让终端也支持socks5代理协议和git加速">http://xiaopingblog.cn/2017/01/05/让终端也支持socks5代理协议和git加速/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2017/01/05/让终端也支持socks5代理协议和git加速/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -336,16 +346,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/05/让终端也支持socks5代理协议和git加速/">
-                    让终端也支持socks5代理协议和git加速
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/06/untitled-1463582900511/">
-                    （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController
+                <a href="/2016/06/14/untitled-1465893759257/">
+                    我的第一次：Xcode插件开发
                 </a>
             </div>
         
@@ -356,7 +360,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于"><span class="toc-number">1.</span> <span class="toc-text">关于</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开发"><span class="toc-number">2.</span> <span class="toc-text">开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#终端支持socks5"><span class="toc-number">2.</span> <span class="toc-text">终端支持socks5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-proxychains4"><span class="toc-number">2.1.</span> <span class="toc-text">1.proxychains4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-键入命令。（笔者目前使用方式）"><span class="toc-number">2.2.</span> <span class="toc-text">2.键入命令。（笔者目前使用方式）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git加速"><span class="toc-number">3.</span> <span class="toc-text">git加速</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">4.</span> <span class="toc-text">结语</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -413,7 +417,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"我的第一次：Xcode插件开发　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"让终端也支持socks5代理协议和git加速　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -429,7 +433,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/06/14/untitled-1465893759257/" data-title="我的第一次：Xcode插件开发" data-url="http://xiaopingblog.cn/2016/06/14/untitled-1465893759257/"></div>
+    <div class="ds-thread" data-thread-key="2017/01/05/让终端也支持socks5代理协议和git加速/" data-title="让终端也支持socks5代理协议和git加速" data-url="http://xiaopingblog.cn/2017/01/05/让终端也支持socks5代理协议和git加速/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -453,15 +457,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/05/让终端也支持socks5代理协议和git加速/" title="上一篇: 让终端也支持socks5代理协议和git加速">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/06/untitled-1463582900511/" title="下一篇: （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">
+            <a href="/2016/06/14/untitled-1465893759257/" title="下一篇: 我的第一次：Xcode插件开发">
                 <i class="fa fa-angle-right"></i>
             </a>
         
