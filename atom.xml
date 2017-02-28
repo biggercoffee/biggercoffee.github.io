@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiaopingblog.cn/"/>
-  <updated>2017-01-19T09:01:55.000Z</updated>
+  <updated>2017-02-28T09:19:04.000Z</updated>
   <id>http://xiaopingblog.cn/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>debug环境下动态注入代码 for iOS</title>
+    <link href="http://xiaopingblog.cn/2017/02/28/untitled-1488273302015/"/>
+    <id>http://xiaopingblog.cn/2017/02/28/untitled-1488273302015/</id>
+    <published>2017-02-28T09:15:02.000Z</published>
+    <updated>2017-02-28T09:19:04.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-c2cfbfe9708d3d55.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;图片来源于网络&quot;&gt;&lt;/p&gt;
+&lt;p&gt;简书首发地址:&lt;a href=&quot;http://www.jianshu.com/p/1de7c38490c5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/1de7c38490c5&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h1&gt;&lt;p&gt;开发的时候，每次改动代码都要重新&lt;code&gt;run&lt;/code&gt;然后跑一遍app来测试改动代码。那么问题来了，有木有方案就是改完代码不用重新&lt;code&gt;run&lt;/code&gt;就能及时看到效果的呢，答案是&lt;code&gt;YES&lt;/code&gt;。&lt;br&gt;现在解决这一需求的方案网上也不算多，在此笔者特意分享一下笔者使用的工具和方案来提高开发效率。（不讲底层原理，只是纯属的分享一款app）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大神或者已经知道Injection的请绕道，本篇只是纯属分享技巧的文章，只是想让大家提高开发效率而已。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Xcode8以前（过期）&quot;&gt;&lt;a href=&quot;#Xcode8以前（过期）&quot; class=&quot;headerlink&quot; title=&quot;Xcode8以前（过期）&quot;&gt;&lt;/a&gt;Xcode8以前（过期）&lt;/h1&gt;&lt;p&gt;xcode8以前可以装插件的时代，可以利用&lt;code&gt;dyci-main&lt;/code&gt;和&lt;code&gt;Injection&lt;/code&gt;插件来进行代码注入。不过现在网上也有很多方法让Xcode8支持装插件，但是这样打包上传就会审核不过，而且略麻烦。（反正笔者现在是习惯了）&lt;br&gt;ps:&lt;code&gt;dyci-main&lt;/code&gt;和&lt;code&gt;Injection&lt;/code&gt;在&lt;code&gt;github&lt;/code&gt;上自行搜索即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Xcode8之后（含）&quot;&gt;&lt;a href=&quot;#Xcode8之后（含）&quot; class=&quot;headerlink&quot; title=&quot;Xcode8之后（含）&quot;&gt;&lt;/a&gt;Xcode8之后（含）&lt;/h1&gt;&lt;p&gt;Xcode8之后要动态注入代码要使用&lt;code&gt;Injection&lt;/code&gt; app，作者正是制作&lt;code&gt;Injection&lt;/code&gt;插件的人。因为xcode8不支持了插件，特意有制作了一个app，下载地址：&lt;a href=&quot;http://johnholdsworth.com/injection.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://johnholdsworth.com/injection.html&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;国外的网站，下载有点慢。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;按照官方的使用，打开Xcode和Injection app，然后在运行Xcode里的项目，之后在点击Injection app菜单里的Inject Source即可。操作就是这么简单，but….&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注入的代码要重新执行才生效，假设你a push b，然后在b里修改了代码并且&lt;code&gt;Inject Source&lt;/code&gt;操作之后，首先从b pop a然后在从a push b里运行的就是你b页面修改后的代码了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;如果出现&lt;code&gt;Timeout waiting for connection from client app&lt;/code&gt;的问题，请点击菜单&lt;code&gt;macOS Project -&amp;gt; Patch&lt;/code&gt;然后会在项目的&lt;code&gt;main&lt;/code&gt;文件里生成一些&lt;code&gt;DEBUG&lt;/code&gt;代码，之后你再去修改你的代码，然后在进行&lt;code&gt;Inject Source&lt;/code&gt;玩玩吧&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其他问题请自行去作者github上提issues。&lt;a href=&quot;https://github.com/johnno1962/InjectionApp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/johnno1962/InjectionApp&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;其次，这个app是不注入get方法的。比如你使用了懒加载，想在get方法里多加一些变量的初始化属性，用这个app就办不到，因此笔者一般采用&lt;code&gt;LLDB&lt;/code&gt;方式在get方法里注入代码。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先在get方法里打一个断点，然后在&lt;code&gt;LLDB&lt;/code&gt;控制台里输入&lt;code&gt;p&lt;/code&gt;命令即可。之后在键入你要注入的代码，代码输入完之后在连续按两下回车键即可退出&lt;code&gt;LLDB&lt;/code&gt;控制台，然后释放断点就见证神奇的一刻了。&lt;blockquote&gt;
+&lt;p&gt;此方法是一次性，也就是说第二次调用这个get方法是不会执行刚那个&lt;code&gt;LLDB&lt;/code&gt;操作里的代码滴。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h1&gt;&lt;p&gt;本篇提升开发效率的动态注入代码就分享到这，如果有更好的方案欢迎联系笔者。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/660127-c2cfbfe9708d3d55.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;图片来源于网络&quot;&gt;&lt;/p&gt;
+&lt;p&gt;简书首发地址:&lt;a href=&quot;http://www.jianshu.com/p/1de7c38490c5&quot;&gt;http://www.jianshu.com/p/1de7c38490c5&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h1&gt;&lt;p&gt;开发的时候，每次改动代码都要重新&lt;code&gt;run&lt;/code&gt;然后跑一遍app来测试改动代码。那么问题来了，有木有方案就是改完代码不用重新&lt;code&gt;run&lt;/code&gt;就能及时看到效果的呢，答案是&lt;code&gt;YES&lt;/code&gt;。&lt;br&gt;现在解决这一需求的方案网上也不算多，在此笔者特意分享一下笔者使用的工具和方案来提高开发效率。（不讲底层原理，只是纯属的分享一款app）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大神或者已经知道Injection的请绕道，本篇只是纯属分享技巧的文章，只是想让大家提高开发效率而已。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Xcode" scheme="http://xiaopingblog.cn/categories/Xcode/"/>
+    
+      <category term="Debug" scheme="http://xiaopingblog.cn/categories/Xcode/Debug/"/>
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/categories/Xcode/Debug/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://xiaopingblog.cn/tags/iOS/"/>
+    
+      <category term="Debug" scheme="http://xiaopingblog.cn/tags/Debug/"/>
+    
+      <category term="Xcode" scheme="http://xiaopingblog.cn/tags/Xcode/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScriptCore的巨坑（JSExportAs方式绑定的本地通信）</title>

@@ -3,22 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>runtime从入门到放弃 | XiaoPing’s blog</title>
+  <title>debug环境下动态注入代码 for iOS | XiaoPing’s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇福利，用美女来抛砖引玉。">
+  <meta name="description" content="简书首发地址:http://www.jianshu.com/p/1de7c38490c5
+需求开发的时候，每次改动代码都要重新run然后跑一遍app来测试改动代码。那么问题来了，有木有方案就是改完代码不用重新run就能及时看到效果的呢，答案是YES。现在解决这一需求的方案网上也不算多，在此笔者特意分享一下笔者使用的工具和方案来提高开发效率。（不讲底层原理，只是纯属的分享一款app）
+
+大神或者已">
 <meta property="og:type" content="article">
-<meta property="og:title" content="runtime从入门到放弃">
-<meta property="og:url" content="http://xiaopingblog.cn/2016/05/06/runtime从入门到放弃/index.html">
+<meta property="og:title" content="debug环境下动态注入代码 for iOS">
+<meta property="og:url" content="http://xiaopingblog.cn/2017/02/28/untitled-1488273302015/index.html">
 <meta property="og:site_name" content="XiaoPing’s blog">
-<meta property="og:description" content="本篇福利，用美女来抛砖引玉。">
-<meta property="og:image" content="http://i4.piimg.com/7dae777f250c4799.jpg">
-<meta property="og:image" content="http://i4.piimg.com/dcf0eb7370dfa216.jpg">
-<meta property="og:image" content="http://i4.piimg.com/a48affaa13187bf8.jpg">
-<meta property="og:updated_time" content="2016-05-06T07:12:39.000Z">
+<meta property="og:description" content="简书首发地址:http://www.jianshu.com/p/1de7c38490c5
+需求开发的时候，每次改动代码都要重新run然后跑一遍app来测试改动代码。那么问题来了，有木有方案就是改完代码不用重新run就能及时看到效果的呢，答案是YES。现在解决这一需求的方案网上也不算多，在此笔者特意分享一下笔者使用的工具和方案来提高开发效率。（不讲底层原理，只是纯属的分享一款app）
+
+大神或者已">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/660127-c2cfbfe9708d3d55.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-02-28T09:19:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="runtime从入门到放弃">
-<meta name="twitter:description" content="本篇福利，用美女来抛砖引玉。">
-<meta name="twitter:image" content="http://i4.piimg.com/7dae777f250c4799.jpg">
+<meta name="twitter:title" content="debug环境下动态注入代码 for iOS">
+<meta name="twitter:description" content="简书首发地址:http://www.jianshu.com/p/1de7c38490c5
+需求开发的时候，每次改动代码都要重新run然后跑一遍app来测试改动代码。那么问题来了，有木有方案就是改完代码不用重新run就能及时看到效果的呢，答案是YES。现在解决这一需求的方案网上也不算多，在此笔者特意分享一下笔者使用的工具和方案来提高开发效率。（不讲底层原理，只是纯属的分享一款app）
+
+大神或者已">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/660127-c2cfbfe9708d3d55.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="XiaoPing’s blog" type="application/atom+xml">
   
@@ -255,11 +262,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-runtime从入门到放弃" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-untitled-1488273302015" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/06/runtime从入门到放弃/" class="article-date">
-      <time datetime="2016-05-06T07:00:00.000Z" itemprop="datePublished">2016-05-06</time>
+      <a href="/2017/02/28/untitled-1488273302015/" class="article-date">
+      <time datetime="2017-02-28T09:15:02.000Z" itemprop="datePublished">2017-02-28</time>
 </a>
     </div>
   
@@ -272,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      runtime从入门到放弃
+      debug环境下动态注入代码 for iOS
     </h1>
   
 
@@ -281,13 +288,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/All/">All</a><a class="article-category-link" href="/categories/All/iOS/">iOS</a>
+    <a class="article-category-link" href="/categories/Xcode/">Xcode</a><a class="article-category-link" href="/categories/Xcode/Debug/">Debug</a><a class="article-category-link" href="/categories/Xcode/Debug/iOS/">iOS</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/All/">All</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -297,42 +304,37 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本篇福利，用美女来抛砖引玉。<br><img src="http://i4.piimg.com/7dae777f250c4799.jpg" alt="来点福利"></p>
-<a id="more"></a>
-<h1 id="GG-背景"><a href="#GG-背景" class="headerlink" title="GG 背景"></a>GG 背景</h1><p>本篇不适应<code>runtime</code>学习，也不涉及<code>runtime</code>长篇大论的理论知识。本篇只是想让你适当的学会放手。而所谓的入门到放弃中的<code>入门</code>则是一些<code>runtime</code>常用<code>apis</code>的认识和使用场景（笔者工作总结）。而所谓的放弃就是不要太过于执着<code>runtime</code>，其实它并没有你想象中的那么好。</p>
-<h1 id="来嗨起来"><a href="#来嗨起来" class="headerlink" title="来嗨起来"></a>来嗨起来</h1><p>现在就让我们开始来旅游<code>runtime</code>的世界吧~！</p>
-<h2 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h2><p><code>objc_setAssociatedObject</code> 关联，懂点<code>runtime</code>或者不懂<code>runtime</code>的应该都知道这个家伙吧。再或者在分类里也应该见过不少了吧。不讲它用法，只分享笔者经历。</p>
-<p>关联的用处一般是用来在分类里定义属性，分别在属性的<code>set</code>和<code>get</code>方法里存放或者获取属性的值。当然还有一个用处也比较实用，则是强引用自己，并且不要释放。</p>
-<p>强引用自己？嗯哼？怎么有一点晕晕的。好吧，举个列子。</p>
-<p>需求（可忽略）：</p>
-<p>比如你有一个<code>ZXPAAA</code>的<code>class</code>，然后<code>ZXPAAA</code>里有<code>show</code>和<code>dismiss</code>方法，并且还有一个<code>delegate</code>回调。然后你还有一个<code>ZXPBBB</code>的<code>class</code>并且有一个函数叫<code>test</code>。现在<code>test</code>函数里有一个局部自动变量<code>ZXPAAA</code>的实例，并且调用<code>ZXPAAA的show</code>方法来弹出一个视图。</p>
-<p>那么问题来了，这时候你在<code>ZXPBBB的test方法</code>里设置<code>ZXPAAA</code>的delegate为<code>self</code>（self=ZXPBBB）的时候，因为<code>ZXPAAA</code>是局部自动变量，所以在<code>test</code>函数执行完之前，函数内部的<code>ZXPAAA</code>实例变量的引用计数会减一，由于你只是实例化了一下，引用计数为一，然后在减一，故此，此变量会释放，然后在这时候你遵守的<code>ZXPAAA</code>的delegate方法永远不会回调。</p>
-<p><strong>解决：</strong> 那么这时候你就可以在<code>ZXPAAA</code>里的<code>show</code>方法用objc_setAssociatedObject来关联自己并设置<code>retain</code>引用+1。让self不会释放，代码如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ZXPAAA的show 方法里，关联自己，会引用计数+1</span></span><br><span class="line">objc_setAssociatedObject(<span class="keyword">self</span>, key, <span class="keyword">self</span>, OBJC_ASSO<span class="built_in">CIATION_RETAIN_NONATOMIC</span>);</span><br></pre></td></tr></table></figure></p>
-<p>目前为止确实是解决了对象自动释放的问题，可问题是对象一直存在呀。内存泄露了尼。不用怕，我们在ZXPAAA的dismiss 方法里释放关联就行了。代码如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ZXPAAA的dismiss 方法里，从关联里移除，设置为nil,会引用计数-1</span></span><br><span class="line">objc_setAssociatedObject(<span class="keyword">self</span>, key, <span class="literal">nil</span>, OBJC_ASSO<span class="built_in">CIATION_ASSIGN</span>);</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/biggercoffee/ZXPPickerView" target="_blank" rel="external">之前简单封装了一个pickerView工具类里面有用到类似场景，点此进行传输进行查看。</a></p>
-<p><img src="http://i4.piimg.com/dcf0eb7370dfa216.jpg" alt="乐一乐"></p>
-<h2 id="获取class的所有方法（包含私有）"><a href="#获取class的所有方法（包含私有）" class="headerlink" title="获取class的所有方法（包含私有）"></a>获取class的所有方法（包含私有）</h2><p>核心方法是<code>class_copyMethodList</code>，直接贴代码：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">uint count;</span><br><span class="line"><span class="comment">//返回值是一个Method指针</span></span><br><span class="line">    Method *methodList = class_copyMethodList([<span class="built_in">NSObject</span> class], &amp;count);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; count; i++) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,<span class="built_in">NSStringFromSelector</span>(method_getName(methodList[i])));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//释放</span></span><br><span class="line">    free(methodList);</span><br></pre></td></tr></table></figure></p>
-<p>以上这串代码，看似很牛逼。。其实用一句话来形容就是<code>just so so</code>而已。其实最主要的是并没有任何一点实际用处。就算知道了很多私有方法，你想去完美的运用它也需要很多时间成本，而且<code>app store</code>还不会给你上线(企业发布除外)。</p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/660127-c2cfbfe9708d3d55.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片来源于网络"></p>
+<p>简书首发地址:<a href="http://www.jianshu.com/p/1de7c38490c5" target="_blank" rel="external">http://www.jianshu.com/p/1de7c38490c5</a></p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>开发的时候，每次改动代码都要重新<code>run</code>然后跑一遍app来测试改动代码。那么问题来了，有木有方案就是改完代码不用重新<code>run</code>就能及时看到效果的呢，答案是<code>YES</code>。<br>现在解决这一需求的方案网上也不算多，在此笔者特意分享一下笔者使用的工具和方案来提高开发效率。（不讲底层原理，只是纯属的分享一款app）</p>
 <blockquote>
-<p>PS：更多用法直接去查看.h文件即可。</p>
+<p>大神或者已经知道Injection的请绕道，本篇只是纯属分享技巧的文章，只是想让大家提高开发效率而已。<br><a id="more"></a></p>
+<h1 id="Xcode8以前（过期）"><a href="#Xcode8以前（过期）" class="headerlink" title="Xcode8以前（过期）"></a>Xcode8以前（过期）</h1><p>xcode8以前可以装插件的时代，可以利用<code>dyci-main</code>和<code>Injection</code>插件来进行代码注入。不过现在网上也有很多方法让Xcode8支持装插件，但是这样打包上传就会审核不过，而且略麻烦。（反正笔者现在是习惯了）<br>ps:<code>dyci-main</code>和<code>Injection</code>在<code>github</code>上自行搜索即可。</p>
 </blockquote>
-<h2 id="获取class的所有变量（包含私有）"><a href="#获取class的所有变量（包含私有）" class="headerlink" title="获取class的所有变量（包含私有）"></a>获取class的所有变量（包含私有）</h2><p>核心方法是<code>class_copyIvarList</code>，直接贴代码：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">uint count;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回值是一个Ivar指针</span></span><br><span class="line">    Ivar *ivarList = class_copyIvarList([<span class="built_in">UIViewController</span> class], &amp;count);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; count; i++) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%s"</span>,ivar_getName(ivarList[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//释放</span></span><br><span class="line">    free(ivarList);</span><br></pre></td></tr></table></figure></p>
-<p>获取变量和获取方法同理，然并卵，但作为兴趣研究研究的话，还是可以玩玩的。在工程里的实际用处也并不大。</p>
+<h1 id="Xcode8之后（含）"><a href="#Xcode8之后（含）" class="headerlink" title="Xcode8之后（含）"></a>Xcode8之后（含）</h1><p>Xcode8之后要动态注入代码要使用<code>Injection</code> app，作者正是制作<code>Injection</code>插件的人。因为xcode8不支持了插件，特意有制作了一个app，下载地址：<a href="http://johnholdsworth.com/injection.html" target="_blank" rel="external">http://johnholdsworth.com/injection.html</a></p>
 <blockquote>
-<p>PS：更多用法直接去查看.h文件即可。</p>
+<p>国外的网站，下载有点慢。</p>
 </blockquote>
-<h2 id="方法替换"><a href="#方法替换" class="headerlink" title="方法替换"></a>方法替换</h2><p>API为<code>method_exchangeImplementations</code>，交换两个方法的实现，一般用来进行黑魔法调试。虽然也可以用来实现AOP切面编程，but…工程里千万慎用，千万慎用，千万慎用。重要的事情说三遍，至于为什么，原因很简单，不好维护，出了错都不知道飞哪儿去了。而要实现方法切面可使用开源的<code>Aspects</code>。</p>
+<p>按照官方的使用，打开Xcode和Injection app，然后在运行Xcode里的项目，之后在点击Injection app菜单里的Inject Source即可。操作就是这么简单，but….</p>
 <blockquote>
-<p>PS: 所谓的黑魔法调试，比如替换init方法，并打印一句话，方便我们知道哪些class被初始化，而AOP切面编程的概念网上也有很多，随意百度一下即可。</p>
+<p>注入的代码要重新执行才生效，假设你a push b，然后在b里修改了代码并且<code>Inject Source</code>操作之后，首先从b pop a然后在从a push b里运行的就是你b页面修改后的代码了。</p>
 </blockquote>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>其他还有很多，比如<code>objc_copyClassList</code>获取所有class，<code>method_setImplementation</code>给方法重置一个IMP等等。关于runtime的API有点太多了，就不一一列举了。当然关于runtime知识点远不止这些api这么简单，比如消息转发，重定向等等。</p>
-<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>but…. runtime有这么多的api，到底有什么用？答案是并没什么卵用，对，虽然没卵用，但还是很重要，不要问我为什么，就因为它是OC底层，核心。作为一位iOSer，了解这些基础是必须的，起码装逼也有了资本。再退一万步来讲，对于面试，这些也会派上用场。不过对于工作中，确实没啥太大的用处，但是如果写框架的话，用处还是特别大，而且作为程序员也不能一直停留在应用层层面。</p>
-<p>当然，在工作中用的并不怎么多，但是，还是必须要学的。而标题所谓的放弃的寓意是，让你不要太过于纠结runtime到底有什么用。因为也有很多新人问过笔者runtime到底能做什么….况且现在关于这方面的资料也不多。资料查来查去无非就是消息转发，重定向还有那几个获取变量、方法等几个常用的API而已。当然，对于runtime笔者也连门都没有入。。在此笔者建议新人们一直捉摸不透runtime到底能做什么，倒不如花花时间去研究一下GCD，core foundation等。</p>
-<p>以上纯属笔者个人给新人的一些建议以及一些runtime肤浅的用法。<br>欢迎吐槽，请勿喷贴。。。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
+<li><p>如果出现<code>Timeout waiting for connection from client app</code>的问题，请点击菜单<code>macOS Project -&gt; Patch</code>然后会在项目的<code>main</code>文件里生成一些<code>DEBUG</code>代码，之后你再去修改你的代码，然后在进行<code>Inject Source</code>玩玩吧</p>
 <blockquote>
-<p>转载请注明原文出处</p>
+<p>其他问题请自行去作者github上提issues。<a href="https://github.com/johnno1962/InjectionApp" target="_blank" rel="external">https://github.com/johnno1962/InjectionApp</a></p>
 </blockquote>
-<p><img src="http://i4.piimg.com/a48affaa13187bf8.jpg" alt="最近很流行的"></p>
+</li>
+<li><p>其次，这个app是不注入get方法的。比如你使用了懒加载，想在get方法里多加一些变量的初始化属性，用这个app就办不到，因此笔者一般采用<code>LLDB</code>方式在get方法里注入代码。</p>
+<ul>
+<li>首先在get方法里打一个断点，然后在<code>LLDB</code>控制台里输入<code>p</code>命令即可。之后在键入你要注入的代码，代码输入完之后在连续按两下回车键即可退出<code>LLDB</code>控制台，然后释放断点就见证神奇的一刻了。<blockquote>
+<p>此方法是一次性，也就是说第二次调用这个get方法是不会执行刚那个<code>LLDB</code>操作里的代码滴。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>本篇提升开发效率的动态注入代码就分享到这，如果有更好的方案欢迎联系笔者。</p>
 
       
     </div>
@@ -341,13 +343,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/06/runtime从入门到放弃/">runtime从入门到放弃</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/28/untitled-1488273302015/">debug环境下动态注入代码 for iOS</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">孝平</a></p>
-        <p><span>发布时间:</span>2016-05-06, 15:00:00</p>
-        <p><span>最后更新:</span>2016-05-06, 15:12:39</p>
+        <p><span>发布时间:</span>2017-02-28, 17:15:02</p>
+        <p><span>最后更新:</span>2017-02-28, 17:19:04</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/06/runtime从入门到放弃/" title="runtime从入门到放弃">http://xiaopingblog.cn/2016/05/06/runtime从入门到放弃/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2016/05/06/runtime从入门到放弃/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/28/untitled-1488273302015/" title="debug环境下动态注入代码 for iOS">http://xiaopingblog.cn/2017/02/28/untitled-1488273302015/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaopingblog.cn/2017/02/28/untitled-1488273302015/　　作者: 孝平" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -359,16 +361,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/06/untitled-1463582900511/">
-                    （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/05/04/一个妹子要到了程序员前辈的社交账号/">
-                    一个妹子要到了程序员前辈的社交账号
+                <a href="/2017/01/19/untitled-1484816463595/">
+                    JavaScriptCore的巨坑（JSExportAs方式绑定的本地通信）
                 </a>
             </div>
         
@@ -379,7 +375,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GG-背景"><span class="toc-number">1.</span> <span class="toc-text">GG 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#来嗨起来"><span class="toc-number">2.</span> <span class="toc-text">来嗨起来</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关联"><span class="toc-number">2.1.</span> <span class="toc-text">关联</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取class的所有方法（包含私有）"><span class="toc-number">2.2.</span> <span class="toc-text">获取class的所有方法（包含私有）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取class的所有变量（包含私有）"><span class="toc-number">2.3.</span> <span class="toc-text">获取class的所有变量（包含私有）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法替换"><span class="toc-number">2.4.</span> <span class="toc-text">方法替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">2.5.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写在最后"><span class="toc-number">3.</span> <span class="toc-text">写在最后</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Xcode8以前（过期）"><span class="toc-number">2.</span> <span class="toc-text">Xcode8以前（过期）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Xcode8之后（含）"><span class="toc-number">3.</span> <span class="toc-text">Xcode8之后（含）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">4.</span> <span class="toc-text">结语</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -436,7 +432,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"runtime从入门到放弃　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"debug环境下动态注入代码 for iOS　| XiaoPing’s blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -452,7 +448,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/05/06/runtime从入门到放弃/" data-title="runtime从入门到放弃" data-url="http://xiaopingblog.cn/2016/05/06/runtime从入门到放弃/"></div>
+    <div class="ds-thread" data-thread-key="2017/02/28/untitled-1488273302015/" data-title="debug环境下动态注入代码 for iOS" data-url="http://xiaopingblog.cn/2017/02/28/untitled-1488273302015/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -476,15 +472,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/06/untitled-1463582900511/" title="上一篇: （技巧分享）老生常谈的符号断点 for Xcode ，找出你想要的ViewController">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/05/04/一个妹子要到了程序员前辈的社交账号/" title="下一篇: 一个妹子要到了程序员前辈的社交账号">
+            <a href="/2017/01/19/untitled-1484816463595/" title="下一篇: JavaScriptCore的巨坑（JSExportAs方式绑定的本地通信）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
